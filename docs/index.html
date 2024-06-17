@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index</title>
+<title>Introducción al mundo de datos con R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
@@ -73,11 +74,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -103,11 +104,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body>
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Introducción al mundo de datos con R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Prefacio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./intro.html"> 
+<span class="menu-text">Primera parte</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./summary.html"> 
+<span class="menu-text">Summary</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./references.html"> 
+<span class="menu-text">References</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -115,9 +155,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introducción-al-manejo-de-datos-con-r" id="toc-introducción-al-manejo-de-datos-con-r" class="nav-link active" data-scroll-target="#introducción-al-manejo-de-datos-con-r">Introducción al manejo de datos con R</a>
+  <li><a href="#prefacio" id="toc-prefacio" class="nav-link active" data-scroll-target="#prefacio">Prefacio</a>
   <ul class="collapse">
-  <li><a href="#otro-pequeño-título" id="toc-otro-pequeño-título" class="nav-link" data-scroll-target="#otro-pequeño-título">Otro pequeño título</a></li>
+  <li><a href="#pequeño-título" id="toc-pequeño-título" class="nav-link" data-scroll-target="#pequeño-título">Pequeño título</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -128,31 +168,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="introducción-al-manejo-de-datos-con-r" class="level1 unnumbered">
-<h1 class="unnumbered">Introducción al manejo de datos con R</h1>
+<section id="prefacio" class="level1 unnumbered">
+<h1 class="unnumbered">Prefacio</h1>
 <p>This is a Quarto book.</p>
 <p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># acá iría código</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-</div>
-<section id="otro-pequeño-título" class="level2">
-<h2 class="anchored" data-anchor-id="otro-pequeño-título">Otro pequeño título</h2>
+<section id="pequeño-título" class="level2">
+<h2 class="anchored" data-anchor-id="pequeño-título">Pequeño título</h2>
+<p>lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus</p>
+<p>lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus</p>
+<p>lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus</p>
+<p>lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus</p>
+<p>lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus</p>
+<p>lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus</p>
 
 
 </section>

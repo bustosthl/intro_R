@@ -2,6 +2,10 @@ project:
   type: website
   output-dir: docs
 
+execute:
+  #echo: false
+  warning: false
+
 book:
   title: "2406_IntroR_material"
   author: "Norah Jones"
