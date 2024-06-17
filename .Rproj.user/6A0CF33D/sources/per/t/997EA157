@@ -3,7 +3,7 @@
     "path": "~/personal/sociologia/202406_curso intro a R/2406_IntroR_material/_quarto.yml",
     "project_path": "_quarto.yml",
     "type": "yaml",
-    "hash": "0",
+    "hash": "3267575881",
     "contents": "",
     "dirty": false,
     "created": 1718587538594.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "5,14",
-        "scrollLine": "0"
+        "cursorPosition": "31,25",
+        "scrollLine": "9"
     },
     "folds": "",
-    "lastKnownWriteTime": 1718588321,
+    "lastKnownWriteTime": 1718588508,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1718588321051,
+    "last_content_update": 1718588508439,
     "read_only": false,
     "read_only_alternatives": []
 }

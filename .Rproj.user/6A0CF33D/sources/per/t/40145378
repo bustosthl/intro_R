@@ -1,0 +1,31 @@
+{
+    "id": "40145378",
+    "path": "~/personal/sociologia/202406_curso intro a R/2406_IntroR_material/intro.qmd",
+    "project_path": "intro.qmd",
+    "type": "quarto_markdown",
+    "hash": "1145435192",
+    "contents": "",
+    "dirty": false,
+    "created": 1718586250356.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "rmdVisualMode": "true",
+        "rmdVisualWrapConfigured": "true",
+        "source_window_id": "",
+        "Source": "Source",
+        "docOutlineVisible": "1",
+        "rmdVisualModeLocation": "15:0",
+        "rmdVisualCollapsedChunks": "",
+        "cursorPosition": "0,0",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1718588287,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1718588287481,
+    "read_only": false,
+    "read_only_alternatives": []
+}

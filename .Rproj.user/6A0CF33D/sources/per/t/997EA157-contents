@@ -29,6 +29,7 @@ format:
   html:
     theme: flatly
     toc: true
+    toc-title: "Apartados"
   pdf:
     documentclass: scrreprt
 
