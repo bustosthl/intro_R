@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Presentación",
+    "title": "Presentación del curso",
     "section": "",
-    "text": "This is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n# código\nlibrary(tidyverse)\n\n\n\nlorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus\nlorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus\nlorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus\nlorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus\nlorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus\nlorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus"
+    "text": "El objetivo de los siguientes párrafos es dar una cálida y armoniosa bienvenida al mundo de datos para personas de la carrera de Sociología de la UBA, pero extensible a distintas carreras de Ciencias Sociales a lo largo y ancho de la República Argentina.\n\n\nSe popularizó en los últimos años el brumoso término de Big Data, un espacio sexy y confuso en donde se reunieron distintas técnicas, disciplinas y profesiones que lograban incorporar algún elemento novedoso al viejo arte trabajar con datos.\n¿Qué es lo realmente interesante? Las tres famosas “V” bocetan un nuevo contexto de circulación de los datos: en grandes volúmenes, en tipos y formatos variados y con una mayor velocidad de intercambio y capacidad de cómputo. Ahora bien, como toda persona que quiera dedicarse a las Ciencias Sociales sabe (¡o debe saber!), poder recolectar, comprender, administrar y analizar datos para construir información es una parte fundamental del proceso de investigación. Al final, el enfoque de este espacio enfoque será cómo navegar las nuevas tempestades para ejercer el oficio que nos interpeló en un primer momento.\nSesgo de ciencia de datos ###\n\n\n\nR es un lenguaje de programación enfocado en análisis y visualización de datos. Nos agrada particularmente por ser un producto de software libre y código abierto: puede ser usado, modificado y citado sin pagar licencias de ningún tipo. Además presenta alrededor del globo -y en Argentina en particular- una gran comunidad de usuarios que crean formas específicas de aplicación de este lenguaje que nos facilitará su uso en Ciencias Sociales. Ya sea por facilitar el acceso a ciertas fuentes de información, por sintetizar procesos complejos en funciones simples de ejecutar o tan sólo por tener espacios donde realizar consultas y recibir apoyo.\nUn detalle no menor: R, como toda herramienta, es sólo la manera (a nuestro entender) más simple de acceder al mundo de datos. La idea es que funcione como puerta de entrada al entendimiento de las lógicas de la programación y el manejo de los distintos objetos que vamos a utilizar aquí.\nR y Rstudio: ###\n\n\n\nSe busca realizar una introducción general al uso del lenguaje R a través de la interfaz Rstudio, priorizando los paquetes incluídos en la colección Tidyverse y con especial foco en el proceso de extracción, limpieza, análisis y visualización de datos.\nerrores ###\n\n\n\nEl curso se estructura en XXX encuentros virtuales sincrónicos de XX horas cada uno a realizarse por la plataforma XXXX.\n\n\n\nlorem ipsus"
   },
   {
     "objectID": "summary.html",
@@ -33,5 +33,40 @@
     "title": "Presentación",
     "section": "",
     "text": "lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus\nlorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus\nlorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus\nlorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus\nlorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus\nlorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus"
+  },
+  {
+    "objectID": "index.html#por-qué-datos",
+    "href": "index.html#por-qué-datos",
+    "title": "Presentación del curso",
+    "section": "",
+    "text": "Se popularizó en los últimos años el brumoso término de Big Data, un espacio sexy y confuso en donde se reunieron distintas técnicas, disciplinas y profesiones que lograban incorporar algún elemento novedoso al viejo arte trabajar con datos.\n¿Qué es lo realmente interesante? Las tres famosas “V” bocetan un nuevo contexto de circulación de los datos: en grandes volúmenes, en tipos y formatos variados y con una mayor velocidad de intercambio y capacidad de cómputo. Ahora bien, como toda persona que quiera dedicarse a las Ciencias Sociales sabe (¡o debe saber!), poder recolectar, comprender, administrar y analizar datos para construir información es una parte fundamental del proceso de investigación. Al final, el enfoque de este espacio enfoque será cómo navegar las nuevas tempestades para ejercer el oficio que nos interpeló en un primer momento.\nSesgo de ciencia de datos ###"
+  },
+  {
+    "objectID": "index.html#por-qué-r",
+    "href": "index.html#por-qué-r",
+    "title": "Presentación del curso",
+    "section": "",
+    "text": "R es un lenguaje de programación enfocado en análisis y visualización de datos. Nos agrada particularmente por ser un producto de software libre y código abierto: puede ser usado, modificado y citado sin pagar licencias de ningún tipo. Además presenta alrededor del globo -y en Argentina en particular- una gran comunidad de usuarios que crean formas específicas de aplicación de este lenguaje que nos facilitará su uso en Ciencias Sociales. Ya sea por facilitar el acceso a ciertas fuentes de información, por sintetizar procesos complejos en funciones simples de ejecutar o tan sólo por tener espacios donde realizar consultas y recibir apoyo.\nUn detalle no menor: R, como toda herramienta, es sólo la manera (a nuestro entender) más simple de acceder al mundo de datos. La idea es que funcione como puerta de entrada al entendimiento de las lógicas de la programación y el manejo de los distintos objetos que vamos a utilizar aquí.\nR y Rstudio: ###"
+  },
+  {
+    "objectID": "index.html#objetivo",
+    "href": "index.html#objetivo",
+    "title": "Presentación del curso",
+    "section": "",
+    "text": "Se busca realizar una introducción general al uso del lenguaje R a través de la interfaz Rstudio, priorizando los paquetes incluídos en la colección Tidyverse y con especial foco en el proceso de extracción, limpieza, análisis y visualización de datos.\nerrores ###"
+  },
+  {
+    "objectID": "index.html#organización",
+    "href": "index.html#organización",
+    "title": "Presentación del curso",
+    "section": "",
+    "text": "El curso se estructura en XXX encuentros virtuales sincrónicos de XX horas cada uno a realizarse por la plataforma XXXX."
+  },
+  {
+    "objectID": "index.html#agradecimientos",
+    "href": "index.html#agradecimientos",
+    "title": "Presentación del curso",
+    "section": "",
+    "text": "lorem ipsus"
   }
 ]

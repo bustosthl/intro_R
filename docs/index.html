@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -123,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Presentación</span></a>
+<span class="menu-text">Presentación del curso</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./intro.html"> 
@@ -155,9 +121,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Apartados</h2>
    
   <ul>
-  <li><a href="#presentación" id="toc-presentación" class="nav-link active" data-scroll-target="#presentación">Presentación</a>
+  <li><a href="#presentación-del-curso" id="toc-presentación-del-curso" class="nav-link active" data-scroll-target="#presentación-del-curso">Presentación del curso</a>
   <ul class="collapse">
-  <li><a href="#pequeño-título" id="toc-pequeño-título" class="nav-link" data-scroll-target="#pequeño-título">Pequeño título</a></li>
+  <li><a href="#por-qué-datos" id="toc-por-qué-datos" class="nav-link" data-scroll-target="#por-qué-datos">¿Por qué “datos”?</a></li>
+  <li><a href="#por-qué-r" id="toc-por-qué-r" class="nav-link" data-scroll-target="#por-qué-r">¿Por qué R?</a></li>
+  <li><a href="#objetivo" id="toc-objetivo" class="nav-link" data-scroll-target="#objetivo">Objetivo</a></li>
+  <li><a href="#organización" id="toc-organización" class="nav-link" data-scroll-target="#organización">Organización</a></li>
+  <li><a href="#agradecimientos" id="toc-agradecimientos" class="nav-link" data-scroll-target="#agradecimientos">Agradecimientos</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -168,22 +138,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="presentación" class="level1 unnumbered">
-<h1 class="unnumbered">Presentación</h1>
-<p>This is a Quarto book.</p>
-<p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># código</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="pequeño-título" class="level2">
-<h2 class="anchored" data-anchor-id="pequeño-título">Pequeño título</h2>
-<p>lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus</p>
-<p>lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus</p>
-<p>lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus</p>
-<p>lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus</p>
-<p>lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus</p>
-<p>lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus lorem ipsus</p>
+<section id="presentación-del-curso" class="level1 unnumbered">
+<h1 class="unnumbered">Presentación del curso</h1>
+<p>El objetivo de los siguientes párrafos es dar una cálida y armoniosa bienvenida al mundo de datos para personas de la carrera de Sociología de la UBA, pero extensible a distintas carreras de Ciencias Sociales a lo largo y ancho de la República Argentina.</p>
+<section id="por-qué-datos" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-datos">¿Por qué “datos”?</h2>
+<p>Se popularizó en los últimos años el brumoso término de <em>Big Data</em>, un espacio <a href="https://www.infobae.com/tecno/2017/05/09/cientifico-de-datos-por-que-es-la-profesion-mas-sexy-del-siglo-xxi/"><em>sexy</em></a> y confuso en donde se reunieron distintas técnicas, disciplinas y profesiones que lograban incorporar algún elemento novedoso al viejo arte trabajar con datos.</p>
+<p>¿Qué es lo realmente interesante? Las tres famosas “V” bocetan un nuevo contexto de circulación de los datos: en grandes <strong>volúmenes</strong>, en tipos y formatos <strong>variados</strong> y con una mayor <strong>velocidad</strong> de intercambio y capacidad de cómputo. Ahora bien, como toda persona que quiera dedicarse a las Ciencias Sociales sabe (¡o debe saber!), poder recolectar, comprender, administrar y analizar datos para construir información es una parte fundamental del proceso de investigación. Al final, el enfoque de este espacio enfoque será cómo navegar las nuevas tempestades para ejercer el oficio que nos interpeló en un primer momento.</p>
+<p>Sesgo de ciencia de datos ###</p>
+</section>
+<section id="por-qué-r" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-r">¿Por qué R?</h2>
+<p><code>R</code> es un lenguaje de programación enfocado en análisis y visualización de datos. Nos agrada particularmente por ser un producto de software libre y código abierto: puede ser usado, modificado y citado sin pagar licencias de ningún tipo. Además presenta alrededor del globo -y en Argentina en particular- una gran comunidad de usuarios que crean formas específicas de aplicación de este lenguaje que nos facilitará su uso en Ciencias Sociales. Ya sea por facilitar el acceso a ciertas fuentes de información, por sintetizar procesos complejos en funciones simples de ejecutar o tan sólo por tener espacios donde realizar consultas y recibir apoyo.</p>
+<p>Un detalle no menor: <code>R</code>, como toda herramienta, es sólo la manera (a nuestro entender) más simple de acceder <em>al mundo de datos</em>. La idea es que funcione como puerta de entrada al entendimiento de las lógicas de la programación y el manejo de los distintos objetos que vamos a utilizar aquí.</p>
+<p>R y Rstudio: ###</p>
+</section>
+<section id="objetivo" class="level2">
+<h2 class="anchored" data-anchor-id="objetivo">Objetivo</h2>
+<p>Se busca realizar una introducción general al uso del lenguaje <code>R</code> a través de la interfaz <code>Rstudio</code>, priorizando los paquetes incluídos en la colección <code>Tidyverse</code> y con especial foco en el proceso de extracción, limpieza, análisis y visualización de datos.</p>
+<p>errores ###</p>
+</section>
+<section id="organización" class="level2">
+<h2 class="anchored" data-anchor-id="organización">Organización</h2>
+<p>El curso se estructura en XXX encuentros virtuales sincrónicos de XX horas cada uno a realizarse por la plataforma XXXX.</p>
+</section>
+<section id="agradecimientos" class="level2">
+<h2 class="anchored" data-anchor-id="agradecimientos">Agradecimientos</h2>
+<p>lorem ipsus</p>
 
 
 </section>
