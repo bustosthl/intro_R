@@ -52,7 +52,7 @@ data
 ```
 :::
 
-Cuando utilizamos `R` vamos a estar utilizando *objetos*. El operador `<-` se utiliza para asignar el resultado de una función a un objeto. Los objetos pertenecen a una *clase*, lo que implica que se permiten ciertas operaciones y se restringen otras. Por ejemplo, a los números se les puede aplicar operaciones aritméticas, a las tablas se les puede consultar sus filas-columnas y a las cadenas de texto se las puede pasar a mayúsculas.
+Cuando utilizamos `R` vamos a estar utilizando *objetos*. El operador `<-` se utiliza para asignar el resultado de una función a un objeto y se puede crear con `botón alt + botón -`. Los objetos pertenecen a una *clase*, lo que implica que se permiten ciertas operaciones y se restringen otras. Por ejemplo, a los números se les puede aplicar operaciones aritméticas, a las tablas se les puede consultar sus filas-columnas y a las cadenas de texto se las puede pasar a mayúsculas.
 
 ```{r}
 # consultamos la clase de cada uno de los tres objetos
@@ -76,7 +76,7 @@ Las últimas líneas del código anterior están comentadas, ya que ante el erro
 Para obtener la documentación de una función, podemos ejecutar un signo de pregunta y la función. Nos abrirá la documentación correspondiente en el panel derecho.
 
 ```{r}
-?dim
+# ?dim
 ```
 
 A los archivos del tipo `data.frame` podemos aplicarle distintas funciones para hacer una exploración rápida de qué hay dentro. Veamos algunas:

@@ -15,13 +15,15 @@
     "references.html": "fa494cc1"
   },
   "analisis.qmd": {
-    "analisis.html": "ba778ae9"
+    "analisis.html": "ba778ae9",
+    "analisis.tex": "46f64a29"
   },
   "docs/visualizacion.qmd": {
     "visualizacion.html": "969c6880"
   },
   "procesamiento.qmd": {
-    "procesamiento.html": "cdc4c7a6"
+    "procesamiento.html": "cdc4c7a6",
+    "procesamiento.tex": "9f6ad29d"
   },
   "visualizacion.qmd": {
     "visualizacion.html": "45e5c541"
