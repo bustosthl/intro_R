@@ -7,20 +7,20 @@ execute:
   warning: false
 
 book:
-  title: "Introducción al mundo de datos con R"
+  title: "¿Datos para qué? Intro al mundo de datos con R"
   author: "Tomás Bustos"
-  date: "16/6/2024"
+  date: "19/09/2024"
 
 website:
-  title: "Introducción al mundo de datos con R"
+  title: "¿Datos para qué? Intro al mundo de datos con R"
   navbar:
     search: true
     left: 
       - index.qmd
       - intro.qmd
       - summary.qmd
-    right:
-      - references.qmd
+    #right:
+     # - references.qmd
     
 
 bibliography: references.bib

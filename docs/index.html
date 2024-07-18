@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introducción al mundo de datos con R</title>
+<title>¿Datos para qué? Intro al mundo de datos con R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Introducción al mundo de datos con R</span>
+    <span class="navbar-title">¿Datos para qué? Intro al mundo de datos con R</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -98,12 +98,6 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./summary.html"> 
 <span class="menu-text">Summary</span></a>
-  </li>  
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./references.html"> 
-<span class="menu-text">References</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -127,7 +121,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#por-qué-r" id="toc-por-qué-r" class="nav-link" data-scroll-target="#por-qué-r">¿Por qué R?</a></li>
   <li><a href="#objetivo" id="toc-objetivo" class="nav-link" data-scroll-target="#objetivo">Objetivo</a></li>
   <li><a href="#organización" id="toc-organización" class="nav-link" data-scroll-target="#organización">Organización</a></li>
-  <li><a href="#agradecimientos" id="toc-agradecimientos" class="nav-link" data-scroll-target="#agradecimientos">Agradecimientos</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -141,30 +134,58 @@ ul.task-list li input[type="checkbox"] {
 <section id="presentación-del-curso" class="level1 unnumbered">
 <h1 class="unnumbered">Presentación del curso</h1>
 <p>El objetivo de los siguientes párrafos es dar una cálida y armoniosa bienvenida al mundo de datos para personas de la carrera de Sociología de la UBA, pero extensible a distintas carreras de Ciencias Sociales a lo largo y ancho de la República Argentina.</p>
+<p>img ##</p>
 <section id="por-qué-datos" class="level2">
 <h2 class="anchored" data-anchor-id="por-qué-datos">¿Por qué “datos”?</h2>
 <p>Se popularizó en los últimos años el brumoso término de <em>Big Data</em>, un espacio <a href="https://www.infobae.com/tecno/2017/05/09/cientifico-de-datos-por-que-es-la-profesion-mas-sexy-del-siglo-xxi/"><em>sexy</em></a> y confuso en donde se reunieron distintas técnicas, disciplinas y profesiones que lograban incorporar algún elemento novedoso al viejo arte trabajar con datos.</p>
-<p>¿Qué es lo realmente interesante? Las tres famosas “V” bocetan un nuevo contexto de circulación de los datos: en grandes <strong>volúmenes</strong>, en tipos y formatos <strong>variados</strong> y con una mayor <strong>velocidad</strong> de intercambio y capacidad de cómputo. Ahora bien, como toda persona que quiera dedicarse a las Ciencias Sociales sabe (¡o debe saber!), poder recolectar, comprender, administrar y analizar datos para construir información es una parte fundamental del proceso de investigación. Al final, el enfoque de este espacio enfoque será cómo navegar las nuevas tempestades para ejercer el oficio que nos interpeló en un primer momento.</p>
-<p>Sesgo de ciencia de datos ###</p>
+<p>¿Qué es lo realmente interesante? Las tres famosas “V” bocetan un nuevo contexto de circulación de los datos: en grandes <strong>volúmenes</strong>, en tipos y formatos <strong>variados</strong> y con una mayor <strong>velocidad</strong> de intercambio y capacidad de cómputo. Ahora bien, como toda persona que quiera dedicarse a las Ciencias Sociales sabe (¡o debe saber!), poder recolectar, comprender, administrar y analizar datos para construir información es una parte fundamental del proceso de investigación. Al final, el enfoque de este espacio será cómo navegar las nuevas tempestades para ejercer el oficio que nos interpeló en un primer momento.</p>
 </section>
 <section id="por-qué-r" class="level2">
 <h2 class="anchored" data-anchor-id="por-qué-r">¿Por qué R?</h2>
 <p><code>R</code> es un lenguaje de programación enfocado en análisis y visualización de datos. Nos agrada particularmente por ser un producto de software libre y código abierto: puede ser usado, modificado y citado sin pagar licencias de ningún tipo. Además presenta alrededor del globo -y en Argentina en particular- una gran comunidad de usuarios que crean formas específicas de aplicación de este lenguaje que nos facilitará su uso en Ciencias Sociales. Ya sea por facilitar el acceso a ciertas fuentes de información, por sintetizar procesos complejos en funciones simples de ejecutar o tan sólo por tener espacios donde realizar consultas y recibir apoyo.</p>
-<p>Un detalle no menor: <code>R</code>, como toda herramienta, es sólo la manera (a nuestro entender) más simple de acceder <em>al mundo de datos</em>. La idea es que funcione como puerta de entrada al entendimiento de las lógicas de la programación y el manejo de los distintos objetos que vamos a utilizar aquí.</p>
-<p>R y Rstudio: ###</p>
+<p>Un detalle no menor: <code>R</code>, como herramienta, es sólo una de las tantas maneras de acceder <em>al mundo de datos</em>. La idea es que funcione como puerta de entrada al entendimiento de las lógicas de la programación y el manejo de los distintos objetos que vamos a utilizar en estos espacios.</p>
+<p>¿Por qué utilizar lenguajes de programación y no otras alternativas? Hay otros programas y aplicaciones de renombre que cubren varias de las utilidades que le vamos a dar a <code>R</code> en este espacio. Sin embargo, hay dos ventajas importantes de los lenguajes de programación que es interesante destacar: primero, permiten una <strong>integración vertical</strong> de distintos procesos de un mismo flujo de trabajo (procesamiento, análisis, visualización, incluso la confección de un informe). Casi ninguna herramienta contempla la totalidad de las funciones antedichas y, si está entre sus bondades, probablemente sea engorroso o esté mal documentado. A lo segundo se le podría decir <strong>integración horizontal</strong>: los lenguajes de programación permiten trabajar sobre distintas estructuras de datos. Un mismo código puede albergar trabajo con tablas, información geográfica, texto, imágenes, audio, otros códigos (!) e incluso devolver todo lo anterior en un formato legible directamente por algún programa de renombre. Sin excusas. La principal desventaja es que se tarda más en aprender. Derribar esa última barrera es la tarea que nos encuentra aquí mismo.</p>
 </section>
 <section id="objetivo" class="level2">
 <h2 class="anchored" data-anchor-id="objetivo">Objetivo</h2>
-<p>Se busca realizar una introducción general al uso del lenguaje <code>R</code> a través de la interfaz <code>Rstudio</code>, priorizando los paquetes incluídos en la colección <code>Tidyverse</code> y con especial foco en el proceso de extracción, limpieza, análisis y visualización de datos.</p>
-<p>errores ###</p>
+<p>El objetivo general del curso es introducir en el uso del lenguaje <code>R</code> a través de la interfaz <code>Rstudio</code>, priorizando los paquetes incluídos en la colección <code>Tidyverse</code> y con especial foco en el proceso de extracción, limpieza, análisis y visualización de datos.</p>
+<p>Quienes cursen podrán:</p>
+<ol type="1">
+<li>Comprender las características generales de los distintos tipos de datos que se pueden administrar con herramientas informáticas.</li>
+<li>Conocer procesos típicos de transformación de bases de datos.</li>
+<li>Representar visualmente la información recolectada, adquiriendo criterios mínimos para una correcta distribución de los elementos disponibles.</li>
+<li>Aproximarse a métodos típicos de análisis de datos en Ciencias Sociales, utilizando fuentes como resultados electorales o información censal.</li>
+</ol>
 </section>
 <section id="organización" class="level2">
 <h2 class="anchored" data-anchor-id="organización">Organización</h2>
-<p>El curso se estructura en XXX encuentros virtuales sincrónicos de XX horas cada uno a realizarse por la plataforma XXXX.</p>
-</section>
-<section id="agradecimientos" class="level2">
-<h2 class="anchored" data-anchor-id="agradecimientos">Agradecimientos</h2>
-<p>lorem ipsus</p>
+<p>El curso se estructura en cuatro partes donde se irá construyendo de manera progresiva el procesamiento, análisis y visualización de la información disponible. Los contenidos de cada una se detallan a continuación.</p>
+<ol type="1">
+<li><p><strong>Introducción a <code>R</code> en Ciencias Sociales.</strong></p>
+<ul>
+<li>Contextualización del uso de herramientas informáticas en Ciencias Sociales.&nbsp;</li>
+<li>Introducción de la plataforma <code>Rstudio</code>, al lenguaje <code>R</code> y a las formas de aprendizaje en el ámbito de la programación.&nbsp;</li>
+<li>Revisión general del proceso de análisis de datos.</li>
+</ul></li>
+<li><p><strong>Presentación de la colección <code>Tidyverse</code> para extracción y limpieza de datos.</strong></p>
+<ul>
+<li>Exhibición de funciones típicas de la colección mencionada.&nbsp;</li>
+<li>Aplicación práctica de dichas funciones en bases típicas en el ámbito de las Ciencias Sociales.&nbsp;</li>
+<li>Desarrollo de tipos comunes de bases de datos: formatos <em>wide</em> y <em>long</em>.</li>
+</ul></li>
+<li><p><strong>Uso de la colección <code>Tidyverse</code> para análisis de datos.</strong></p>
+<ul>
+<li>Introducción a herramientas típicas de análisis estadístico para trabajar con información cuantitativa.&nbsp;</li>
+<li>Incorporación de transformaciones complejas sobre bases de datos: agrupaciones, uniones, medidas resumen.&nbsp;</li>
+<li>Exposición de formas simples de visualización de datos.&nbsp;</li>
+</ul></li>
+<li><p><strong>Uso de la colección <code>Tidyverse</code> para visualización de datos.</strong></p>
+<ul>
+<li>Repaso por distintos tipos de información y sus formas adecuadas de visualización.</li>
+<li>Presentación de criterios básicos de construcción de un gráfico.</li>
+<li>Aplicación práctica sobre bases típicas en el ámbito de las Ciencias Sociales.</li>
+</ul></li>
+</ol>
 
 
 </section>
