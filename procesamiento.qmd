@@ -20,7 +20,7 @@ En este caso nos vamos a seguir preguntando por el voto en blanco en las eleccio
 
 ## 2.2. Fuentes de datos
 
-Los datos electorales son una fuente compleja de abordar por el volumen de información que conlleva. El dataset completo está disponible en https://www.argentina.gob.ar/dine/resultados-electorales/elecciones-2023 y vamos a estar utilizando el de las elecciones generales de 2023. No olviden descomprimir el archivo luego de descargarlo. Lo interesante de tomar este tipo de datos es el nivel de desagregación: tenemos resultados por mesa. En los comicios locales, cada mesa pertenece a un circuito, cada circuito pertenence a una sección y cada sección pertenece a un distrito. Por poner un ejemplo: tenemos la mesa **12** en el circuito **12A** pertenenciente a la sección **Comuna 12** del distrito **Capital Federal**. Salvo las mesas, todos los niveles de agregación tienen un código y un nombre. Por ejemplo, la Provincia de Buenos Aires es el distrito n° 2 y Luján es la sección n° 71. 
+Los datos electorales son una fuente compleja de abordar por el volumen de información que conlleva. El dataset completo está disponible en https://www.argentina.gob.ar/dine/resultados-electorales/elecciones-2023 y vamos a estar utilizando el de las elecciones generales de 2023. No olviden descomprimir el archivo luego de descargarlo. Lo interesante de tomar este tipo de datos es el nivel de desagregación: tenemos resultados por mesa. En los comicios locales, cada mesa pertenece a un circuito, cada circuito pertenence a una sección y cada sección pertenece a un distrito. Por poner un ejemplo: tenemos la mesa **12** en el circuito **12A** pertenenciente a la sección **Comuna 12** del distrito **Capital Federal**. Salvo las mesas, todos los niveles de agregación tienen un código y un nombre. Por ejemplo, la Provincia de Buenos Aires es el distrito n° 2 y Luján es la sección n° 71.
 
 Vamos primero a cargar la librería de `Tidyverse`. En general, la carga de todas las librerías necesarias se realiza al principio del *script*, por una cuestión de estructura general (sirve para saber si tenemos instaladas todas las necesarias, qué tipo de funciones vamos a utilizar, etc.).
 
@@ -51,7 +51,8 @@ class(FALSE)
 #class(False)
 class("False")
 ```
-Un repaso rápido por los operadores más comunes nos muestra los siguientes. 
+
+Un repaso rápido por los operadores más comunes nos muestra los siguientes.
 
 ```{r}
 # operadores aritméticos
@@ -78,6 +79,21 @@ b <- 3 # idem
 b
 ```
 
-Carguemos nuestra base de datos para arrancar. 
+Carguemos nuestra base de datos para arrancar.
 
-## 2.4. 
+## 2.4.
+
+
+
+https://rpubs.com/andresjimenez_p/fundamental_r rstudio ide
+
+
+
+
+tidyverse: 
+read_csv, read_xlsx, 
+summary, unique, table, glimpse, info, dim, class, names, sample_n, head
+select, filter, mutate, case_when, starts_with, contains, %>%, rename, group_by, summarise, pivot_longer, pivot_wider, left_join, bind_rows, 
+if, loop, funciones, 
+Errores! stackoverflow, chatgpt
+
