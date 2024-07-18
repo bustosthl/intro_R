@@ -13,5 +13,17 @@
   },
   "references.qmd": {
     "references.html": "fa494cc1"
+  },
+  "analisis.qmd": {
+    "analisis.html": "ba778ae9"
+  },
+  "docs/visualizacion.qmd": {
+    "visualizacion.html": "969c6880"
+  },
+  "procesamiento.qmd": {
+    "procesamiento.html": "cdc4c7a6"
+  },
+  "visualizacion.qmd": {
+    "visualizacion.html": "45e5c541"
   }
 }

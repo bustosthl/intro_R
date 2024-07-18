@@ -18,7 +18,10 @@ website:
     left: 
       - index.qmd
       - intro.qmd
-      - summary.qmd
+      - procesamiento.qmd
+      - analisis.qmd
+      #- visualizacion.qmd
+      #- summary.qmd
     #right:
      # - references.qmd
     

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introducción al mundo de datos con R</title>
+<title>¿Datos para qué? Intro al mundo de datos con R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -98,7 +112,7 @@ div.csl-indent {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Introducción al mundo de datos con R</span>
+    <span class="navbar-title">¿Datos para qué? Intro al mundo de datos con R</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -113,17 +127,15 @@ div.csl-indent {
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./intro.html" aria-current="page"> 
-<span class="menu-text">Primera parte</span></a>
+<span class="menu-text">1. Piletazo</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./summary.html"> 
-<span class="menu-text">Summary</span></a>
+    <a class="nav-link" href="./procesamiento.html"> 
+<span class="menu-text">2. Procesamiento</span></a>
   </li>  
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./references.html"> 
-<span class="menu-text">References</span></a>
+    <a class="nav-link" href="./analisis.html"> 
+<span class="menu-text">3. Análisis</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -141,7 +153,12 @@ div.csl-indent {
     <h2 id="toc-title">Apartados</h2>
    
   <ul>
-  <li><a href="#primera-parte" id="toc-primera-parte" class="nav-link active" data-scroll-target="#primera-parte">Primera parte</a></li>
+  <li><a href="#piletazo" id="toc-piletazo" class="nav-link active" data-scroll-target="#piletazo">1. Piletazo</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-arrancar-conociendo-los-utensilios" id="toc-antes-de-arrancar-conociendo-los-utensilios" class="nav-link" data-scroll-target="#antes-de-arrancar-conociendo-los-utensilios">1.1. Antes de arrancar: conociendo los utensilios</a></li>
+  <li><a href="#pregunta-problema" id="toc-pregunta-problema" class="nav-link" data-scroll-target="#pregunta-problema">1.2. Pregunta-problema</a></li>
+  <li><a href="#conociendo-r" id="toc-conociendo-r" class="nav-link" data-scroll-target="#conociendo-r">1.3. Conociendo <code>R</code></a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="intro.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -151,18 +168,233 @@ div.csl-indent {
 
 
 
-<section id="primera-parte" class="level1">
-<h1>Primera parte</h1>
-<p>This is a book created from markdown and executable code.</p>
-<p>See <span class="citation" data-cites="knuth84">Knuth (<a href="#ref-knuth84" role="doc-biblioref">1984</a>)</span> for additional discussion of literate programming.</p>
-<p>Cómo llegar a ver esto?</p>
-
-
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-knuth84" class="csl-entry" role="listitem">
-Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+<section id="piletazo" class="level1">
+<h1>1. Piletazo</h1>
+<p>¿Qué significa realmente <em>analizar datos</em>? La idea de arrancar con un primer recorrido de punta a punta tiene un mero efecto didáctico: dar la suficiente energía para no abandonar el proceso antes de aprender. Asimilar un lenguaje de programación es complejo y puede ser muy frustrante para quienes están empezando. Como con el resto de las cosas, la única forma es poner manos al teclado y practicar hasta que salga; algo muy difícil de hacer si no se visualiza el sentido del esfuerzo.</p>
+<section id="antes-de-arrancar-conociendo-los-utensilios" class="level2">
+<h2 class="anchored" data-anchor-id="antes-de-arrancar-conociendo-los-utensilios">1.1. Antes de arrancar: conociendo los utensilios</h2>
+<p>Un breve y necesario paréntesis de definiciones de los elementos con los que vamos a estar trabajando.</p>
+<ul>
+<li><strong>Script</strong>: secuencia de comandos. Nuestros <em>scripts</em> estarán escritos en <code>R</code>.</li>
+<li><strong>Rstudio</strong>: plataforma que usaremos para administrar los archivos necesarios para trabajar con <code>R</code>.</li>
+<li><strong>Proyecto de Rstudio</strong>: es una forma de agrupar los distintos <em>scripts</em> y archivos que utilicemos en un sólo lugar. También nos facilita trabajar con directorios o guardar ciertas configuraciones del entorno.</li>
+<li><strong>Documento de R (.r)</strong>: archivo con instrucciones escritas en <code>R</code>.</li>
+<li><strong>Documento de RMarkdown (.rmd)</strong>: archivo que permite combinar instrucciones escritas en <code>R</code> con distintos formatos de texto. Se utiliza para escribir informes fáciles para leer y cómodos para trabajar.</li>
+<li><strong>Quarto document (.qmd)</strong>: Símil al anterior, pero permite distintos lenguajes. Es el que está presente en la mayor parte de este curso.</li>
+<li><strong>Función</strong>: conjunto de instrucciones empaquetados para usar con mayor comodidad.</li>
+<li><strong>Paquete/Librerías</strong>: conjunto de funciones, en general, con el objetivo de trabajar en un rubro en particular o con cierto tipo de datos.</li>
+</ul>
+</section>
+<section id="pregunta-problema" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-problema">1.2. Pregunta-problema</h2>
+<p>Hacer un análisis requiere primero <em>una pregunta que nos guíe</em>. Es importante para evitar perdernos en el mar de información disponible. Enfocar los esfuerzos nos va a ayudar a buscar mejor qué función necesitamos para responder nuestra pregunta y además valoriza uno de los elementos más importantes que tienen para aportar las Ciencias Sociales al mundo de datos: <em>hacer preguntas interesantes</em>.</p>
+<p>En este caso nos vamos a preguntar por el voto en blanco en las elecciones nacionales argentinas. ¿Cómo fue evolucionando entre las últimas elecciones el voto en blanco? ¿Qué particularidades presenta en las distintas provincias?</p>
+</section>
+<section id="conociendo-r" class="level2">
+<h2 class="anchored" data-anchor-id="conociendo-r">1.3. Conociendo <code>R</code></h2>
+<p>Lo primero que debemos hacer es cargar las librerías, esto es, el conjunto de funciones que vamos a utilizar para responder nuestra pregunta-problema. Aquí damos la bienvenida a <a href="https://www.tidyverse.org/"><code>Tidyverse</code></a>: un conjunto de paquetes que tienen una manera similar de escribirse y utilizarse, facilitando el trabajo conjunto de las distintas librerías. La primera vez que se utiliza una librería, hay que descargarla con la función <code>install.packages()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tidyverse") # instalamos el conjunto de librerías que componen la colección tidyverse</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># cargamos las funciones para poder utilizarlas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Luego, tenemos que cargar los datos que vamos a utilizar. La función dependerá del tipo de archivo que tengamos que cargar. Los tipos de archivos más comunes son <em>.csv</em> y <em>.xlsx</em>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset nav-pills">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">CSV</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Excel</a></li></ul>
+<div class="tab-content nav-pills">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/ARG_elecciones.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 54,913 × 10
+   id        seccion Elecciones Partido Porcentaje Votos Participacion electores
+   &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+ 1 BUENOS A… Adolfo… BALLOTAGE… BLANCO        1.19   134          79.2     14171
+ 2 BUENOS A… Albert… BALLOTAGE… BLANCO        1.6    123          84.2      9147
+ 3 BUENOS A… Almira… BALLOTAGE… BLANCO        1.37  4738          83.8    412578
+ 4 BUENOS A… Arreci… BALLOTAGE… BLANCO        1.53   306          84.0     23840
+ 5 BUENOS A… Avella… BALLOTAGE… BLANCO        1.61  3617          82.5    272641
+ 6 BUENOS A… Ayacuc… BALLOTAGE… BLANCO        1.53   212          81.2     17022
+ 7 BUENOS A… Azul, … BALLOTAGE… BLANCO        1.02   452          80.3     55060
+ 8 BUENOS A… Bahia … BALLOTAGE… BLANCO        1.57  2948          80.4    233442
+ 9 BUENOS A… Balcar… BALLOTAGE… BLANCO        1.01   312          81.9     37704
+10 BUENOS A… Barade… BALLOTAGE… BLANCO        1.03   230          82.1     27119
+# ℹ 54,903 more rows
+# ℹ 2 more variables: votantes &lt;dbl&gt;, Provincia &lt;chr&gt;</code></pre>
 </div>
 </div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("readxl") # en caso de error, instalar y cargar librería readxl </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/ARG_elecciones.xlsx"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 54,913 × 10
+   id        seccion Elecciones Partido Porcentaje Votos Participacion electores
+   &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+ 1 BUENOS A… Adolfo… BALLOTAGE… BLANCO        1.19   134          79.2     14171
+ 2 BUENOS A… Albert… BALLOTAGE… BLANCO        1.6    123          84.2      9147
+ 3 BUENOS A… Almira… BALLOTAGE… BLANCO        1.37  4738          83.8    412578
+ 4 BUENOS A… Arreci… BALLOTAGE… BLANCO        1.53   306          84.0     23840
+ 5 BUENOS A… Avella… BALLOTAGE… BLANCO        1.61  3617          82.5    272641
+ 6 BUENOS A… Ayacuc… BALLOTAGE… BLANCO        1.53   212          81.2     17022
+ 7 BUENOS A… Azul, … BALLOTAGE… BLANCO        1.02   452          80.3     55060
+ 8 BUENOS A… Bahia … BALLOTAGE… BLANCO        1.57  2948          80.4    233442
+ 9 BUENOS A… Balcar… BALLOTAGE… BLANCO        1.01   312          81.9     37704
+10 BUENOS A… Barade… BALLOTAGE… BLANCO        1.03   230          82.1     27119
+# ℹ 54,903 more rows
+# ℹ 2 more variables: votantes &lt;dbl&gt;, Provincia &lt;chr&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Cuando utilizamos <code>R</code> vamos a estar utilizando <em>objetos</em>. El operador <code>&lt;-</code> se utiliza para asignar el resultado de una función a un objeto. Los objetos pertenecen a una <em>clase</em>, lo que implica que se permiten ciertas operaciones y se restringen otras. Por ejemplo, a los números se les puede aplicar operaciones aritméticas, a las tablas se les puede consultar sus filas-columnas y a las cadenas de texto se las puede pasar a mayúsculas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># consultamos la clase de cada uno de los tres objetos</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "tbl_df"     "tbl"        "data.frame"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="st">"cadena de texto"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># aplicamos operaciones</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="dv">42</span> <span class="sc">*</span> <span class="dv">42</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1764</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 54913    10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toupper</span>(<span class="st">"cadena de texto"</span>) <span class="co"># función para pasar a mayúscula una cadena de texto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "CADENA DE TEXTO"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># qué pasa si no respetamos la clase</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># "cadena de texto" * "cadena de texto" </span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dim(42)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Las últimas líneas del código anterior están comentadas, ya que ante el error se detiene la operación. Pueden probarlas por su cuenta eliminado el <code>#</code>, comando que abre un <strong>comentario</strong>: el código que sigue será ignorado por el programa.</p>
+<p>Para obtener la documentación de una función, podemos ejecutar un signo de pregunta y la función. Nos abrirá la documentación correspondiente en el panel derecho.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>?dim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A los archivos del tipo <code>data.frame</code> podemos aplicarle distintas funciones para hacer una exploración rápida de qué hay dentro. Veamos algunas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data) <span class="co"># exploramos nombres de columnas, tipo de datos, algunos primeros valores</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 54,913
+Columns: 10
+$ id            &lt;chr&gt; "BUENOS AIRES_ADOLFO ALSINA", "BUENOS AIRES_ALBERTI", "B…
+$ seccion       &lt;chr&gt; "Adolfo Alsina, Buenos Aires", "Alberti, Buenos Aires", …
+$ Elecciones    &lt;chr&gt; "BALLOTAGE 2015", "BALLOTAGE 2015", "BALLOTAGE 2015", "B…
+$ Partido       &lt;chr&gt; "BLANCO", "BLANCO", "BLANCO", "BLANCO", "BLANCO", "BLANC…
+$ Porcentaje    &lt;dbl&gt; 1.19, 1.60, 1.37, 1.53, 1.61, 1.53, 1.02, 1.57, 1.01, 1.…
+$ Votos         &lt;dbl&gt; 134, 123, 4738, 306, 3617, 212, 452, 2948, 312, 230, 317…
+$ Participacion &lt;dbl&gt; 79.22, 84.22, 83.77, 84.05, 82.52, 81.24, 80.30, 80.37, …
+$ electores     &lt;dbl&gt; 14171, 9147, 412578, 23840, 272641, 17022, 55060, 233442…
+$ votantes      &lt;dbl&gt; 11226, 7704, 345606, 20038, 224976, 13829, 44214, 187615…
+$ Provincia     &lt;chr&gt; "BUENOS AIRES", "BUENOS AIRES", "BUENOS AIRES", "BUENOS …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data) <span class="co"># cantidad de filas y columnas </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 54913    10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data) <span class="co"># devuelve el tipo de datos que hay dentro de las columnas y, para aquellas columnas de tipo numéricas, devuelve algunas métricas de posición como valores mínimos, máximos, mediana, promedio. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      id              seccion           Elecciones          Partido         
+ Length:54913       Length:54913       Length:54913       Length:54913      
+ Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+   Porcentaje          Votos        Participacion      electores      
+ Min.   :  0.000   Min.   :     0   Min.   :  0.00   Min.   :      0  
+ 1st Qu.:  0.320   1st Qu.:    37   1st Qu.: 69.93   1st Qu.:   9273  
+ Median :  1.290   Median :   247   Median : 75.38   Median :  22116  
+ Mean   :  9.997   Mean   :  4506   Mean   : 73.92   Mean   :  61369  
+ 3rd Qu.:  8.760   3rd Qu.:  1989   3rd Qu.: 79.56   3rd Qu.:  60026  
+ Max.   :100.000   Max.   :621106   Max.   :104.49   Max.   :1131854  
+ NA's   :5         NA's   :3                                          
+    votantes       Provincia        
+ Min.   :     0   Length:54913      
+ 1st Qu.:  6923   Class :character  
+ Median : 16283   Mode  :character  
+ Mean   : 46094                     
+ 3rd Qu.: 44921                     
+ Max.   :879215                     
+                                    </code></pre>
+</div>
+</div>
+<p>Ahora bien, construimos una tabla con el voto en blanco por elecciones y calculamos el mismo como % de votantes de cada elección. Aquí vamos a bienvenir a el famoso <code>pipe (%&gt;%)</code>. Este operador nos va a facilitar la lectura del código cuando querramos utilizar varias funciones sobre un mismo <code>data.frame</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>tabla_blanco <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(Partido <span class="sc">==</span> <span class="st">"BLANCO"</span>) <span class="sc">%&gt;%</span> <span class="co"># filtramos votos en blanco</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(Elecciones) <span class="sc">%&gt;%</span>  <span class="co"># agrupamos por elecciones</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">blanco =</span> <span class="fu">sum</span>(Votos), <span class="co"># sumamos votos en blanco</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="at">votantes =</span> <span class="fu">sum</span>(votantes), <span class="co">#sumamos votantes</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="at">blanco_per =</span> blanco<span class="sc">/</span>votantes) <span class="sc">%&gt;%</span> <span class="co"># calculamos el porcentaje</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">anio =</span> <span class="fu">str_sub</span>(Elecciones,<span class="sc">-</span><span class="dv">4</span>)) <span class="co"># creamos una nueva columna que indica el año de la elección</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>tabla_blanco <span class="co"># mostramos el resultado</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 5
+   Elecciones      blanco votantes blanco_per anio 
+   &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;
+ 1 BALLOTAGE 2015  305229 25738560     0.0119 2015 
+ 2 BALLOTAGE 2023  417515 26863246     0.0155 2023 
+ 3 GENERALES 2011  665223 21712009     0.0306 2011 
+ 4 GENERALES 2015  596028 25223502     0.0236 2015 
+ 5 GENERALES 2019  399751 26595503     0.0150 2019 
+ 6 GENERALES 2023  554161 27100675     0.0204 2023 
+ 7 PASO 2011           NA 22250504    NA      2011 
+ 8 PASO 2015       989823 23204024     0.0427 2015 
+ 9 PASO 2019       758988 24724014     0.0307 2019 
+10 PASO 2023      1148342 24016776     0.0478 2023 </code></pre>
+</div>
+</div>
+<p>¡Qué interesante sería ver esta tabla en un gráfico! La librería predilecta para realizar gráficos en <code>R</code> es <code>ggplot2</code>. <code>ggplot2</code> construye a los gráficos como capas: primero se inserta la base de datos (mediante el comando <code>%&gt;%</code>); luego se mapean los ejes x e y (mediante la función <code>aes()</code>); con la función <code>geom_col()</code> se indica realizar un gráfico de columnas y por último se agregan las capas de definiciones estéticas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># cambiamos el tipo de la columna para que tenga un orden</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>orden <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"PASO 2011"</span>, <span class="st">"GENERALES 2011"</span>,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="st">"PASO 2015"</span>, <span class="st">"GENERALES 2015"</span>,<span class="st">"BALLOTAGE 2015"</span>,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="st">"PASO 2019"</span>, <span class="st">"GENERALES 2019"</span>,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="st">"PASO 2023"</span>, <span class="st">"GENERALES 2023"</span>,<span class="st">"BALLOTAGE 2023"</span>)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>tabla_blanco <span class="sc">%&gt;%</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> <span class="co"># eliminamos elecciones sin valores</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(Elecciones,orden), <span class="at">y=</span>blanco_per, <span class="at">fill=</span>anio))<span class="sc">+</span> <span class="co"># indicamos qué variables vamos a utilizar</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_col</span>(<span class="at">show.legend=</span><span class="cn">FALSE</span>)<span class="sc">+</span> <span class="co"># indicamos el tipo de gráfico. Geom_ es el prefijo para ver los distintos gráficos que pueden usarse</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">30</span>, <span class="at">hjust=</span><span class="dv">1</span>))<span class="sc">+</span> <span class="co"># rotamos las etiquetas de los ejes para que sean legibles</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title=</span><span class="st">"% de voto en blanco en elecciones ejecutivas"</span>,</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="at">subtitle=</span><span class="st">"total nacional"</span>, <span class="at">x=</span><span class="st">""</span>, <span class="at">y=</span><span class="st">""</span>)<span class="sc">+</span></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">"Set2"</span>)<span class="sc">+</span> <span class="co"># elegimos una paleta para el argumento "fill"</span></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>percent) <span class="co"># indicamos que el eje Y es un porcentaje</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intro_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
 </section>
 
 </main> <!-- /main -->

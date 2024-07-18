@@ -1,7 +1,124 @@
-# Primera parte
+# 1. Piletazo
 
-This is a book created from markdown and executable code.
+¿Qué significa realmente *analizar datos*? La idea de arrancar con un primer recorrido de punta a punta tiene un mero efecto didáctico: dar la suficiente energía para no abandonar el proceso antes de aprender. Asimilar un lenguaje de programación es complejo y puede ser muy frustrante para quienes están empezando. Como con el resto de las cosas, la única forma es poner manos al teclado y practicar hasta que salga; algo muy difícil de hacer si no se visualiza el sentido del esfuerzo.
 
-See @knuth84 for additional discussion of literate programming.
+## 1.1. Antes de arrancar: conociendo los utensilios
 
-Cómo llegar a ver esto?
+Un breve y necesario paréntesis de definiciones de los elementos con los que vamos a estar trabajando.
+
+-   **Script**: secuencia de comandos. Nuestros *scripts* estarán escritos en `R`.
+-   **Rstudio**: plataforma que usaremos para administrar los archivos necesarios para trabajar con `R`.
+-   **Proyecto de Rstudio**: es una forma de agrupar los distintos *scripts* y archivos que utilicemos en un sólo lugar. También nos facilita trabajar con directorios o guardar ciertas configuraciones del entorno.
+-   **Documento de R (.r)**: archivo con instrucciones escritas en `R`.
+-   **Documento de RMarkdown (.rmd)**: archivo que permite combinar instrucciones escritas en `R` con distintos formatos de texto. Se utiliza para escribir informes fáciles para leer y cómodos para trabajar.
+-   **Quarto document (.qmd)**: Símil al anterior, pero permite distintos lenguajes. Es el que está presente en la mayor parte de este curso.
+-   **Función**: conjunto de instrucciones empaquetados para usar con mayor comodidad.
+-   **Paquete/Librerías**: conjunto de funciones, en general, con el objetivo de trabajar en un rubro en particular o con cierto tipo de datos.
+
+## 1.2. Pregunta-problema
+
+Hacer un análisis requiere primero *una pregunta que nos guíe*. Es importante para evitar perdernos en el mar de información disponible. Enfocar los esfuerzos nos va a ayudar a buscar mejor qué función necesitamos para responder nuestra pregunta y además valoriza uno de los elementos más importantes que tienen para aportar las Ciencias Sociales al mundo de datos: *hacer preguntas interesantes*.
+
+En este caso nos vamos a preguntar por el voto en blanco en las elecciones nacionales argentinas. ¿Cómo fue evolucionando entre las últimas elecciones el voto en blanco? ¿Qué particularidades presenta en las distintas provincias?
+
+## 1.3. Conociendo `R`
+
+Lo primero que debemos hacer es cargar las librerías, esto es, el conjunto de funciones que vamos a utilizar para responder nuestra pregunta-problema. Aquí damos la bienvenida a [`Tidyverse`](https://www.tidyverse.org/): un conjunto de paquetes que tienen una manera similar de escribirse y utilizarse, facilitando el trabajo conjunto de las distintas librerías. La primera vez que se utiliza una librería, hay que descargarla con la función `install.packages()`.
+
+```{r}
+#install.packages("tidyverse") # instalamos el conjunto de librerías que componen la colección tidyverse
+library(tidyverse) # cargamos las funciones para poder utilizarlas
+```
+
+Luego, tenemos que cargar los datos que vamos a utilizar. La función dependerá del tipo de archivo que tengamos que cargar. Los tipos de archivos más comunes son *.csv* y *.xlsx*.
+
+::: {.panel-tabset .nav-pills}
+## CSV
+
+```{r}
+data <- read_csv("data/ARG_elecciones.csv")
+data
+```
+
+## Excel
+
+```{r}
+#install.packages("readxl") # en caso de error, instalar y cargar librería readxl 
+library(readxl)
+data <- read_excel("data/ARG_elecciones.xlsx")
+data
+```
+:::
+
+Cuando utilizamos `R` vamos a estar utilizando *objetos*. El operador `<-` se utiliza para asignar el resultado de una función a un objeto. Los objetos pertenecen a una *clase*, lo que implica que se permiten ciertas operaciones y se restringen otras. Por ejemplo, a los números se les puede aplicar operaciones aritméticas, a las tablas se les puede consultar sus filas-columnas y a las cadenas de texto se las puede pasar a mayúsculas.
+
+```{r}
+# consultamos la clase de cada uno de los tres objetos
+class(42)
+class(data)
+class("cadena de texto")
+
+# aplicamos operaciones
+42 * 42
+dim(data)
+toupper("cadena de texto") # función para pasar a mayúscula una cadena de texto
+
+# qué pasa si no respetamos la clase
+# "cadena de texto" * "cadena de texto" 
+# dim(42)
+
+```
+
+Las últimas líneas del código anterior están comentadas, ya que ante el error se detiene la operación. Pueden probarlas por su cuenta eliminado el `#`, comando que abre un **comentario**: el código que sigue será ignorado por el programa.
+
+Para obtener la documentación de una función, podemos ejecutar un signo de pregunta y la función. Nos abrirá la documentación correspondiente en el panel derecho.
+
+```{r}
+?dim
+```
+
+A los archivos del tipo `data.frame` podemos aplicarle distintas funciones para hacer una exploración rápida de qué hay dentro. Veamos algunas:
+
+```{r}
+glimpse(data) # exploramos nombres de columnas, tipo de datos, algunos primeros valores
+dim(data) # cantidad de filas y columnas 
+summary(data) # devuelve el tipo de datos que hay dentro de las columnas y, para aquellas columnas de tipo numéricas, devuelve algunas métricas de posición como valores mínimos, máximos, mediana, promedio. 
+```
+
+Ahora bien, construimos una tabla con el voto en blanco por elecciones y calculamos el mismo como % de votantes de cada elección. Aquí vamos a bienvenir a el famoso `pipe (%>%)`. Este operador nos va a facilitar la lectura del código cuando querramos utilizar varias funciones sobre un mismo `data.frame`.
+
+```{r}
+tabla_blanco <- data %>%
+filter(Partido == "BLANCO") %>% # filtramos votos en blanco
+group_by(Elecciones) %>%  # agrupamos por elecciones
+summarise(blanco = sum(Votos), # sumamos votos en blanco
+votantes = sum(votantes), #sumamos votantes
+blanco_per = blanco/votantes) %>% # calculamos el porcentaje
+mutate(anio = str_sub(Elecciones,-4)) # creamos una nueva columna que indica el año de la elección
+
+tabla_blanco # mostramos el resultado
+```
+
+¡Qué interesante sería ver esta tabla en un gráfico! La librería predilecta para realizar gráficos en `R` es `ggplot2`. `ggplot2` construye a los gráficos como capas: primero se inserta la base de datos (mediante el comando `%>%`); luego se mapean los ejes x e y (mediante la función `aes()`); con la función `geom_col()` se indica realizar un gráfico de columnas y por último se agregan las capas de definiciones estéticas.
+
+```{r}
+library(scales)
+# cambiamos el tipo de la columna para que tenga un orden
+
+orden <- c("PASO 2011", "GENERALES 2011",
+"PASO 2015", "GENERALES 2015","BALLOTAGE 2015",
+"PASO 2019", "GENERALES 2019",
+"PASO 2023", "GENERALES 2023","BALLOTAGE 2023")
+
+tabla_blanco %>%
+drop_na() %>% # eliminamos elecciones sin valores
+ggplot(aes(x=factor(Elecciones,orden), y=blanco_per, fill=anio))+ # indicamos qué variables vamos a utilizar
+geom_col(show.legend=FALSE)+ # indicamos el tipo de gráfico. Geom_ es el prefijo para ver los distintos gráficos que pueden usarse
+theme_minimal()+
+theme(axis.text.x=element_text(angle=30, hjust=1))+ # rotamos las etiquetas de los ejes para que sean legibles
+labs(title="% de voto en blanco en elecciones ejecutivas",
+subtitle="total nacional", x="", y="")+
+scale_fill_brewer(palette="Set2")+ # elegimos una paleta para el argumento "fill"
+scale_y_continuous(labels=percent) # indicamos que el eje Y es un porcentaje
+
+```
