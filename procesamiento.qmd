@@ -1,3 +1,22 @@
 # 2. Procesamiento
 
-La idea de este apartado
+La idea de este apartado es entender más a fondo cómo trabajar tablas para poder hacer análisis y visualización. Será necesario ver algunas cuestiones de ejecución básica de `R` y algunas funciones típicas de `Tidyverse` para limpiar y transformar nuestra base de datos. Un pequeño punteo:
+
+-   tipos de objetos 
+-   operadores
+-   funciones de lectura y escritura de archivos
+-   funciones de resumen y exploración de una base de datos
+-   funciones de transformación de columnas y valores
+-   formas típicas de ordenar una base de datos (*wide*, *long*)
+-   unión y consolidación de distintas tablas
+
+Empecemos. 
+
+
+## 2.1. Pregunta-problema
+
+Se mantendrá la tradición: definiremos una guía analítica para que las operaciones que hagamos tengan un sentido claro y sea más sencillo entender cuál es la información relevante. 
+
+En este caso nos vamos a seguir preguntando por el voto en blanco en las elecciones argentinas. ¿Qué particularidades presenta en las distintas provincias? 
+## 2.2. Fuentes de datos
+

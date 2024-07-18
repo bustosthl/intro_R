@@ -374,7 +374,7 @@ $ Provincia     &lt;chr&gt; "BUENOS AIRES", "BUENOS AIRES", "BUENOS AIRES", "BUE
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="st">"PASO 2019"</span>, <span class="st">"GENERALES 2019"</span>,</span>
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="st">"PASO 2023"</span>, <span class="st">"GENERALES 2023"</span>,<span class="st">"BALLOTAGE 2023"</span>)</span>
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>tabla_blanco <span class="sc">%&gt;%</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> tabla_blanco <span class="sc">%&gt;%</span></span>
 <span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> <span class="co"># eliminamos elecciones sin valores</span></span>
 <span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(Elecciones,orden), <span class="at">y=</span>blanco_per, <span class="at">fill=</span>anio))<span class="sc">+</span> <span class="co"># indicamos qué variables vamos a utilizar</span></span>
 <span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_col</span>(<span class="at">show.legend=</span><span class="cn">FALSE</span>)<span class="sc">+</span> <span class="co"># indicamos el tipo de gráfico. Geom_ es el prefijo para ver los distintos gráficos que pueden usarse</span></span>
@@ -383,7 +383,9 @@ $ Provincia     &lt;chr&gt; "BUENOS AIRES", "BUENOS AIRES", "BUENOS AIRES", "BUE
 <span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title=</span><span class="st">"% de voto en blanco en elecciones ejecutivas"</span>,</span>
 <span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="at">subtitle=</span><span class="st">"total nacional"</span>, <span class="at">x=</span><span class="st">""</span>, <span class="at">y=</span><span class="st">""</span>)<span class="sc">+</span></span>
 <span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">"Set2"</span>)<span class="sc">+</span> <span class="co"># elegimos una paleta para el argumento "fill"</span></span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>percent) <span class="co"># indicamos que el eje Y es un porcentaje</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>percent) <span class="co"># indicamos que el eje Y es un porcentaje</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -391,6 +393,18 @@ $ Provincia     &lt;chr&gt; "BUENOS AIRES", "BUENOS AIRES", "BUENOS AIRES", "BUE
 </figure>
 </div>
 </div>
+</div>
+<p>Para finalizar, guardamos ambos elementos para poder recuperarlos localmente.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>tabla_blanco <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_excel_csv</span>(<span class="st">"outputs/encuentro_1/arg_votos_blanco.csv"</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>tabla_blanco <span class="sc">%&gt;%</span> </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write_excel_csv</span>(<span class="st">"outputs/encuentro_1/arg_votos_blanco.xlsx"</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>p <span class="co"># lo ejecutamos nuevamente para poder utilizar luego la función de guardado</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"outputs/encuentro_1/arg_votos_blanco.jpg"</span>) <span class="co"># guardamos la imagen con fondo blanco</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"outputs/encuentro_1/arg_votos_blanco.png"</span>) <span class="co"># guardamos la imagen sin fondo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
