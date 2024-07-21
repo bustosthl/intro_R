@@ -198,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># cargamos las funciones para poder utilizarlas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Luego, tenemos que cargar los datos que vamos a utilizar. La función dependerá del tipo de archivo que tengamos que cargar. Los tipos de archivos más comunes son <em>.csv</em> y <em>.xlsx</em>. Los datos están descargados de la plataforma <a href="https://betadatacp.streamlit.app">Data CP</a>.</p>
-<p>Para un acceso más simple, pueden consultar las fuentes de datos <a href="https://github.com/bustosthl/intro_R/tree/main/data/encuentro_1">aquí</a>.</p>
+<p>Para un acceso más simple, pueden consultar las fuentes de datos <a href="https://github.com/bustosthl/intro_R/tree/main/data/encuentro_1">aquí</a>. Si tienen problemas con la ruta, pueden saber dónde está parado <code>R</code> con la función <code>getwd()</code>.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset nav-pills">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">CSV</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Excel</a></li></ul>
 <div class="tab-content nav-pills">
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Las últimas líneas del código anterior están comentadas, ya que ante el error se detiene la operación. Pueden probarlas por su cuenta eliminado el <code>#</code>, comando que abre un <strong>comentario</strong>: el código que sigue será ignorado por el programa.</p>
 <p>Para obtener la documentación de una función, podemos ejecutar un signo de pregunta y la función. Nos abrirá la documentación correspondiente en el panel derecho.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>?dim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ?dim</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A los archivos del tipo <code>data.frame</code> podemos aplicarle distintas funciones para hacer una exploración rápida de qué hay dentro. Veamos algunas:</p>
 <div class="cell">

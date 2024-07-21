@@ -63,7 +63,9 @@ Un repaso rápido por los operadores más comunes nos muestra los siguientes.
 10**2 # elevación
 
 # operadores de relación
-10 > 2 # mayor
+2 > 10 # menor
+10 > 10 # mayor
+10 >= 10 # mayor
 "karl" == "marx" # es igual
 "karl" != "marx" # es distinto
 "marx" %in% c("marx", "durkheim", "weber") # está presente en 
@@ -81,19 +83,259 @@ b
 
 Carguemos nuestra base de datos para arrancar.
 
-## 2.4.
+## 2.4. Procesar resultados electorales
+
+Carguemos sólo 6000 filas, sabiendo que es un dataset muy grande y que quizás se demore mucho cargar toda la base de primera. Veamos una parte para entender la estructura.
+
+```{r}
+ruta <- "data/encuentro_2/2023_Generales/ResultadosElectorales_2023.csv"
+data <- read_csv(ruta, n_max=6000) # cargamos sólo 6000 filas
+data
+```
+
+La mayor particularidad de los resultados electorales es tener formato **long** (largo). En el formato **long**, cada fila de la tabla representa una observación única para una combinación específica de variables. Es útil para trabajar con datos que necesitan ser agrupados o resumidos fácilmente. Cada variable está dividida en dos columnas: una para el nombre de la variable y otra para su valor. El formato alternativo es **wide**, donde cada fila representa una observación única y cada columna representa una variable diferente. Es útil cuando se necesita acceder rápidamente a las variables individuales sin necesidad de realizar transformaciones adicionales.
+
+![formatos de tabla](img/formato_tabla.png)
+
+En la base hay un gran número de columnas, que podemos explorar con la función `names()`. También hay elecciones a distintos cargos, como legislativos.
+
+```{r}
+names(data)
+table(data$cargo_nombre)
+```
+
+Vamos a cargar la base completa pero usando una función especial para ir filtrando los casos *antes* de cargar la base, para que nos pese menos el objeto y podamos manipularlo con comodidad.
+
+```{r}
+f <- function(x, pos){
+  filter(x,(cargo_nombre == "PRESIDENTE Y VICE"))
+}
+data <- read_csv_chunked(ruta, DataFrameCallback$new(f), chunk_size=10000)
+dim(data) # vemos cuántas filas y columnas tiene
+head(data) # vemos las primeras 5 filas
+```
+
+## 2.5. Exploración y recorte
+
+Probablemente en la mayoría de los casos una base de datos venga con más información de la necesaria. Una de nuestras primeras tareas en el procesamiento de una base de datos va a ser recortar para quedarnos sólo con las filas y columnas que nos sirven. Tomar esas definiciones va a requerir un primer paneo general de la información que contiene la base de datos.
+
+Existen funciones que nos van a resumir, a grandes rasgos, la totalidad de la base.
+
+```{r}
+glimpse(data) # ¡hay otras de este tipo en el primer encuentro!
+```
+
+Quizás queremos ver algunas filas completas.
+
+```{r}
+head(data, 10) # un top N de filas
+tail(data, 10) # las últimas N filas 
+sample_n(data, 10) # 10 filas al azar
+```
+
+Quizás queremos *contar* apariciones de algunos valores.
+
+```{r}
+data$votos_tipo %>% # contamos apariciones de tipo de votos hay, en absolutos 
+  table() 
+
+data$distrito_nombre %>% # contamos % de apariciones de distritos
+  table() %>%
+  prop.table() %>% 
+  round(digits=4)*100
 
 
+```
 
-https://rpubs.com/andresjimenez_p/fundamental_r rstudio ide
+Quizás queremos saber, de manera más general, cuántos valores únicos tiene cada una de las columnas.
+
+```{r}
+sapply(data, n_distinct) # sapply sirve para aplicar una función a todas las columnas
+```
+
+Puntos interesantes hasta este punto: hay más de un millón de filas; cada una representa un tipo de voto en una mesa en particular; cada nivel de geográfico (distrito, sección, circuito), el cargo y la agrupación tiene id y nombre; al menos 8 columnas tienen un sólo valor, por lo que no nos sirven para esta base de datos.
+
+Para seleccionar filas y columnas vamos a utilizar las funciones `filter()` y `select()`, dos estrellas de `Tidyverse`.
+
+```{r}
+
+# filter recibe un dataframe y una condición
+data %>% 
+  filter(distrito_nombre == "Buenos Aires") # filtramos sólo los casos de Buenos Aires
+
+# podríamos querer filtrar por más de una condición
+data %>% 
+  filter(distrito_nombre == "Buenos Aires" & votos_cantidad > 200) # ¿por qué haríamos eso? sólo para mostrar cómo funcionan las condiciones
+
+# podemos jugar con otros operadores lógicos
+data %>% 
+  filter(distrito_nombre=="Buenos Aires" | votos_tipo != "POSITIVO")
+
+data %>% 
+  filter(distrito_nombre %in% c("Buenos Aires","Ciudad Autónoma de Buenos Aires"))
+
+```
+
+Para seleccionar, `select()` nos da una diversidad muy interesante e intuitiva de opciones.
+
+```{r}
+# podemos querer seleccionar una columna específica
+data %>% 
+  select(distrito_id)
+
+# o varias columnas
+data %>% 
+  select(distrito_id, distrito_nombre)
+
+# si lo pasamos como vector, hay que incluir las comillas
+data %>% 
+  select(c("distrito_id", "distrito_nombre"))
+
+# podemos querer filtrar un subconjunto continuo de columnas
+data %>% 
+  select(distrito_id:lista_nombre)
+
+# o podemos querer negar una condición
+data %>% 
+  select(!distrito_id:lista_nombre)
+
+# podemos filtrar según el nombre de la columna
+data %>% 
+  select(ends_with("nombre"))
+
+# y agregar condiciones
+data %>% 
+  select(starts_with("distrito") | starts_with("seccion"))
+```
+
+En este caso, vamos a quedarnos con las columnas que tienen más de 1 valor único. No hará falta filtrar todavía.
+
+```{r}
+
+cols_sin_valores <- data %>% 
+  sapply(n_distinct) %>% 
+  as.data.frame() %>% 
+  rename(n_distinct_values = 1) %>% # asigno nombre 
+  filter(n_distinct_values == 1) %>% # filtro
+  rownames()
+
+cols_sin_valores
 
 
+data <- data %>% 
+  select(!cols_sin_valores) %>% 
+  select(!ends_with("id")) %>% 
+  select(!c("lista_numero")) %>% 
+  select(!(starts_with("seccion") | starts_with("circuito") | starts_with("mesa")))
 
+```
 
-tidyverse: 
-read_csv, read_xlsx, 
-summary, unique, table, glimpse, info, dim, class, names, sample_n, head
-select, filter, mutate, case_when, starts_with, contains, %>%, rename, group_by, summarise, pivot_longer, pivot_wider, left_join, bind_rows, 
-if, loop, funciones, 
-Errores! stackoverflow, chatgpt
+## 2.6. Limpieza y transformación
 
+Limpiar y transformar una base de datos es un proceso *creativo* que implica adaptar las variables según el uso que se le va a dar. Se dice *creativo* porque, si bien hay ciertas funciones y procesos frecuentes, varía mucho según cada proyecto y origen de la base. `Mutate()` es una de las funciones más importantes para este momento.
+
+`Mutate()` sirve para crear, modificar o eliminar columnas. Es como un gran paragüas donde vamos a insertar las modificaciones.
+
+```{r}
+# podríamos querer crear una variable con un valor único de texto o numérico
+data %>% 
+  mutate(nueva_variable = "valor único", 
+         nueva_variable_num = 42)
+
+# podríamos querer crear una variable que se desprenda de otras columnas o modificar las existentes
+data %>% 
+  mutate(max_votos = max(votos_cantidad), 
+         votos_div = votos_cantidad / max_votos, 
+         distrito_nombre_minusc = tolower(distrito_nombre), 
+         distrito_nombre = toupper(distrito_nombre))
+
+# podríamos querer recategorizar una variable
+data %>% 
+  mutate(votos_cantidad_grupo = case_when(votos_cantidad > 60 ~ "mayor a 60 votos",
+                                          votos_cantidad <= 60 ~ "menor o igual a 60 votos"))
+
+data %>% 
+  mutate(votos_tipo_recat = case_when(votos_tipo %in% c("NULO","IMPUGNADO","RECURRIDO","COMANDO","EN BLANCO") ~ "NEGATIVO", 
+                                      .default = as.character(votos_tipo)))
+
+data %>% 
+  mutate(votos_agrupado = case_when(votos_tipo %in% c("NULO","IMPUGNADO","RECURRIDO","COMANDO","EN BLANCO") ~ "NEGATIVO",
+                                      .default = as.character(agrupacion_nombre)),
+         votos_agrupado_v2 = case_when(is.na(agrupacion_nombre) ~ "NEGATIVO",
+                                       .default = as.character(agrupacion_nombre)))
+
+# vamos a hacer una columna con nombres reducidos para utilizar con comodidad
+data <- data %>% 
+  mutate(votos_agrupado = case_when(is.na(agrupacion_nombre) ~ "NEGATIVO",
+                                       .default = as.character(agrupacion_nombre)), 
+         votos_agrupado_red = case_when(votos_agrupado == "NEGATIVO" ~ "NEG",
+                                        votos_agrupado == "UNION POR LA PATRIA" ~ "UXP",
+                                        votos_agrupado == "JUNTOS POR EL CAMBIO" ~ "JXC",
+                                        votos_agrupado == "LA LIBERTAD AVANZA" ~ "LLA",
+                                        votos_agrupado == "FRENTE DE IZQUIERDA Y DE TRABAJADORES - UNIDAD" ~ "FIT",
+                                        votos_agrupado == "HACEMOS POR NUESTRO PAIS" ~ "HNP"), 
+         distrito_nombre_red = stringi::stri_trans_general(distrito_nombre, id="Latin-ASCII"), 
+         distrito_nombre_red = tolower(distrito_nombre_red), 
+         distrito_nombre_red = gsub(" ", "_", distrito_nombre_red))
+
+data
+
+```
+
+## 2.7. Formatos
+
+Quizás sea más cómodo alternar entre formato *long* y *wide*. Para aquellos casos, `pivot_longer()` y `pivot_wider()` nos van a servir.
+
+```{r}
+data_agrupada <- data %>% 
+  group_by(distrito_nombre, votos_agrupado_red) %>% # como tenemos una fila por mesa/agrupación y necesitamos sólo una por provincia, vamos a agrupar y sumar
+  summarise(votos_cantidad = sum(votos_cantidad)) 
+data_agrupada
+```
+
+```{r}
+data_wider <- data_agrupada %>% 
+  pivot_wider(names_from=votos_agrupado_red, values_from=votos_cantidad)
+
+data_wider
+```
+
+Y si quisiéramos volver al formato anterior.
+
+```{r}
+data_longer <- data_wider %>% 
+  pivot_longer(!distrito_nombre)
+
+data_longer
+```
+
+Finalmente, veamos el voto negativo (blanco y otros) por provincia.
+
+```{r}
+data_wider %>% 
+  mutate(TOTAL = rowSums(across()), 
+         NEG_per = NEG / TOTAL,
+         label = round(NEG_per*100,1)) %>% 
+  ggplot(aes(y=reorder(distrito_nombre, NEG_per), x=NEG_per, fill=NEG_per, label=label)) +
+  geom_col(show.legend = FALSE) +
+  geom_text(aes(x=NEG_per + 0.003), size=3)+
+  labs(x="", y="", 
+       title="Votos negativos (%) por provincia", 
+       subtitle="Elecciones generales 2023",
+       caption="Elaboración propia según resultados provisorios (DINE)")+
+  theme_minimal()+
+  theme(axis.text.x=element_blank())
+
+```
+
+## 2.8. Para seguir practicando
+
+Graficar:
+
+-   El voto negativo en **las secciones de Santa Cruz** u otra provincia de preferencia.
+
+-   El voto negativo a **en regiones (NEA, NOA, CUYO, PAMPEANA, PATAGONIA)**.
+
+-   El voto de **LLA por provincia en absolutos**.
+
+-   El voto de **UXP por provincia en porcentaje sobre votos afirmativos (sin contar los negativos)**.

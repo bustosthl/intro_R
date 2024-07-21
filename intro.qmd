@@ -32,7 +32,7 @@ library(tidyverse) # cargamos las funciones para poder utilizarlas
 
 Luego, tenemos que cargar los datos que vamos a utilizar. La función dependerá del tipo de archivo que tengamos que cargar. Los tipos de archivos más comunes son *.csv* y *.xlsx*. Los datos están descargados de la plataforma [Data CP](https://betadatacp.streamlit.app).
 
-Para un acceso más simple, pueden consultar las fuentes de datos [aquí](https://github.com/bustosthl/intro_R/tree/main/data/encuentro_1). 
+Para un acceso más simple, pueden consultar las fuentes de datos [aquí](https://github.com/bustosthl/intro_R/tree/main/data/encuentro_1). Si tienen problemas con la ruta, pueden saber dónde está parado `R` con la función `getwd()`.
 
 ::: {.panel-tabset .nav-pills}
 ## CSV
@@ -126,8 +126,8 @@ scale_y_continuous(labels=percent) # indicamos que el eje Y es un porcentaje
 p
 ```
 
+Para finalizar, guardamos ambos elementos para poder recuperarlos localmente.
 
-Para finalizar, guardamos ambos elementos para poder recuperarlos localmente. 
 ```{r}
 #| output: false
 
@@ -142,3 +142,12 @@ ggsave("outputs/encuentro_1/arg_votos_blanco.jpg") # guardamos la imagen con fon
 ggsave("outputs/encuentro_1/arg_votos_blanco.png") # guardamos la imagen sin fondo
 ```
 
+## 1.4. Para practica
+
+Opciones para seguir practicando.
+
+1.  Grafiquen la evolución del voto en blanco **en valores absolutos.**
+
+2.  Grafiquen la evolución del voto en blanco en **una provincia en particular**.
+
+3.  Grafiquen la evolución del voto de **un partido político** que quieran.

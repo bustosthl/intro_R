@@ -1,8 +1,5 @@
 /.quarto/
 .Rproj.user
 
-# data muy pesada #data
-/data/
-data/
-data
-
+# data muy pesada
+/data/encuentro_2

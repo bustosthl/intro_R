@@ -158,6 +158,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#pregunta-problema" id="toc-pregunta-problema" class="nav-link" data-scroll-target="#pregunta-problema">2.1. Pregunta-problema</a></li>
   <li><a href="#fuentes-de-datos" id="toc-fuentes-de-datos" class="nav-link" data-scroll-target="#fuentes-de-datos">2.2. Fuentes de datos</a></li>
   <li><a href="#objetos-y-operadores" id="toc-objetos-y-operadores" class="nav-link" data-scroll-target="#objetos-y-operadores">2.3. Objetos y operadores</a></li>
+  <li><a href="#procesar-resultados-electorales" id="toc-procesar-resultados-electorales" class="nav-link" data-scroll-target="#procesar-resultados-electorales">2.4. Procesar resultados electorales</a></li>
+  <li><a href="#exploración-y-recorte" id="toc-exploración-y-recorte" class="nav-link" data-scroll-target="#exploración-y-recorte">2.5. Exploración y recorte</a></li>
+  <li><a href="#limpieza-y-transformación" id="toc-limpieza-y-transformación" class="nav-link" data-scroll-target="#limpieza-y-transformación">2.6. Limpieza y transformación</a></li>
+  <li><a href="#formatos" id="toc-formatos" class="nav-link" data-scroll-target="#formatos">2.7. Formatos</a></li>
+  <li><a href="#errores" id="toc-errores" class="nav-link" data-scroll-target="#errores">2.8. Errores</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="procesamiento.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -245,43 +250,625 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 100</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># operadores de relación</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">2</span> <span class="co"># mayor</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="st">"karl"</span> <span class="sc">==</span> <span class="st">"marx"</span> <span class="co"># es igual</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&gt;</span> <span class="dv">10</span> <span class="co"># menor</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="st">"karl"</span> <span class="sc">!=</span> <span class="st">"marx"</span> <span class="co"># es distinto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="st">"marx"</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"marx"</span>, <span class="st">"durkheim"</span>, <span class="st">"weber"</span>) <span class="co"># está presente en </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># operadores lógicos</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span> <span class="co"># operador lógico "Y"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">10</span> <span class="co"># mayor</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">FALSE</span> <span class="co"># operador lógico "O"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&gt;=</span> <span class="dv">10</span> <span class="co"># mayor</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># de asignación</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">2</span> <span class="co">#asignamos lo que está a la derecha a lo que está a la izquierda del operador</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="st">"karl"</span> <span class="sc">==</span> <span class="st">"marx"</span> <span class="co"># es igual</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="st">"karl"</span> <span class="sc">!=</span> <span class="st">"marx"</span> <span class="co"># es distinto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="st">"marx"</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"marx"</span>, <span class="st">"durkheim"</span>, <span class="st">"weber"</span>) <span class="co"># está presente en </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># operadores lógicos</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span> <span class="co"># operador lógico "Y"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">FALSE</span> <span class="co"># operador lógico "O"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># de asignación</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">2</span> <span class="co">#asignamos lo que está a la derecha a lo que está a la izquierda del operador</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># idem</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># idem</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
+<p>Carguemos nuestra base de datos para arrancar.</p>
+</section>
+<section id="procesar-resultados-electorales" class="level2">
+<h2 class="anchored" data-anchor-id="procesar-resultados-electorales">2.4. Procesar resultados electorales</h2>
+<p>Carguemos sólo 6000 filas, sabiendo que es un dataset muy grande y que quizás se demore mucho cargar toda la base de primera. Veamos una parte para entender la estructura.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>ruta <span class="ot">&lt;-</span> <span class="st">"data/encuentro_2/2023_Generales/ResultadosElectorales_2023.csv"</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(ruta, <span class="at">n_max=</span><span class="dv">6000</span>) <span class="co"># cargamos sólo 6000 filas</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,000 × 23
+     año eleccion_tipo recuento_tipo padron_tipo distrito_id distrito_nombre    
+   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;              
+ 1  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 2  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 3  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 4  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 5  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 6  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 7  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 8  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 9  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+10  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+# ℹ 5,990 more rows
+# ℹ 17 more variables: seccionprovincial_id &lt;dbl&gt;,
+#   seccionprovincial_nombre &lt;chr&gt;, seccion_id &lt;dbl&gt;, seccion_nombre &lt;chr&gt;,
+#   circuito_id &lt;chr&gt;, circuito_nombre &lt;chr&gt;, mesa_id &lt;dbl&gt;, mesa_tipo &lt;chr&gt;,
+#   mesa_electores &lt;dbl&gt;, cargo_id &lt;dbl&gt;, cargo_nombre &lt;chr&gt;,
+#   agrupacion_id &lt;dbl&gt;, agrupacion_nombre &lt;chr&gt;, lista_numero &lt;dbl&gt;,
+#   lista_nombre &lt;lgl&gt;, votos_tipo &lt;chr&gt;, votos_cantidad &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>La mayor particularidad de los resultados electorales es tener formato <strong>long</strong> (largo). En el formato <strong>long</strong>, cada fila de la tabla representa una observación única para una combinación específica de variables. Es útil para trabajar con datos que necesitan ser agrupados o resumidos fácilmente. Cada variable está dividida en dos columnas: una para el nombre de la variable y otra para su valor. El formato alternativo es <strong>wide</strong>, donde cada fila representa una observación única y cada columna representa una variable diferente. Es útil cuando se necesita acceder rápidamente a las variables individuales sin necesidad de realizar transformaciones adicionales.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/formato_tabla.png" class="img-fluid figure-img"></p>
+<figcaption>formatos de tabla</figcaption>
+</figure>
+</div>
+<p>En la base hay un gran número de columnas, que podemos explorar con la función <code>names()</code>. También hay elecciones a distintos cargos, como legislativos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "año"                      "eleccion_tipo"           
+ [3] "recuento_tipo"            "padron_tipo"             
+ [5] "distrito_id"              "distrito_nombre"         
+ [7] "seccionprovincial_id"     "seccionprovincial_nombre"
+ [9] "seccion_id"               "seccion_nombre"          
+[11] "circuito_id"              "circuito_nombre"         
+[13] "mesa_id"                  "mesa_tipo"               
+[15] "mesa_electores"           "cargo_id"                
+[17] "cargo_nombre"             "agrupacion_id"           
+[19] "agrupacion_nombre"        "lista_numero"            
+[21] "lista_nombre"             "votos_tipo"              
+[23] "votos_cantidad"          </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>cargo_nombre)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+PRESIDENTE Y VICE  SENADOR NACIONAL 
+             5844               156 </code></pre>
+</div>
+</div>
+<p>Vamos a cargar la base completa pero usando una función especial para ir filtrando los casos <em>antes</em> de cargar la base, para que nos pese menos el objeto y podamos manipularlo con comodidad.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x, pos){</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(x,(cargo_nombre <span class="sc">==</span> <span class="st">"PRESIDENTE Y VICE"</span>))</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv_chunked</span>(ruta, DataFrameCallback<span class="sc">$</span><span class="fu">new</span>(f), <span class="at">chunk_size=</span><span class="dv">10000</span>)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data) <span class="co"># vemos cuántas filas y columnas tiene</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1045200      23</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data) <span class="co"># vemos las primeras 5 filas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 23
+    año eleccion_tipo recuento_tipo padron_tipo distrito_id distrito_nombre     
+  &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;               
+1  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de …
+2  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de …
+3  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de …
+4  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de …
+5  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de …
+6  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de …
+# ℹ 17 more variables: seccionprovincial_id &lt;dbl&gt;,
+#   seccionprovincial_nombre &lt;chr&gt;, seccion_id &lt;dbl&gt;, seccion_nombre &lt;chr&gt;,
+#   circuito_id &lt;chr&gt;, circuito_nombre &lt;chr&gt;, mesa_id &lt;dbl&gt;, mesa_tipo &lt;chr&gt;,
+#   mesa_electores &lt;dbl&gt;, cargo_id &lt;dbl&gt;, cargo_nombre &lt;chr&gt;,
+#   agrupacion_id &lt;dbl&gt;, agrupacion_nombre &lt;chr&gt;, lista_numero &lt;dbl&gt;,
+#   lista_nombre &lt;lgl&gt;, votos_tipo &lt;chr&gt;, votos_cantidad &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="exploración-y-recorte" class="level2">
+<h2 class="anchored" data-anchor-id="exploración-y-recorte">2.5. Exploración y recorte</h2>
+<p>Probablemente en la mayoría de los casos una base de datos venga con más información de la necesaria. Una de nuestras primeras tareas en el procesamiento de una base de datos va a ser recortar para quedarnos sólo con las filas y columnas que nos sirven. Tomar esas definiciones va a requerir un primer paneo general de la información que contiene la base de datos.</p>
+<p>Existen funciones que nos van a resumir, a grandes rasgos, la totalidad de la base.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data) <span class="co"># ¡hay otras de este tipo en el primer encuentro!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,045,200
+Columns: 23
+$ año                      &lt;dbl&gt; 2023, 2023, 2023, 2023, 2023, 2023, 2023, 202…
+$ eleccion_tipo            &lt;chr&gt; "GENERAL", "GENERAL", "GENERAL", "GENERAL", "…
+$ recuento_tipo            &lt;chr&gt; "PROVISORIO", "PROVISORIO", "PROVISORIO", "PR…
+$ padron_tipo              &lt;chr&gt; "NORMAL", "NORMAL", "NORMAL", "NORMAL", "NORM…
+$ distrito_id              &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+$ distrito_nombre          &lt;chr&gt; "Ciudad Autónoma de Buenos Aires", "Ciudad Au…
+$ seccionprovincial_id     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+$ seccionprovincial_nombre &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ seccion_id               &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+$ seccion_nombre           &lt;chr&gt; "Comuna 01", "Comuna 01", "Comuna 01", "Comun…
+$ circuito_id              &lt;chr&gt; "00018", "00018", "00018", "00018", "00018", …
+$ circuito_nombre          &lt;chr&gt; "00018", "00018", "00018", "00018", "00018", …
+$ mesa_id                  &lt;dbl&gt; 474, 474, 474, 474, 475, 475, 475, 475, 475, …
+$ mesa_tipo                &lt;chr&gt; "NATIVOS", "NATIVOS", "NATIVOS", "NATIVOS", "…
+$ mesa_electores           &lt;dbl&gt; 343, 343, 343, 343, 349, 349, 349, 349, 349, …
+$ cargo_id                 &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+$ cargo_nombre             &lt;chr&gt; "PRESIDENTE Y VICE", "PRESIDENTE Y VICE", "PR…
+$ agrupacion_id            &lt;dbl&gt; 0, 0, 0, 0, 134, 132, 135, 136, 133, 0, 0, 0,…
+$ agrupacion_nombre        &lt;chr&gt; NA, NA, NA, NA, "UNION POR LA PATRIA", "JUNTO…
+$ lista_numero             &lt;dbl&gt; 0, 0, 0, 0, NA, NA, NA, NA, NA, 0, 0, 0, 0, 0…
+$ lista_nombre             &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ votos_tipo               &lt;chr&gt; "NULO", "IMPUGNADO", "RECURRIDO", "COMANDO", …
+$ votos_cantidad           &lt;dbl&gt; 0, 0, 0, 0, 95, 59, 57, 9, 4, 4, 3, 0, 0, 0, …</code></pre>
+</div>
+</div>
+<p>Quizás queremos ver algunas filas completas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data, <span class="dv">10</span>) <span class="co"># un top N de filas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 23
+     año eleccion_tipo recuento_tipo padron_tipo distrito_id distrito_nombre    
+   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;              
+ 1  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 2  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 3  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 4  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 5  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 6  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 7  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 8  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 9  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+10  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+# ℹ 17 more variables: seccionprovincial_id &lt;dbl&gt;,
+#   seccionprovincial_nombre &lt;chr&gt;, seccion_id &lt;dbl&gt;, seccion_nombre &lt;chr&gt;,
+#   circuito_id &lt;chr&gt;, circuito_nombre &lt;chr&gt;, mesa_id &lt;dbl&gt;, mesa_tipo &lt;chr&gt;,
+#   mesa_electores &lt;dbl&gt;, cargo_id &lt;dbl&gt;, cargo_nombre &lt;chr&gt;,
+#   agrupacion_id &lt;dbl&gt;, agrupacion_nombre &lt;chr&gt;, lista_numero &lt;dbl&gt;,
+#   lista_nombre &lt;lgl&gt;, votos_tipo &lt;chr&gt;, votos_cantidad &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(data, <span class="dv">10</span>) <span class="co"># las últimas N filas </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 23
+     año eleccion_tipo recuento_tipo padron_tipo distrito_id distrito_nombre    
+   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;              
+ 1  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires       
+ 2  2023 GENERAL       PROVISORIO    NORMAL               17 Salta              
+ 3  2023 GENERAL       PROVISORIO    NORMAL               23 Tucumán            
+ 4  2023 GENERAL       PROVISORIO    NORMAL               10 Jujuy              
+ 5  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires       
+ 6  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires       
+ 7  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires       
+ 8  2023 GENERAL       PROVISORIO    NORMAL               22 Santiago del Estero
+ 9  2023 GENERAL       PROVISORIO    NORMAL               14 Misiones           
+10  2023 GENERAL       PROVISORIO    NORMAL               18 San Juan           
+# ℹ 17 more variables: seccionprovincial_id &lt;dbl&gt;,
+#   seccionprovincial_nombre &lt;chr&gt;, seccion_id &lt;dbl&gt;, seccion_nombre &lt;chr&gt;,
+#   circuito_id &lt;chr&gt;, circuito_nombre &lt;chr&gt;, mesa_id &lt;dbl&gt;, mesa_tipo &lt;chr&gt;,
+#   mesa_electores &lt;dbl&gt;, cargo_id &lt;dbl&gt;, cargo_nombre &lt;chr&gt;,
+#   agrupacion_id &lt;dbl&gt;, agrupacion_nombre &lt;chr&gt;, lista_numero &lt;dbl&gt;,
+#   lista_nombre &lt;lgl&gt;, votos_tipo &lt;chr&gt;, votos_cantidad &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample_n</span>(data, <span class="dv">10</span>) <span class="co"># 10 filas al azar</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 23
+     año eleccion_tipo recuento_tipo padron_tipo distrito_id distrito_nombre
+   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;          
+ 1  2023 GENERAL       PROVISORIO    NORMAL                6 Chaco          
+ 2  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 3  2023 GENERAL       PROVISORIO    NORMAL               13 Mendoza        
+ 4  2023 GENERAL       PROVISORIO    NORMAL                5 Corrientes     
+ 5  2023 GENERAL       PROVISORIO    NORMAL                8 Entre Ríos     
+ 6  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 7  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 8  2023 GENERAL       PROVISORIO    NORMAL                4 Córdoba        
+ 9  2023 GENERAL       PROVISORIO    NORMAL               21 Santa Fe       
+10  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+# ℹ 17 more variables: seccionprovincial_id &lt;dbl&gt;,
+#   seccionprovincial_nombre &lt;chr&gt;, seccion_id &lt;dbl&gt;, seccion_nombre &lt;chr&gt;,
+#   circuito_id &lt;chr&gt;, circuito_nombre &lt;chr&gt;, mesa_id &lt;dbl&gt;, mesa_tipo &lt;chr&gt;,
+#   mesa_electores &lt;dbl&gt;, cargo_id &lt;dbl&gt;, cargo_nombre &lt;chr&gt;,
+#   agrupacion_id &lt;dbl&gt;, agrupacion_nombre &lt;chr&gt;, lista_numero &lt;dbl&gt;,
+#   lista_nombre &lt;lgl&gt;, votos_tipo &lt;chr&gt;, votos_cantidad &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Quizás queremos <em>contar</em> apariciones de algunos valores.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>votos_tipo <span class="sc">%&gt;%</span> <span class="co"># contamos apariciones de tipo de votos hay, en absolutos </span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.
+  COMANDO EN BLANCO IMPUGNADO      NULO  POSITIVO RECURRIDO 
+   104520    104520    104520    104520    522600    104520 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>distrito_nombre <span class="sc">%&gt;%</span> <span class="co"># contamos % de apariciones de distritos</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="at">digits=</span><span class="dv">4</span>)<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.
+                                         Buenos Aires 
+                                                36.43 
+                                            Catamarca 
+                                                 1.01 
+                                                Chaco 
+                                                 2.82 
+                                               Chubut 
+                                                 1.35 
+                      Ciudad Autónoma de Buenos Aires 
+                                                 7.01 
+                                              Córdoba 
+                                                 8.70 
+                                           Corrientes 
+                                                 2.64 
+                                           Entre Ríos 
+                                                 3.28 
+                                              Formosa 
+                                                 1.42 
+                                                Jujuy 
+                                                 1.75 
+                                             La Pampa 
+                                                 0.86 
+                                             La Rioja 
+                                                 0.91 
+                                              Mendoza 
+                                                 4.17 
+                                             Misiones 
+                                                 2.75 
+                                              Neuquén 
+                                                 1.60 
+                                            Río Negro 
+                                                 1.71 
+                                                Salta 
+                                                 3.15 
+                                             San Juan 
+                                                 1.73 
+                                             San Luis 
+                                                 1.25 
+                                           Santa Cruz 
+                                                 0.87 
+                                             Santa Fe 
+                                                 7.97 
+                                  Santiago del Estero 
+                                                 2.36 
+Tierra del Fuego, Antártida e Islas del Atlántico Sur 
+                                                 0.49 
+                                              Tucumán 
+                                                 3.75 </code></pre>
+</div>
+</div>
+<p>Quizás queremos saber, de manera más general, cuántos valores únicos tiene cada una de las columnas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(data, n_distinct) <span class="co"># sapply sirve para aplicar una función a todas las columnas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     año            eleccion_tipo            recuento_tipo 
+                       1                        1                        1 
+             padron_tipo              distrito_id          distrito_nombre 
+                       1                       24                       24 
+    seccionprovincial_id seccionprovincial_nombre               seccion_id 
+                       9                       12                      135 
+          seccion_nombre              circuito_id          circuito_nombre 
+                     446                     2335                     2335 
+                 mesa_id                mesa_tipo           mesa_electores 
+                    9097                        1                      378 
+                cargo_id             cargo_nombre            agrupacion_id 
+                       1                        1                        6 
+       agrupacion_nombre             lista_numero             lista_nombre 
+                       6                        2                        1 
+              votos_tipo           votos_cantidad 
+                       6                      264 </code></pre>
+</div>
+</div>
+<p>Puntos interesantes hasta este punto: hay más de un millón de filas; cada una representa un tipo de voto en una mesa en particular; cada nivel de geográfico (distrito, sección, circuito), el cargo y la agrupación tiene id y nombre; al menos 8 columnas tienen un sólo valor, por lo que no nos sirven para esta base de datos.</p>
+<p>Para seleccionar filas y columnas vamos a utilizar las funciones <code>filter()</code> y <code>select()</code>, dos estrellas de <code>Tidyverse</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter recibe un dataframe y una condición</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(distrito_nombre <span class="sc">==</span> <span class="st">"Buenos Aires"</span>) <span class="co"># filtramos sólo los casos de Buenos Aires</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 380,740 × 23
+     año eleccion_tipo recuento_tipo padron_tipo distrito_id distrito_nombre
+   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;          
+ 1  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 2  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 3  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 4  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 5  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 6  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 7  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 8  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 9  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+10  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+# ℹ 380,730 more rows
+# ℹ 17 more variables: seccionprovincial_id &lt;dbl&gt;,
+#   seccionprovincial_nombre &lt;chr&gt;, seccion_id &lt;dbl&gt;, seccion_nombre &lt;chr&gt;,
+#   circuito_id &lt;chr&gt;, circuito_nombre &lt;chr&gt;, mesa_id &lt;dbl&gt;, mesa_tipo &lt;chr&gt;,
+#   mesa_electores &lt;dbl&gt;, cargo_id &lt;dbl&gt;, cargo_nombre &lt;chr&gt;,
+#   agrupacion_id &lt;dbl&gt;, agrupacion_nombre &lt;chr&gt;, lista_numero &lt;dbl&gt;,
+#   lista_nombre &lt;lgl&gt;, votos_tipo &lt;chr&gt;, votos_cantidad &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># podríamos querer filtrar por más de una condición</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(distrito_nombre <span class="sc">==</span> <span class="st">"Buenos Aires"</span> <span class="sc">&amp;</span> votos_cantidad <span class="sc">&gt;</span> <span class="dv">200</span>) <span class="co"># ¿por qué haríamos eso? sólo para mostrar cómo funcionan las condiciones</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 54 × 23
+     año eleccion_tipo recuento_tipo padron_tipo distrito_id distrito_nombre
+   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;          
+ 1  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 2  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 3  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 4  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 5  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 6  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 7  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 8  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+ 9  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+10  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+# ℹ 44 more rows
+# ℹ 17 more variables: seccionprovincial_id &lt;dbl&gt;,
+#   seccionprovincial_nombre &lt;chr&gt;, seccion_id &lt;dbl&gt;, seccion_nombre &lt;chr&gt;,
+#   circuito_id &lt;chr&gt;, circuito_nombre &lt;chr&gt;, mesa_id &lt;dbl&gt;, mesa_tipo &lt;chr&gt;,
+#   mesa_electores &lt;dbl&gt;, cargo_id &lt;dbl&gt;, cargo_nombre &lt;chr&gt;,
+#   agrupacion_id &lt;dbl&gt;, agrupacion_nombre &lt;chr&gt;, lista_numero &lt;dbl&gt;,
+#   lista_nombre &lt;lgl&gt;, votos_tipo &lt;chr&gt;, votos_cantidad &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># podemos jugar con otros operadores lógicos</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(distrito_nombre<span class="sc">==</span><span class="st">"Buenos Aires"</span> <span class="sc">|</span> votos_tipo <span class="sc">!=</span> <span class="st">"POSITIVO"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 712,970 × 23
+     año eleccion_tipo recuento_tipo padron_tipo distrito_id distrito_nombre    
+   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;              
+ 1  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 2  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 3  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 4  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 5  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 6  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 7  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 8  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 9  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+10  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+# ℹ 712,960 more rows
+# ℹ 17 more variables: seccionprovincial_id &lt;dbl&gt;,
+#   seccionprovincial_nombre &lt;chr&gt;, seccion_id &lt;dbl&gt;, seccion_nombre &lt;chr&gt;,
+#   circuito_id &lt;chr&gt;, circuito_nombre &lt;chr&gt;, mesa_id &lt;dbl&gt;, mesa_tipo &lt;chr&gt;,
+#   mesa_electores &lt;dbl&gt;, cargo_id &lt;dbl&gt;, cargo_nombre &lt;chr&gt;,
+#   agrupacion_id &lt;dbl&gt;, agrupacion_nombre &lt;chr&gt;, lista_numero &lt;dbl&gt;,
+#   lista_nombre &lt;lgl&gt;, votos_tipo &lt;chr&gt;, votos_cantidad &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(distrito_nombre <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Buenos Aires"</span>,<span class="st">"Ciudad Autónoma de Buenos Aires"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 454,000 × 23
+     año eleccion_tipo recuento_tipo padron_tipo distrito_id distrito_nombre    
+   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;              
+ 1  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 2  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 3  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 4  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 5  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 6  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 7  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 8  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+ 9  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+10  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
+# ℹ 453,990 more rows
+# ℹ 17 more variables: seccionprovincial_id &lt;dbl&gt;,
+#   seccionprovincial_nombre &lt;chr&gt;, seccion_id &lt;dbl&gt;, seccion_nombre &lt;chr&gt;,
+#   circuito_id &lt;chr&gt;, circuito_nombre &lt;chr&gt;, mesa_id &lt;dbl&gt;, mesa_tipo &lt;chr&gt;,
+#   mesa_electores &lt;dbl&gt;, cargo_id &lt;dbl&gt;, cargo_nombre &lt;chr&gt;,
+#   agrupacion_id &lt;dbl&gt;, agrupacion_nombre &lt;chr&gt;, lista_numero &lt;dbl&gt;,
+#   lista_nombre &lt;lgl&gt;, votos_tipo &lt;chr&gt;, votos_cantidad &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Para seleccionar, <code>select()</code> nos da una diversidad muy interesante e intuitiva de opciones.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># podemos querer seleccionar una columna específica</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(distrito_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,045,200 × 1
+   distrito_id
+         &lt;dbl&gt;
+ 1           1
+ 2           1
+ 3           1
+ 4           1
+ 5           1
+ 6           1
+ 7           1
+ 8           1
+ 9           1
+10           1
+# ℹ 1,045,190 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># o varias columnas</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(distrito_id, distrito_nombre)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,045,200 × 2
+   distrito_id distrito_nombre                
+         &lt;dbl&gt; &lt;chr&gt;                          
+ 1           1 Ciudad Autónoma de Buenos Aires
+ 2           1 Ciudad Autónoma de Buenos Aires
+ 3           1 Ciudad Autónoma de Buenos Aires
+ 4           1 Ciudad Autónoma de Buenos Aires
+ 5           1 Ciudad Autónoma de Buenos Aires
+ 6           1 Ciudad Autónoma de Buenos Aires
+ 7           1 Ciudad Autónoma de Buenos Aires
+ 8           1 Ciudad Autónoma de Buenos Aires
+ 9           1 Ciudad Autónoma de Buenos Aires
+10           1 Ciudad Autónoma de Buenos Aires
+# ℹ 1,045,190 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># si lo pasamos como vector, hay que incluir las comillas</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">"distrito_id"</span>, <span class="st">"distrito_nombre"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,045,200 × 2
+   distrito_id distrito_nombre                
+         &lt;dbl&gt; &lt;chr&gt;                          
+ 1           1 Ciudad Autónoma de Buenos Aires
+ 2           1 Ciudad Autónoma de Buenos Aires
+ 3           1 Ciudad Autónoma de Buenos Aires
+ 4           1 Ciudad Autónoma de Buenos Aires
+ 5           1 Ciudad Autónoma de Buenos Aires
+ 6           1 Ciudad Autónoma de Buenos Aires
+ 7           1 Ciudad Autónoma de Buenos Aires
+ 8           1 Ciudad Autónoma de Buenos Aires
+ 9           1 Ciudad Autónoma de Buenos Aires
+10           1 Ciudad Autónoma de Buenos Aires
+# ℹ 1,045,190 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># podemos querer filtrar un subconjunto continuo de columnas</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(distrito_id<span class="sc">:</span>lista_nombre)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,045,200 × 17
+   distrito_id distrito_nombre       seccionprovincial_id seccionprovincial_no…¹
+         &lt;dbl&gt; &lt;chr&gt;                                &lt;dbl&gt; &lt;chr&gt;                 
+ 1           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+ 2           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+ 3           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+ 4           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+ 5           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+ 6           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+ 7           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+ 8           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+ 9           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+10           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+# ℹ 1,045,190 more rows
+# ℹ abbreviated name: ¹​seccionprovincial_nombre
+# ℹ 13 more variables: seccion_id &lt;dbl&gt;, seccion_nombre &lt;chr&gt;,
+#   circuito_id &lt;chr&gt;, circuito_nombre &lt;chr&gt;, mesa_id &lt;dbl&gt;, mesa_tipo &lt;chr&gt;,
+#   mesa_electores &lt;dbl&gt;, cargo_id &lt;dbl&gt;, cargo_nombre &lt;chr&gt;,
+#   agrupacion_id &lt;dbl&gt;, agrupacion_nombre &lt;chr&gt;, lista_numero &lt;dbl&gt;,
+#   lista_nombre &lt;lgl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># o podemos querer negar una condición</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>distrito_id<span class="sc">:</span>lista_nombre)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,045,200 × 6
+     año eleccion_tipo recuento_tipo padron_tipo votos_tipo votos_cantidad
+   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;               &lt;dbl&gt;
+ 1  2023 GENERAL       PROVISORIO    NORMAL      NULO                    0
+ 2  2023 GENERAL       PROVISORIO    NORMAL      IMPUGNADO               0
+ 3  2023 GENERAL       PROVISORIO    NORMAL      RECURRIDO               0
+ 4  2023 GENERAL       PROVISORIO    NORMAL      COMANDO                 0
+ 5  2023 GENERAL       PROVISORIO    NORMAL      POSITIVO               95
+ 6  2023 GENERAL       PROVISORIO    NORMAL      POSITIVO               59
+ 7  2023 GENERAL       PROVISORIO    NORMAL      POSITIVO               57
+ 8  2023 GENERAL       PROVISORIO    NORMAL      POSITIVO                9
+ 9  2023 GENERAL       PROVISORIO    NORMAL      POSITIVO                4
+10  2023 GENERAL       PROVISORIO    NORMAL      EN BLANCO               4
+# ℹ 1,045,190 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># podemos filtrar según el nombre de la columna</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"nombre"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,045,200 × 7
+   distrito_nombre         seccionprovincial_no…¹ seccion_nombre circuito_nombre
+   &lt;chr&gt;                   &lt;chr&gt;                  &lt;chr&gt;          &lt;chr&gt;          
+ 1 Ciudad Autónoma de Bue… &lt;NA&gt;                   Comuna 01      00018          
+ 2 Ciudad Autónoma de Bue… &lt;NA&gt;                   Comuna 01      00018          
+ 3 Ciudad Autónoma de Bue… &lt;NA&gt;                   Comuna 01      00018          
+ 4 Ciudad Autónoma de Bue… &lt;NA&gt;                   Comuna 01      00018          
+ 5 Ciudad Autónoma de Bue… &lt;NA&gt;                   Comuna 01      00018          
+ 6 Ciudad Autónoma de Bue… &lt;NA&gt;                   Comuna 01      00018          
+ 7 Ciudad Autónoma de Bue… &lt;NA&gt;                   Comuna 01      00018          
+ 8 Ciudad Autónoma de Bue… &lt;NA&gt;                   Comuna 01      00018          
+ 9 Ciudad Autónoma de Bue… &lt;NA&gt;                   Comuna 01      00018          
+10 Ciudad Autónoma de Bue… &lt;NA&gt;                   Comuna 01      00018          
+# ℹ 1,045,190 more rows
+# ℹ abbreviated name: ¹​seccionprovincial_nombre
+# ℹ 3 more variables: cargo_nombre &lt;chr&gt;, agrupacion_nombre &lt;chr&gt;,
+#   lista_nombre &lt;lgl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># y agregar condiciones</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"distrito"</span>) <span class="sc">|</span> <span class="fu">starts_with</span>(<span class="st">"seccion"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,045,200 × 6
+   distrito_id distrito_nombre       seccionprovincial_id seccionprovincial_no…¹
+         &lt;dbl&gt; &lt;chr&gt;                                &lt;dbl&gt; &lt;chr&gt;                 
+ 1           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+ 2           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+ 3           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+ 4           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+ 5           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+ 6           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+ 7           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+ 8           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+ 9           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+10           1 Ciudad Autónoma de B…                    0 &lt;NA&gt;                  
+# ℹ 1,045,190 more rows
+# ℹ abbreviated name: ¹​seccionprovincial_nombre
+# ℹ 2 more variables: seccion_id &lt;dbl&gt;, seccion_nombre &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>En este caso, vamos a quedarnos con las columnas que tienen más de 1 valor único. No hará falta filtrar todavía.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>(n_distinct) <span class="sc">%&gt;%</span> </span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            .
+año                         1
+eleccion_tipo               1
+recuento_tipo               1
+padron_tipo                 1
+distrito_id                24
+distrito_nombre            24
+seccionprovincial_id        9
+seccionprovincial_nombre   12
+seccion_id                135
+seccion_nombre            446
+circuito_id              2335
+circuito_nombre          2335
+mesa_id                  9097
+mesa_tipo                   1
+mesa_electores            378
+cargo_id                    1
+cargo_nombre                1
+agrupacion_id               6
+agrupacion_nombre           6
+lista_numero                2
+lista_nombre                1
+votos_tipo                  6
+votos_cantidad            264</code></pre>
+</div>
+</div>
+</section>
+<section id="limpieza-y-transformación" class="level2">
+<h2 class="anchored" data-anchor-id="limpieza-y-transformación">2.6. Limpieza y transformación</h2>
+</section>
+<section id="formatos" class="level2">
+<h2 class="anchored" data-anchor-id="formatos">2.7. Formatos</h2>
+</section>
+<section id="errores" class="level2">
+<h2 class="anchored" data-anchor-id="errores">2.8. Errores</h2>
 
 
 </section>
