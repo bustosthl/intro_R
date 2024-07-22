@@ -27,5 +27,9 @@
   },
   "visualizacion.qmd": {
     "visualizacion.html": "45e5c541"
+  },
+  "viz.qmd": {
+    "viz.html": "5e748e95",
+    "viz.tex": "cd1b1ccb"
   }
 }

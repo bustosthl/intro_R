@@ -137,6 +137,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./analisis.html"> 
 <span class="menu-text">3. Análisis</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./viz.html"> 
+<span class="menu-text">4. Visualización</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -162,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exploración-y-recorte" id="toc-exploración-y-recorte" class="nav-link" data-scroll-target="#exploración-y-recorte">2.5. Exploración y recorte</a></li>
   <li><a href="#limpieza-y-transformación" id="toc-limpieza-y-transformación" class="nav-link" data-scroll-target="#limpieza-y-transformación">2.6. Limpieza y transformación</a></li>
   <li><a href="#formatos" id="toc-formatos" class="nav-link" data-scroll-target="#formatos">2.7. Formatos</a></li>
-  <li><a href="#errores" id="toc-errores" class="nav-link" data-scroll-target="#errores">2.8. Errores</a></li>
+  <li><a href="#para-seguir-practicando" id="toc-para-seguir-practicando" class="nav-link" data-scroll-target="#para-seguir-practicando">2.8. Para seguir practicando</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="procesamiento.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -471,18 +475,18 @@ $ votos_cantidad           &lt;dbl&gt; 0, 0, 0, 0, 95, 59, 57, 9, 4, 4, 3, 0, 0,
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample_n</span>(data, <span class="dv">10</span>) <span class="co"># 10 filas al azar</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 23
-     año eleccion_tipo recuento_tipo padron_tipo distrito_id distrito_nombre
-   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;          
- 1  2023 GENERAL       PROVISORIO    NORMAL                6 Chaco          
- 2  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
- 3  2023 GENERAL       PROVISORIO    NORMAL               13 Mendoza        
- 4  2023 GENERAL       PROVISORIO    NORMAL                5 Corrientes     
- 5  2023 GENERAL       PROVISORIO    NORMAL                8 Entre Ríos     
- 6  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
- 7  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
- 8  2023 GENERAL       PROVISORIO    NORMAL                4 Córdoba        
- 9  2023 GENERAL       PROVISORIO    NORMAL               21 Santa Fe       
-10  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires   
+     año eleccion_tipo recuento_tipo padron_tipo distrito_id distrito_nombre    
+   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;              
+ 1  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires       
+ 2  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires       
+ 3  2023 GENERAL       PROVISORIO    NORMAL               10 Jujuy              
+ 4  2023 GENERAL       PROVISORIO    NORMAL               15 Neuquén            
+ 5  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires       
+ 6  2023 GENERAL       PROVISORIO    NORMAL               17 Salta              
+ 7  2023 GENERAL       PROVISORIO    NORMAL                4 Córdoba            
+ 8  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires       
+ 9  2023 GENERAL       PROVISORIO    NORMAL                2 Buenos Aires       
+10  2023 GENERAL       PROVISORIO    NORMAL                1 Ciudad Autónoma de…
 # ℹ 17 more variables: seccionprovincial_id &lt;dbl&gt;,
 #   seccionprovincial_nombre &lt;chr&gt;, seccion_id &lt;dbl&gt;, seccion_nombre &lt;chr&gt;,
 #   circuito_id &lt;chr&gt;, circuito_nombre &lt;chr&gt;, mesa_id &lt;dbl&gt;, mesa_tipo &lt;chr&gt;,
@@ -830,45 +834,276 @@ Tierra del Fuego, Antártida e Islas del Atlántico Sur
 </div>
 <p>En este caso, vamos a quedarnos con las columnas que tienen más de 1 valor único. No hará falta filtrar todavía.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>cols_sin_valores <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
 <span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>(n_distinct) <span class="sc">%&gt;%</span> </span>
-<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">n_distinct_values =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="co"># asigno nombre </span></span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_distinct_values <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="co"># filtro</span></span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames</span>()</span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a>cols_sin_valores</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                            .
-año                         1
-eleccion_tipo               1
-recuento_tipo               1
-padron_tipo                 1
-distrito_id                24
-distrito_nombre            24
-seccionprovincial_id        9
-seccionprovincial_nombre   12
-seccion_id                135
-seccion_nombre            446
-circuito_id              2335
-circuito_nombre          2335
-mesa_id                  9097
-mesa_tipo                   1
-mesa_electores            378
-cargo_id                    1
-cargo_nombre                1
-agrupacion_id               6
-agrupacion_nombre           6
-lista_numero                2
-lista_nombre                1
-votos_tipo                  6
-votos_cantidad            264</code></pre>
+<pre><code>[1] "año"           "eleccion_tipo" "recuento_tipo" "padron_tipo"  
+[5] "mesa_tipo"     "cargo_id"      "cargo_nombre"  "lista_nombre" </code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>cols_sin_valores) <span class="sc">%&gt;%</span> </span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">ends_with</span>(<span class="st">"id"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(<span class="st">"lista_numero"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span>(<span class="fu">starts_with</span>(<span class="st">"seccion"</span>) <span class="sc">|</span> <span class="fu">starts_with</span>(<span class="st">"circuito"</span>) <span class="sc">|</span> <span class="fu">starts_with</span>(<span class="st">"mesa"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="limpieza-y-transformación" class="level2">
 <h2 class="anchored" data-anchor-id="limpieza-y-transformación">2.6. Limpieza y transformación</h2>
+<p>Limpiar y transformar una base de datos es un proceso <em>creativo</em> que implica adaptar las variables según el uso que se le va a dar. Se dice <em>creativo</em> porque, si bien hay ciertas funciones y procesos frecuentes, varía mucho según cada proyecto y origen de la base. <code>Mutate()</code> es una de las funciones más importantes para este momento.</p>
+<p><code>Mutate()</code> sirve para crear, modificar o eliminar columnas. Es como un gran paragüas donde vamos a insertar las modificaciones.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># podríamos querer crear una variable con un valor único de texto o numérico</span></span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nueva_variable =</span> <span class="st">"valor único"</span>, </span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">nueva_variable_num =</span> <span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,045,200 × 6
+   distrito_nombre    agrupacion_nombre votos_tipo votos_cantidad nueva_variable
+   &lt;chr&gt;              &lt;chr&gt;             &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;         
+ 1 Ciudad Autónoma d… &lt;NA&gt;              NULO                    0 valor único   
+ 2 Ciudad Autónoma d… &lt;NA&gt;              IMPUGNADO               0 valor único   
+ 3 Ciudad Autónoma d… &lt;NA&gt;              RECURRIDO               0 valor único   
+ 4 Ciudad Autónoma d… &lt;NA&gt;              COMANDO                 0 valor único   
+ 5 Ciudad Autónoma d… UNION POR LA PAT… POSITIVO               95 valor único   
+ 6 Ciudad Autónoma d… JUNTOS POR EL CA… POSITIVO               59 valor único   
+ 7 Ciudad Autónoma d… LA LIBERTAD AVAN… POSITIVO               57 valor único   
+ 8 Ciudad Autónoma d… FRENTE DE IZQUIE… POSITIVO                9 valor único   
+ 9 Ciudad Autónoma d… HACEMOS POR NUES… POSITIVO                4 valor único   
+10 Ciudad Autónoma d… &lt;NA&gt;              EN BLANCO               4 valor único   
+# ℹ 1,045,190 more rows
+# ℹ 1 more variable: nueva_variable_num &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># podríamos querer crear una variable que se desprenda de otras columnas o modificar las existentes</span></span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">max_votos =</span> <span class="fu">max</span>(votos_cantidad), </span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">votos_div =</span> votos_cantidad <span class="sc">/</span> max_votos, </span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">distrito_nombre_minusc =</span> <span class="fu">tolower</span>(distrito_nombre), </span>
+<span id="cb87-6"><a href="#cb87-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">distrito_nombre =</span> <span class="fu">toupper</span>(distrito_nombre))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,045,200 × 7
+   distrito_nombre         agrupacion_nombre votos_tipo votos_cantidad max_votos
+   &lt;chr&gt;                   &lt;chr&gt;             &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;
+ 1 CIUDAD AUTÓNOMA DE BUE… &lt;NA&gt;              NULO                    0       300
+ 2 CIUDAD AUTÓNOMA DE BUE… &lt;NA&gt;              IMPUGNADO               0       300
+ 3 CIUDAD AUTÓNOMA DE BUE… &lt;NA&gt;              RECURRIDO               0       300
+ 4 CIUDAD AUTÓNOMA DE BUE… &lt;NA&gt;              COMANDO                 0       300
+ 5 CIUDAD AUTÓNOMA DE BUE… UNION POR LA PAT… POSITIVO               95       300
+ 6 CIUDAD AUTÓNOMA DE BUE… JUNTOS POR EL CA… POSITIVO               59       300
+ 7 CIUDAD AUTÓNOMA DE BUE… LA LIBERTAD AVAN… POSITIVO               57       300
+ 8 CIUDAD AUTÓNOMA DE BUE… FRENTE DE IZQUIE… POSITIVO                9       300
+ 9 CIUDAD AUTÓNOMA DE BUE… HACEMOS POR NUES… POSITIVO                4       300
+10 CIUDAD AUTÓNOMA DE BUE… &lt;NA&gt;              EN BLANCO               4       300
+# ℹ 1,045,190 more rows
+# ℹ 2 more variables: votos_div &lt;dbl&gt;, distrito_nombre_minusc &lt;chr&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># podríamos querer recategorizar una variable</span></span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">votos_cantidad_grupo =</span> <span class="fu">case_when</span>(votos_cantidad <span class="sc">&gt;</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"mayor a 60 votos"</span>,</span>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>                                          votos_cantidad <span class="sc">&lt;=</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"menor o igual a 60 votos"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,045,200 × 5
+   distrito_nombre                 agrupacion_nombre   votos_tipo votos_cantidad
+   &lt;chr&gt;                           &lt;chr&gt;               &lt;chr&gt;               &lt;dbl&gt;
+ 1 Ciudad Autónoma de Buenos Aires &lt;NA&gt;                NULO                    0
+ 2 Ciudad Autónoma de Buenos Aires &lt;NA&gt;                IMPUGNADO               0
+ 3 Ciudad Autónoma de Buenos Aires &lt;NA&gt;                RECURRIDO               0
+ 4 Ciudad Autónoma de Buenos Aires &lt;NA&gt;                COMANDO                 0
+ 5 Ciudad Autónoma de Buenos Aires UNION POR LA PATRIA POSITIVO               95
+ 6 Ciudad Autónoma de Buenos Aires JUNTOS POR EL CAMB… POSITIVO               59
+ 7 Ciudad Autónoma de Buenos Aires LA LIBERTAD AVANZA  POSITIVO               57
+ 8 Ciudad Autónoma de Buenos Aires FRENTE DE IZQUIERD… POSITIVO                9
+ 9 Ciudad Autónoma de Buenos Aires HACEMOS POR NUESTR… POSITIVO                4
+10 Ciudad Autónoma de Buenos Aires &lt;NA&gt;                EN BLANCO               4
+# ℹ 1,045,190 more rows
+# ℹ 1 more variable: votos_cantidad_grupo &lt;chr&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">votos_tipo_recat =</span> <span class="fu">case_when</span>(votos_tipo <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"NULO"</span>,<span class="st">"IMPUGNADO"</span>,<span class="st">"RECURRIDO"</span>,<span class="st">"COMANDO"</span>,<span class="st">"EN BLANCO"</span>) <span class="sc">~</span> <span class="st">"NEGATIVO"</span>, </span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">.default =</span> <span class="fu">as.character</span>(votos_tipo)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,045,200 × 5
+   distrito_nombre  agrupacion_nombre votos_tipo votos_cantidad votos_tipo_recat
+   &lt;chr&gt;            &lt;chr&gt;             &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;           
+ 1 Ciudad Autónoma… &lt;NA&gt;              NULO                    0 NEGATIVO        
+ 2 Ciudad Autónoma… &lt;NA&gt;              IMPUGNADO               0 NEGATIVO        
+ 3 Ciudad Autónoma… &lt;NA&gt;              RECURRIDO               0 NEGATIVO        
+ 4 Ciudad Autónoma… &lt;NA&gt;              COMANDO                 0 NEGATIVO        
+ 5 Ciudad Autónoma… UNION POR LA PAT… POSITIVO               95 POSITIVO        
+ 6 Ciudad Autónoma… JUNTOS POR EL CA… POSITIVO               59 POSITIVO        
+ 7 Ciudad Autónoma… LA LIBERTAD AVAN… POSITIVO               57 POSITIVO        
+ 8 Ciudad Autónoma… FRENTE DE IZQUIE… POSITIVO                9 POSITIVO        
+ 9 Ciudad Autónoma… HACEMOS POR NUES… POSITIVO                4 POSITIVO        
+10 Ciudad Autónoma… &lt;NA&gt;              EN BLANCO               4 NEGATIVO        
+# ℹ 1,045,190 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">votos_agrupado =</span> <span class="fu">case_when</span>(votos_tipo <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"NULO"</span>,<span class="st">"IMPUGNADO"</span>,<span class="st">"RECURRIDO"</span>,<span class="st">"COMANDO"</span>,<span class="st">"EN BLANCO"</span>) <span class="sc">~</span> <span class="st">"NEGATIVO"</span>,</span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">.default =</span> <span class="fu">as.character</span>(agrupacion_nombre)),</span>
+<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">votos_agrupado_v2 =</span> <span class="fu">case_when</span>(<span class="fu">is.na</span>(agrupacion_nombre) <span class="sc">~</span> <span class="st">"NEGATIVO"</span>,</span>
+<span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">.default =</span> <span class="fu">as.character</span>(agrupacion_nombre)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,045,200 × 6
+   distrito_nombre    agrupacion_nombre votos_tipo votos_cantidad votos_agrupado
+   &lt;chr&gt;              &lt;chr&gt;             &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;         
+ 1 Ciudad Autónoma d… &lt;NA&gt;              NULO                    0 NEGATIVO      
+ 2 Ciudad Autónoma d… &lt;NA&gt;              IMPUGNADO               0 NEGATIVO      
+ 3 Ciudad Autónoma d… &lt;NA&gt;              RECURRIDO               0 NEGATIVO      
+ 4 Ciudad Autónoma d… &lt;NA&gt;              COMANDO                 0 NEGATIVO      
+ 5 Ciudad Autónoma d… UNION POR LA PAT… POSITIVO               95 UNION POR LA …
+ 6 Ciudad Autónoma d… JUNTOS POR EL CA… POSITIVO               59 JUNTOS POR EL…
+ 7 Ciudad Autónoma d… LA LIBERTAD AVAN… POSITIVO               57 LA LIBERTAD A…
+ 8 Ciudad Autónoma d… FRENTE DE IZQUIE… POSITIVO                9 FRENTE DE IZQ…
+ 9 Ciudad Autónoma d… HACEMOS POR NUES… POSITIVO                4 HACEMOS POR N…
+10 Ciudad Autónoma d… &lt;NA&gt;              EN BLANCO               4 NEGATIVO      
+# ℹ 1,045,190 more rows
+# ℹ 1 more variable: votos_agrupado_v2 &lt;chr&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vamos a hacer una columna con nombres reducidos para utilizar con comodidad</span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">votos_agrupado =</span> <span class="fu">case_when</span>(<span class="fu">is.na</span>(agrupacion_nombre) <span class="sc">~</span> <span class="st">"NEGATIVO"</span>,</span>
+<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">.default =</span> <span class="fu">as.character</span>(agrupacion_nombre)), </span>
+<span id="cb95-5"><a href="#cb95-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">votos_agrupado_red =</span> <span class="fu">case_when</span>(votos_agrupado <span class="sc">==</span> <span class="st">"NEGATIVO"</span> <span class="sc">~</span> <span class="st">"NEG"</span>,</span>
+<span id="cb95-6"><a href="#cb95-6" aria-hidden="true" tabindex="-1"></a>                                        votos_agrupado <span class="sc">==</span> <span class="st">"UNION POR LA PATRIA"</span> <span class="sc">~</span> <span class="st">"UXP"</span>,</span>
+<span id="cb95-7"><a href="#cb95-7" aria-hidden="true" tabindex="-1"></a>                                        votos_agrupado <span class="sc">==</span> <span class="st">"JUNTOS POR EL CAMBIO"</span> <span class="sc">~</span> <span class="st">"JXC"</span>,</span>
+<span id="cb95-8"><a href="#cb95-8" aria-hidden="true" tabindex="-1"></a>                                        votos_agrupado <span class="sc">==</span> <span class="st">"LA LIBERTAD AVANZA"</span> <span class="sc">~</span> <span class="st">"LLA"</span>,</span>
+<span id="cb95-9"><a href="#cb95-9" aria-hidden="true" tabindex="-1"></a>                                        votos_agrupado <span class="sc">==</span> <span class="st">"FRENTE DE IZQUIERDA Y DE TRABAJADORES - UNIDAD"</span> <span class="sc">~</span> <span class="st">"FIT"</span>,</span>
+<span id="cb95-10"><a href="#cb95-10" aria-hidden="true" tabindex="-1"></a>                                        votos_agrupado <span class="sc">==</span> <span class="st">"HACEMOS POR NUESTRO PAIS"</span> <span class="sc">~</span> <span class="st">"HNP"</span>), </span>
+<span id="cb95-11"><a href="#cb95-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">distrito_nombre_red =</span> stringi<span class="sc">::</span><span class="fu">stri_trans_general</span>(distrito_nombre, <span class="at">id=</span><span class="st">"Latin-ASCII"</span>), </span>
+<span id="cb95-12"><a href="#cb95-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">distrito_nombre_red =</span> <span class="fu">tolower</span>(distrito_nombre_red), </span>
+<span id="cb95-13"><a href="#cb95-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">distrito_nombre_red =</span> <span class="fu">gsub</span>(<span class="st">" "</span>, <span class="st">"_"</span>, distrito_nombre_red))</span>
+<span id="cb95-14"><a href="#cb95-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-15"><a href="#cb95-15" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,045,200 × 7
+   distrito_nombre    agrupacion_nombre votos_tipo votos_cantidad votos_agrupado
+   &lt;chr&gt;              &lt;chr&gt;             &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;         
+ 1 Ciudad Autónoma d… &lt;NA&gt;              NULO                    0 NEGATIVO      
+ 2 Ciudad Autónoma d… &lt;NA&gt;              IMPUGNADO               0 NEGATIVO      
+ 3 Ciudad Autónoma d… &lt;NA&gt;              RECURRIDO               0 NEGATIVO      
+ 4 Ciudad Autónoma d… &lt;NA&gt;              COMANDO                 0 NEGATIVO      
+ 5 Ciudad Autónoma d… UNION POR LA PAT… POSITIVO               95 UNION POR LA …
+ 6 Ciudad Autónoma d… JUNTOS POR EL CA… POSITIVO               59 JUNTOS POR EL…
+ 7 Ciudad Autónoma d… LA LIBERTAD AVAN… POSITIVO               57 LA LIBERTAD A…
+ 8 Ciudad Autónoma d… FRENTE DE IZQUIE… POSITIVO                9 FRENTE DE IZQ…
+ 9 Ciudad Autónoma d… HACEMOS POR NUES… POSITIVO                4 HACEMOS POR N…
+10 Ciudad Autónoma d… &lt;NA&gt;              EN BLANCO               4 NEGATIVO      
+# ℹ 1,045,190 more rows
+# ℹ 2 more variables: votos_agrupado_red &lt;chr&gt;, distrito_nombre_red &lt;chr&gt;</code></pre>
+</div>
+</div>
 </section>
 <section id="formatos" class="level2">
 <h2 class="anchored" data-anchor-id="formatos">2.7. Formatos</h2>
+<p>Quizás sea más cómodo alternar entre formato <em>long</em> y <em>wide</em>. Para aquellos casos, <code>pivot_longer()</code> y <code>pivot_wider()</code> nos van a servir.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>data_agrupada <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(distrito_nombre, votos_agrupado_red) <span class="sc">%&gt;%</span> <span class="co"># como tenemos una fila por mesa/agrupación y necesitamos sólo una por provincia, vamos a agrupar y sumar</span></span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">votos_cantidad =</span> <span class="fu">sum</span>(votos_cantidad)) </span>
+<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a>data_agrupada</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 144 × 3
+# Groups:   distrito_nombre [24]
+   distrito_nombre votos_agrupado_red votos_cantidad
+   &lt;chr&gt;           &lt;chr&gt;                       &lt;dbl&gt;
+ 1 Buenos Aires    FIT                        352790
+ 2 Buenos Aires    HNP                        367457
+ 3 Buenos Aires    JXC                       2374023
+ 4 Buenos Aires    LLA                       2533633
+ 5 Buenos Aires    NEG                        346808
+ 6 Buenos Aires    UXP                       4224688
+ 7 Catamarca       FIT                          3666
+ 8 Catamarca       HNP                         14967
+ 9 Catamarca       JXC                         39960
+10 Catamarca       LLA                         74570
+# ℹ 134 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>data_wider <span class="ot">&lt;-</span> data_agrupada <span class="sc">%&gt;%</span> </span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from=</span>votos_agrupado_red, <span class="at">values_from=</span>votos_cantidad)</span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a>data_wider</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 24 × 7
+# Groups:   distrito_nombre [24]
+   distrito_nombre                    FIT    HNP     JXC     LLA    NEG     UXP
+   &lt;chr&gt;                            &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Buenos Aires                    352790 367457 2374023 2533633 346808 4224688
+ 2 Catamarca                         3666  14967   39960   74570  15211   99612
+ 3 Chaco                             5482  25804  171756  197596  12966  310962
+ 4 Chubut                           15122  26555   70717  120297  10314  110820
+ 5 Ciudad Autónoma de Buenos Aires  66145  57607  767367  369424  50056  600832
+ 6 Corrientes                        7315  19118  224519  187916  15535  260040
+ 7 Córdoba                          31895 665717  519252  769847  37521  308016
+ 8 Entre Ríos                       12760  44720  250512  247640  47171  276850
+ 9 Formosa                           2772   8793   55097  103911   6953  187229
+10 Jujuy                            16006  30775   90095  168921  11193  146027
+# ℹ 14 more rows</code></pre>
+</div>
+</div>
+<p>Y si quisiéramos volver al formato anterior.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>data_longer <span class="ot">&lt;-</span> data_wider <span class="sc">%&gt;%</span> </span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span>distrito_nombre)</span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-4"><a href="#cb101-4" aria-hidden="true" tabindex="-1"></a>data_longer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 144 × 3
+# Groups:   distrito_nombre [24]
+   distrito_nombre name    value
+   &lt;chr&gt;           &lt;chr&gt;   &lt;dbl&gt;
+ 1 Buenos Aires    FIT    352790
+ 2 Buenos Aires    HNP    367457
+ 3 Buenos Aires    JXC   2374023
+ 4 Buenos Aires    LLA   2533633
+ 5 Buenos Aires    NEG    346808
+ 6 Buenos Aires    UXP   4224688
+ 7 Catamarca       FIT      3666
+ 8 Catamarca       HNP     14967
+ 9 Catamarca       JXC     39960
+10 Catamarca       LLA     74570
+# ℹ 134 more rows</code></pre>
+</div>
+</div>
+<p>Finalmente, veamos el voto negativo (blanco y otros) por provincia.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>data_wider <span class="sc">%&gt;%</span> </span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">TOTAL =</span> <span class="fu">rowSums</span>(<span class="fu">across</span>()), </span>
+<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">NEG_per =</span> NEG <span class="sc">/</span> TOTAL,</span>
+<span id="cb103-4"><a href="#cb103-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">label =</span> <span class="fu">round</span>(NEG_per<span class="sc">*</span><span class="dv">100</span>,<span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb103-5"><a href="#cb103-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span><span class="fu">reorder</span>(distrito_nombre, NEG_per), <span class="at">x=</span>NEG_per, <span class="at">fill=</span>NEG_per, <span class="at">label=</span>label)) <span class="sc">+</span></span>
+<span id="cb103-6"><a href="#cb103-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb103-7"><a href="#cb103-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x=</span>NEG_per <span class="sc">+</span> <span class="fl">0.003</span>), <span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb103-8"><a href="#cb103-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">""</span>, <span class="at">y=</span><span class="st">""</span>, </span>
+<span id="cb103-9"><a href="#cb103-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">"Votos negativos (%) por provincia"</span>, </span>
+<span id="cb103-10"><a href="#cb103-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Elecciones generales 2023"</span>,</span>
+<span id="cb103-11"><a href="#cb103-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"Elaboración propia según resultados provisorios (DINE)"</span>)<span class="sc">+</span></span>
+<span id="cb103-12"><a href="#cb103-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb103-13"><a href="#cb103-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="procesamiento_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="errores" class="level2">
-<h2 class="anchored" data-anchor-id="errores">2.8. Errores</h2>
+<section id="para-seguir-practicando" class="level2">
+<h2 class="anchored" data-anchor-id="para-seguir-practicando">2.8. Para seguir practicando</h2>
+<p>Graficar:</p>
+<ul>
+<li><p>El voto negativo en <strong>las secciones de Santa Cruz</strong> u otra provincia de preferencia.</p></li>
+<li><p>El voto negativo a <strong>en regiones (NEA, NOA, CUYO, PAMPEANA, PATAGONIA)</strong>.</p></li>
+<li><p>El voto de <strong>LLA por provincia en absolutos</strong>.</p></li>
+<li><p>El voto de <strong>UXP por provincia en porcentaje sobre votos afirmativos (sin contar los negativos)</strong>.</p></li>
+</ul>
 
 
 </section>

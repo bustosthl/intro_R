@@ -20,7 +20,7 @@ website:
       - intro.qmd
       - procesamiento.qmd
       - analisis.qmd
-      #- visualizacion.qmd
+      - viz.qmd
       #- summary.qmd
     #right:
      # - references.qmd

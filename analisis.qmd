@@ -1,3 +1,235 @@
 # 3. Análisis
 
-La idea de este apartado
+La idea de este apartado es repasar algunas herramientas de estadística descriptiva para realizar análisis de datos. Se utilizará de insumo la [Encuesta Nacional de Hogares (EAH) de la Ciudad de Buenos Aires](https://www.estadisticaciudad.gob.ar/eyc/?page_id=702).
+
+```{r}
+library(tidyverse)
+```
+
+La EAH es una encuesta anual por muestreo que se propone recabar datos para conocer y analizar la situación socioeconómica y demográfica de la población y de los hogares de la Ciudad. Si bien lo correcto sería tomar y utilizar el factor de expansión, prescindiremos para facilitar el trabajo sobre la base.
+
+```{r}
+ruta <- "data/encuentro_3/EAH_2023_ind.csv"
+
+columnas <- c("Número de vivienda","Número de hogar","Número de miembro","Comuna","Monto del ingreso per cápita familiar (mes pasado; incluye valores imputados. Se considera sólo miembros que no son servicio doméstico)")
+eah <- read_csv(ruta, # seleccionamos archivo 
+                  col_select=columnas) # elegimos qué columnas cargar
+
+col_nuevas <- c("num_vivienda","num_hogar","num_individuo","comuna","ingreso_per_capita_familiar")
+names(eah) = col_nuevas # renombramos 
+
+eah <- eah %>% filter(ingreso_per_capita_familiar > 0) # eliminamos casos sin ingresos
+
+dim(eah)
+head(eah)
+```
+
+## 3.1. Pregunta-problema
+
+¿Cómo varía el ingreso en la Ciudad de Buenos Aires por comuna? ¿Cómo se relaciona eso con los resultados electorales de G2023?
+
+## 3.2. Repasando conceptos básicos
+
+¿Por qué hablamos de **muestra**? se llama muestra a un subconjunto de una población que es captado para analizar a una **población** específica. Con población nos referimos al conjunto de todos los elementos que forman parte de un universo de interés.
+
+Existen distintas **medidas resumen** para sintetizar y describir las características principales de un conjunto de datos. Permiten obtener una visión general y son fundamentales para el análisis exploratorio.
+
+En este apartado vamos a trabajar con la distribución del ingreso familiar per cápita en CABA. Una distribución es simplemente un conjunto de datos determinado; en este caso, una muestra proveniente de la encuesta antedicha.
+
+```{r}
+# al ser más de 13 mil casos, es imposible verlos en formato texto
+eah$ingreso_per_capita_familiar[1:10]
+```
+
+Para visualizar una gran cantidad de datos podemos usar un tipo de gráfico llamado **histograma**. Veremos más sobre esto en el siguiente apartado. El eje X representa los valores presentes en la distribución y el eje Y representa la cantidad de apariciones de cada uno de esos valores.
+
+```{r}
+eah %>% 
+  filter(ingreso_per_capita_familiar < 2000000) %>% # filtramos algunos casos para mejorar la visualización
+  ggplot(aes(ingreso_per_capita_familiar))+
+  geom_histogram()+
+  theme_minimal()+
+  labs(title="Distribución del ingreso per cápita familiar", subtitle="Ciudad de Buenos Aires")
+```
+
+El primer conjunto de medidas resumen que veremos son las **medidas de tendencia central**.
+
+-   **Media**: más conocida como promedio. Es la suma de todos los valores dividida la cantidad de valores. Su sensibilidad a los valores atípicos la vuelve poco representativa en ciertas distribuciones.
+
+![Fórmula media](img/formula_media.png)
+
+-   **Mediana**: se obtiene ordenando todos los valores de menor a mayor y tomando el valor que se encuentra justo en la mitad. Evita la sensibilidad a valores atípicos.
+
+-   **Moda**: es la observación con mayor frecuencia en la distribución. Puede existir más de una.
+
+```{r}
+# guardamos los valores
+media <- mean(eah$ingreso_per_capita_familiar)
+mediana <- median(eah$ingreso_per_capita_familiar)
+
+# veamos la media
+eah %>% 
+  filter(ingreso_per_capita_familiar < 2000000) %>% # filtramos algunos casos para mejorar la visualización
+  ggplot()+
+  geom_histogram(aes(ingreso_per_capita_familiar))+
+  geom_vline(xintercept= media, color="blue", size=1)+
+  geom_text(aes(x=media+1e5, y=2900, label="Media"), color="blue")+
+  theme_minimal()+
+  labs(title="Distribución del ingreso per cápita familiar en CABA", subtitle=paste0("Media: ",round(media,1)))
+
+# veamos la mediana
+eah %>% 
+  filter(ingreso_per_capita_familiar < 2000000) %>% # filtramos algunos casos para mejorar la visualización
+  ggplot()+
+  geom_histogram(aes(ingreso_per_capita_familiar))+
+  geom_vline(xintercept= media, color="blue", size=1, alpha=.5)+
+  geom_vline(xintercept= mediana, color="red", size=1)+
+  geom_text(aes(x=media+1e5, y=2900, label="Media"), color="blue")+
+  geom_text(aes(x=media+4e4, y=2700, label="Mediana"), color="red")+
+  theme_minimal()+
+  labs(title="Distribución del ingreso per cápita familiar en CABA", subtitle=paste0("Mediana: ",round(mediana,1)))
+
+```
+
+El segundo conjunto de medidas resumen que veremos son las **medidas de variabilidad**.
+
+-   **Varianza**: es la media de las desviaciones cuadráticas respecto de la media. Se elevan al cuadrado para evitar la compensación entre números positivos y negativos.
+
+![Fórmula varianza](img/formula_varianza.png)
+
+-   **Desvío estándar**: es la raíz cuadrada de la varianza; se utiliza para hacer interpretable la métrica.
+
+```{r}
+# guardamos los valores
+sd <- sd(eah$ingreso_per_capita_familiar)
+
+# veamos la media
+eah %>% 
+  filter(ingreso_per_capita_familiar < 2000000) %>% # filtramos algunos casos para mejorar la visualización
+  ggplot()+
+  geom_histogram(aes(ingreso_per_capita_familiar))+
+  geom_vline(xintercept= media, color="blue", size=1)+
+  geom_vline(xintercept= media-sd, color="violet", size=1, linetype = "dashed")+
+  geom_vline(xintercept= media+sd, color="violet", size=1, linetype = "dashed")+
+  geom_text(aes(x=media+1e5, y=2900, label="Media"), color="blue")+
+  geom_text(aes(x=media+sd+3e5, y=2700, label="Media + desvío estándar"), color="violet")+
+  theme_minimal()+
+  labs(title="Distribución del ingreso per cápita familiar", subtitle=paste0("Ciudad de Buenos Aires"))
+
+```
+
+El tercer conjunto de medidas resumen que veremos son las **medidas de posición**. En general trabajamos con **cuantiles**, valores que dividen la distribución en una cantidad arbitraria de partes iguales. Se suelen usar los quintiles, que vimos en el primer encuentro con la función `summary()`.
+
+```{r}
+summary(eah$ingreso_per_capita_familiar)
+```
+
+Una forma típica de ver una distribución según sus quintiles es el gráfico de cajas o bigotes (*boxplot* en inglés). Si un histograma sirve para ver una distribución en particular, los boxplots van a servirnos para comparar distintas distribuciones.
+
+```{r}
+eah %>% 
+  filter(ingreso_per_capita_familiar < 2000000) %>% # filtramos algunos casos para mejorar la visualización
+  mutate(comuna = factor(comuna)) %>% 
+  ggplot(aes(x=comuna, y=ingreso_per_capita_familiar, fill=comuna))+
+  geom_boxplot(show.legend=FALSE)+
+  stat_summary(fun.y=mean, geom="point", shape=4, size=2, color="white", fill="white") +
+  theme_minimal()+
+  labs(title="Distribución del ingreso per cápita familiar", subtitle=paste0("Ciudad de Buenos Aires"))
+```
+
+## 3.3. Operando sobre grupos
+
+La función `group_by()` nos permite hacer ciertos cálculos por grupos. Lógicamente, el esquema es el siguiente.
+
+![Esquema group_by](img/groupby_esquema.jpg)
+
+En este caso, veremos de sacar algunas medidas resumen por comuna.
+
+```{r}
+eah_comuna <- eah %>% 
+  group_by(comuna) %>% 
+  summarise(promedio_ipcf = mean(ingreso_per_capita_familiar),
+            mediana_ipcf = median(ingreso_per_capita_familiar),
+            sd_ipcf = sd(ingreso_per_capita_familiar)) %>% 
+  ungroup()
+
+
+eah_comuna %>% 
+  mutate(comuna = paste0("Comuna ",comuna)) %>% 
+  ggplot(aes(y=reorder(comuna, promedio_ipcf), x=promedio_ipcf)) +
+  geom_segment(aes(xend=0)) +
+  geom_point(color="blue", size=3) +
+  geom_point(aes(x=mediana_ipcf), color="red", size=2) +
+  labs(x="", y="", 
+       title="Promedio de ingresos por comuna", 
+       subtitle="Ciudad de Buenos Aires",
+       caption="Elaboración propia según EAH")+
+  theme_minimal()
+```
+
+Armemos los resultados electorales para poder comparar resultados electorales con ingresos.
+
+```{r}
+ruta <- "data/encuentro_2/2023_Generales/ResultadosElectorales_2023.csv"
+
+f <- function(x, pos){
+  filter(x,(cargo_nombre == "PRESIDENTE Y VICE")&(distrito_nombre =="Ciudad Autónoma de Buenos Aires"))
+}
+g2023 <- read_csv_chunked(ruta, DataFrameCallback$new(f), chunk_size=10000) %>% 
+  mutate(votos_agrupado = case_when(is.na(agrupacion_nombre) ~ "NEGATIVO", # transformamos variables
+                                       .default = as.character(agrupacion_nombre)), 
+         votos_agrupado_red = case_when(votos_agrupado == "NEGATIVO" ~ "NEG",
+                                        votos_agrupado == "UNION POR LA PATRIA" ~ "UXP",
+                                        votos_agrupado == "JUNTOS POR EL CAMBIO" ~ "JXC",
+                                        votos_agrupado == "LA LIBERTAD AVANZA" ~ "LLA",
+                                        votos_agrupado == "FRENTE DE IZQUIERDA Y DE TRABAJADORES - UNIDAD" ~ "FIT",
+                                        votos_agrupado == "HACEMOS POR NUESTRO PAIS" ~ "HNP")) %>% 
+  group_by(seccion_id, votos_agrupado_red) %>% # agrupamos
+  summarise(votos = sum(votos_cantidad)) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from=votos_agrupado_red, values_from=votos) %>% # pasamos a wider
+  mutate(TOTAL = rowSums(across()), # calculamos %
+         NEG_per = NEG / TOTAL,
+         UXP_per = UXP / TOTAL,
+         JXC_per = JXC / TOTAL,
+         LLA_per = LLA / TOTAL,
+         FIT_per = FIT / TOTAL,
+         HNP_per = HNP / TOTAL, 
+         comuna = seccion_id)
+
+dim(g2023) # vemos cuántas filas y columnas tiene
+head(g2023) # vemos las primeras 5 filas
+```
+
+## 3.4. Uniones
+
+Para cruzar distintas bases de datos podemos usar las funciones `_join()` disponibles en `Tidyverse`. Una buena práctica es chequear que las claves funcionen correctamente antes de realizar la unión.
+
+![Uniones](img/join_esquema.jpg)
+
+
+```{r}
+eah %>% 
+  select(comuna) %>% 
+  distinct() %>% 
+  arrange(comuna)
+
+g2023 %>% 
+  select(comuna) %>% 
+  distinct() %>% 
+  arrange(comuna)
+```
+
+Unimos. 
+```{r}
+union <- left_join(eah_comuna, g2023)
+
+union %>% 
+  ggplot(aes(x=mediana_ipcf, y=NEG_per))+
+  geom_point()+
+  geom_label(aes(label=comuna))+
+    labs(title="Ingresos x voto negativo (%)", 
+       subtitle="Ciudad de Buenos Aires")+
+  theme_minimal()
+```
+
