@@ -207,7 +207,6 @@ Para cruzar distintas bases de datos podemos usar las funciones `_join()` dispon
 
 ![Uniones](img/join_esquema.jpg)
 
-
 ```{r}
 eah %>% 
   select(comuna) %>% 
@@ -220,16 +219,38 @@ g2023 %>%
   arrange(comuna)
 ```
 
-Unimos. 
+Unimos.
+
 ```{r}
 union <- left_join(eah_comuna, g2023)
-
-union %>% 
-  ggplot(aes(x=mediana_ipcf, y=NEG_per))+
-  geom_point()+
-  geom_label(aes(label=comuna))+
-    labs(title="Ingresos x voto negativo (%)", 
-       subtitle="Ciudad de Buenos Aires")+
-  theme_minimal()
+union
 ```
 
+
+Veamoslo gráficamente. 
+```{r}
+union %>% 
+  select(comuna, mediana_ipcf, NEG_per, FIT_per, HNP_per, JXC_per, LLA_per, UXP_per) %>% 
+  pivot_longer(!c("comuna", "mediana_ipcf")) %>% 
+  mutate(name = str_replace(name, "_per","")) %>% 
+  ggplot(aes(x=mediana_ipcf, y=value, color=name))+
+  geom_point()+
+  facet_wrap(~name, scales="free")+
+    labs(title="Ingresos x voto (%)", 
+       subtitle="Ciudad de Buenos Aires",
+       y="Voto (%)")+
+  scale_color_manual(values=c("red", "seagreen", "orange", "darkviolet", "black", "dodgerblue"))+
+  theme_minimal()+
+  theme(axis.text.x=element_blank(),
+        axis.text.y=element_blank(),
+        legend.position = "none")
+
+```
+
+## 3.5. Para seguir practicando
+
+Se puede probar:
+
+-   unir la base con alguna otra información por comuna presente en la página de [datos del GCBA](https://data.buenosaires.gob.ar/). Analizar la relación con alguna de las variables presentes en esta base. 
+
+-   graficar el voto negativo vs votos contra otros partidos. ¿Hay alguna relación interesante?

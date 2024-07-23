@@ -1,1 +1,103 @@
 # 4. Visualización
+
+En este apartado nos enfocaremos en entender por qué visualizar datos y cómo construirlos utilizando `ggplot()`. 
+
+## 4.1. Pregunta-problema
+
+Caracterizar la territorialidad del voto en la Provincia de Buenos Aires. 
+
+```{r}
+library(tidyverse)
+
+data <- read_csv("data/encuentro_1/ARG_elecciones.csv")
+
+head(data)
+```
+
+## 4.2. ¿Por qué visualizar?
+
+## 4.3. Construyendo un gráfico en `ggplot()`
+
+```{r}
+data %>% 
+
+```
+
+
+Hagamos una tabla con los votos al PJ en las distintas elecciones. 
+
+```{r}
+cols_pj <- c("FRENTE PARA LA VICTORIA","UNION POR LA PATRIA","FRENTE DE TODOS")
+orden <- c("P2011", "G2011",
+"P2015", "G2015","B2015",
+"P2019", "G2019",
+"P2023", "G2023","B2023")
+
+tab_pj <- data %>% 
+  filter(Provincia=="BUENOS AIRES") %>% 
+  separate_wider_delim(Elecciones, " ", names = c("tipo_eleccion", "anio_eleccion"), cols_remove=FALSE) %>% 
+  group_by(Elecciones, tipo_eleccion, anio_eleccion, Partido) %>% 
+  summarise(votos = sum(Votos), 
+            electores = sum(electores),
+            votantes = sum(votantes)) %>% 
+  mutate(votos_per = votos / votantes,
+         participacion = votantes / electores,
+         Elecciones = str_replace(Elecciones, "PASO ","P"),
+         Elecciones = str_replace(Elecciones, "GENERALES ","G"),
+         Elecciones = str_replace(Elecciones, "BALLOTAGE ","B"),
+         Elecciones = factor(Elecciones, orden)
+         ) %>% 
+  filter(Partido %in% cols_pj)
+tab_pj
+```
+Con ggplot simplemente vamos a establecer un lienzo vacío. En este caso, ya recibe la tabla con la información.
+```{r}
+tab_pj %>% 
+  ggplot()
+```
+Luego definimos las **asignaciones estéticas**: la relación entre las variables y ciertos elementos de los gráficos (ejes/coordenadas o distintos atributos como color, tamaño, forma, etc.). 
+
+```{r}
+tab_pj %>% 
+  ggplot(aes(x=factor(Elecciones,orden), y=participacion))
+```
+
+La siguiente definición es de los **elementos geométricos** con los que vamos a representar los datos definidos con anterioridad. 
+
+```{r}
+tab_pj %>% 
+  ggplot(aes(x=factor(Elecciones,orden), y=participacion))+
+  geom_point()
+
+# intentamos con otro tipo de gráfico
+tab_pj %>% 
+  ggplot(aes(x=factor(Elecciones,orden), y=participacion))+
+  geom_col()
+```
+Se pueden agregar otros atributos. `Color` se utiliza para líneas y puntos; `fill` se utiliza para las áreas de los gráficos. 
+
+```{r}
+tab_pj %>% 
+  ggplot(aes(x=factor(Elecciones,orden), y=votos_per, color=Partido, shape=anio_eleccion))+
+  geom_point(size=5)
+
+# intentamos con otro tipo de gráfico
+tab_pj %>% 
+  ggplot(aes(x=factor(Elecciones,orden), y=votos_per, fill=Partido))+
+  geom_col()
+
+# si se define por fuera del aes() funciona como atributo general
+tab_pj %>% 
+  ggplot(aes(x=factor(Elecciones,orden), y=votos_per))+
+  geom_col(fill="red")
+```
+
+
+
+
+## 4.4. El qué antecede al cómo
+
+## 4.5. Yapa: Mapas
+
+## 4.6. Para seguir practicando
+
