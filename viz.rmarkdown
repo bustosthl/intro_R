@@ -6,6 +6,8 @@ En este apartado nos enfocaremos en entender por qué visualizar datos y cómo c
 
 Caracterizar la territorialidad del voto en la Provincia de Buenos Aires.
 
+
+
 ```{r}
 library(tidyverse)
 
@@ -13,6 +15,8 @@ data <- read_csv("data/encuentro_1/ARG_elecciones.csv")
 
 head(data,2)
 ```
+
+
 
 ## 4.2. ¿Por qué visualizar?
 
@@ -60,6 +64,8 @@ Fuente: [Chequeado](https://chequeado.com/el-explicador/carreras-universitarias-
 
 Hagamos una tabla con los votos al PJ en las distintas elecciones en la Provincia de Buenos Aires.
 
+
+
 ```{r}
 cols_pj <- c("FRENTE PARA LA VICTORIA","UNION POR LA PATRIA","FRENTE DE TODOS")
 orden <- c("P2011", "G2011",
@@ -85,25 +91,37 @@ tab_pj <- data %>%
 tab_pj
 ```
 
+
+
 La librería estrella de la visualización en `Tidyverse` funciona a través de **capas**. Cada una se corresponde con funciones diferentes dentro de la visualización.
 
 ![](img/ggplot_esquema.png)
 
 Con `ggplot()` simplemente vamos a establecer un lienzo vacío. En este caso, ya recibe la tabla con la información.
 
+
+
 ```{r}
 tab_pj %>% 
   ggplot()
 ```
 
+
+
 Luego definimos las **asignaciones estéticas**: la relación entre las variables y ciertos elementos de los gráficos (ejes/coordenadas o distintos atributos como color, tamaño, forma, etc.).
+
+
 
 ```{r}
 tab_pj %>% 
   ggplot(aes(x=factor(Elecciones,orden), y=participacion))
 ```
 
+
+
 La siguiente definición es de los **elementos geométricos** con los que vamos a representar los datos definidos con anterioridad.
+
+
 
 ```{r}
 tab_pj %>% 
@@ -130,7 +148,11 @@ tab_pj %>%
   
 ```
 
+
+
 Se pueden agregar otros atributos. `Color` se utiliza para líneas y puntos; `fill` se utiliza para las áreas de los gráficos.
+
+
 
 ```{r}
 tab_pj %>% 
@@ -149,7 +171,11 @@ tab_pj %>%
 
 ```
 
+
+
 El siguiente elemento que podríamos incorporar tiene que ver con definir el tipo de paleta de colores a utilizar, los límites de los ejes u otras cuestiones que no afectan a lo esencial del gráfico pero ayudan a comunicar el punto.
+
+
 
 ```{r}
 tab_pj %>% 
@@ -159,7 +185,11 @@ tab_pj %>%
   scale_fill_viridis_d() # viridis es una paleta de colores en particular
 ```
 
+
+
 Cuando hablamos de **facetado** nos referimos a separar los gráficos en partes según alguna variable.
+
+
 
 ```{r}
 tab_pj %>% 
@@ -170,7 +200,11 @@ tab_pj %>%
   facet_wrap(~tipo_eleccion, scales = "free")
 ```
 
+
+
 Lo último que nos interesa ver aquí son los temas, que comprenden los elementos visuales que no son controlados por la información propiamente dicha.
+
+
 
 ```{r}
 tab_pj %>% 
@@ -216,6 +250,8 @@ tab_pj %>%
        x="", y="", fill="")
 ```
 
+
+
 ## 4.4. El qué antecede al cómo
 
 Elegir un gráfico no es una *mera* cuestión artística: hay distintos tipos de gráficos según *qué* se quiere mostrar. Para investigar un poco más, dejo dos recursos: una [infografía](https://raw.githubusercontent.com/Financial-Times/chart-doctor/main/visual-vocabulary/poster.png) sobre distintos tipos de gráficos y el [proyecto Dataviz](https://datavizproject.com/) que funciona como una guía para elegir. Veamos algunos ejemplos.
@@ -224,6 +260,8 @@ Elegir un gráfico no es una *mera* cuestión artística: hay distintos tipos de
 ## Distribuciones
 
 Si queremos ver una sola distribución (o dos) podemos usar un histograma o un gráfico de densidad. Para comparar entre varias, la mejor opción es el gráfico de cajas.
+
+
 
 ```{r}
 #| column: screen-inset-shaded
@@ -247,9 +285,13 @@ theme_minimal()+
 labs(title="Distribución del voto en blanco según tipo de elección", subtitle="Provincia de Buenos Aires")
 ```
 
+
+
 ## Parte-de-un-todo
 
 Si queremos resaltar que estamos mostrando partes de un todo los gráficos de tortas/anillos y las barras apiladas van a ser nuestras mejores opciones. 
+
+
 
 ```{r}
 #| column: screen-inset-shaded
@@ -286,6 +328,8 @@ geom_col()+
 theme_minimal()+
 labs(title="Votos positivos y negativos en las elecciones del 2023", subtitle="General Pueyrredón, Buenos Aires")
 ```
+
+
 :::
 
 ## 4.5. Yapa: Mapas
@@ -293,6 +337,8 @@ labs(title="Votos positivos y negativos en las elecciones del 2023", subtitle="G
 Para trabajar información geográfica se utiliza una librería llamada `sf`. Los archivos de tipo geográfico tienen una particularidad: llevan una columna (en general llamada *geometry*) donde se indica la posición de cada fila en el espacio. 
 
 Carguemos los circuitos electorales disponibles en el portal de datos abiertos de la Provincia de Buenos Aires: https://catalogo.datos.gba.gob.ar/tr/dataset/circuitos-electorales. 
+
+
 
 ```{r}
 library(sf)
@@ -321,7 +367,11 @@ theme_void()+labs(title="Departamentos y secciones provinciales", subtitle="Prov
 
 ```
 
+
+
 Hacemos una unión con los resultados electorales. 
+
+
 
 ```{r}
 
@@ -351,8 +401,11 @@ geom_sf(aes(fill=Porcentaje_norm))+
 facet_wrap(~Partido)+
 scale_fill_viridis_c()+
 theme_void()+
-labs(fill="Min-Max")+ guides(fill=guide_colorbar(ticks.colour = NA))
+labs(fill="Porcentaje (min-max)")+ guides(fill=guide_colorbar(ticks.colour = NA))
 ```
 
 
+
+
 ## 4.6. Para seguir practicando
+

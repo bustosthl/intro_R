@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta charset="utf-8" />
+<meta name="generator" content="quarto-1.4.553" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 
 
-<title>¿Datos para qué? Intro al mundo de datos con R</title>
+<title>¿Datos para qué? Intro al mundo de datos con R – viz</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -56,23 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<!-- htmldependencies:E3FAD763 -->
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -104,41 +90,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed">
+<body>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="/index.html">
     <span class="navbar-title">¿Datos para qué? Intro al mundo de datos con R</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
+  onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="/index.html"> 
 <span class="menu-text">Presentación</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./intro.html"> 
+    <a class="nav-link" href="/intro.html"> 
 <span class="menu-text">1. Piletazo</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./procesamiento.html"> 
+    <a class="nav-link" href="/procesamiento.html"> 
 <span class="menu-text">2. Procesamiento</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./analisis.html"> 
+    <a class="nav-link" href="/analisis.html"> 
 <span class="menu-text">3. Análisis</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./viz.html" aria-current="page"> 
+    <a class="nav-link" href="/viz.html"> 
 <span class="menu-text">4. Visualización</span></a>
   </li>  
 </ul>
@@ -153,40 +141,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <div id="quarto-toc-target"></div>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<nav id="TOC" role="doc-toc">
     <h2 id="toc-title">Apartados</h2>
    
   <ul>
-  <li><a href="#visualización" id="toc-visualización" class="nav-link active" data-scroll-target="#visualización">4. Visualización</a>
-  <ul class="collapse">
-  <li><a href="#pregunta-problema" id="toc-pregunta-problema" class="nav-link" data-scroll-target="#pregunta-problema">4.1. Pregunta-problema</a></li>
-  <li><a href="#por-qué-visualizar" id="toc-por-qué-visualizar" class="nav-link" data-scroll-target="#por-qué-visualizar">4.2. ¿Por qué visualizar?</a></li>
-  <li><a href="#construyendo-un-gráfico-en-ggplot" id="toc-construyendo-un-gráfico-en-ggplot" class="nav-link" data-scroll-target="#construyendo-un-gráfico-en-ggplot">4.3. Construyendo un gráfico en <code>ggplot()</code></a></li>
-  <li><a href="#el-qué-antecede-al-cómo" id="toc-el-qué-antecede-al-cómo" class="nav-link" data-scroll-target="#el-qué-antecede-al-cómo">4.4. El qué antecede al cómo</a></li>
-  <li><a href="#yapa-mapas" id="toc-yapa-mapas" class="nav-link" data-scroll-target="#yapa-mapas">4.5. Yapa: Mapas</a></li>
-  <li><a href="#para-seguir-practicando" id="toc-para-seguir-practicando" class="nav-link" data-scroll-target="#para-seguir-practicando">4.6. Para seguir practicando</a></li>
+  <li><a href="#visualización" id="toc-visualización">4. Visualización</a>
+  <ul>
+  <li><a href="#pregunta-problema" id="toc-pregunta-problema">4.1. Pregunta-problema</a></li>
+  <li><a href="#por-qué-visualizar" id="toc-por-qué-visualizar">4.2. ¿Por qué visualizar?</a></li>
+  <li><a href="#construyendo-un-gráfico-en-ggplot" id="toc-construyendo-un-gráfico-en-ggplot">4.3. Construyendo un gráfico en <code>ggplot()</code></a></li>
+  <li><a href="#el-qué-antecede-al-cómo" id="toc-el-qué-antecede-al-cómo">4.4. El qué antecede al cómo</a></li>
+  <li><a href="#yapa-mapas" id="toc-yapa-mapas">4.5. Yapa: Mapas</a></li>
+  <li><a href="#para-seguir-practicando" id="toc-para-seguir-practicando">4.6. Para seguir practicando</a></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="viz.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
-    </div>
-<!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
-
-
-
-
-<section id="visualización" class="level1 page-columns page-full">
+</nav>
+<section id="visualización" class="level1">
 <h1>4. Visualización</h1>
 <p>En este apartado nos enfocaremos en entender por qué visualizar datos y cómo construirlos utilizando <code>ggplot()</code>.</p>
 <section id="pregunta-problema" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-problema">4.1. Pregunta-problema</h2>
+<h2>4.1. Pregunta-problema</h2>
 <p>Caracterizar la territorialidad del voto en la Provincia de Buenos Aires.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/encuentro_1/ARG_elecciones.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/encuentro_1/ARG_elecciones.csv&quot;</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data,<span class="dv">2</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 10
   id         seccion Elecciones Partido Porcentaje Votos Participacion electores
@@ -198,11 +186,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="por-qué-visualizar" class="level2">
-<h2 class="anchored" data-anchor-id="por-qué-visualizar">4.2. ¿Por qué visualizar?</h2>
+<h2>4.2. ¿Por qué visualizar?</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class='callout-icon'></i>
 </div>
 <div class="callout-title-container flex-fill">
 Atención
@@ -218,30 +206,30 @@ Atención
 <li><p><strong>Expresar relaciones complejas</strong>: no siempre las tablas nos van a permitir ver con claridad cuando hay mucha información involucrada.</p></li>
 <li><p><strong>Comunicar</strong>: en general, construimos información para contársela a otras personas. Probablemente sea más fácil de contar una historia con un gráfico que con una tabla, por ejemplo.</p></li>
 </ul>
-<div class="tabset-margin-container"></div><div class="panel-tabset nav-pills">
+<div class="panel-tabset nav-pills">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Explorar los datos</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Expresar relaciones complejas</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Comunicar</a></li></ul>
 <div class="tab-content nav-pills">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>Un gran ejemplo para mostrar lo importante de visualizar los datos es el llamado <strong>Cuarteto de Anscombe</strong>.</p>
-<p><img src="img/cuarteto_anscombe.jpg" class="img-fluid"></p>
+<p><img src="img/cuarteto_anscombe.jpg" class="img-fluid" /></p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>Hans Rosling fundó el proyecto <a href="https://www.gapminder.org/tools/#$chart-type=bubbles&amp;url=v2">Gapminder</a> y popularizó la siguiente visualización. <a href="https://www.youtube.com/watch?v=dfa7B8LPGOE">Aquí está disponible con la explicación del autor</a>.</p>
-<p><img src="img/gapminder.png" class="img-fluid"></p>
+<p><img src="img/gapminder.png" class="img-fluid" /></p>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <div id="fig-inscriptos" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
+<figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-inscriptos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <p>Dos ejemplos de visualizaciones que tienen muy en claro qué es lo que quieren comunicar. Una disposición de la información que acompaña y refuerza el mensaje.</p>
 </div>
 <div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-inscriptos" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-gral" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
+<div id="fig-gral" class="quarto-figure quarto-figure-center quarto-float">
+<figure class="quarto-float quarto-subfloat-fig">
 <div aria-describedby="fig-gral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/inscriptos_uba_gral.png" id="fig-gral" class="img-fluid figure-img" data-ref-parent="fig-inscriptos">
+<img src="img/inscriptos_uba_gral.png" id="fig-gral" class="img-fluid" data-ref-parent="fig-inscriptos" />
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-gral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a)
@@ -252,10 +240,10 @@ Atención
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-inscriptos" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-socio" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
+<div id="fig-socio" class="quarto-figure quarto-figure-center quarto-float">
+<figure class="quarto-float quarto-subfloat-fig">
 <div aria-describedby="fig-socio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/inscriptos_uba_socio.png" id="fig-socio" class="img-fluid figure-img" data-ref-parent="fig-inscriptos">
+<img src="img/inscriptos_uba_socio.png" id="fig-socio" class="img-fluid" data-ref-parent="fig-inscriptos" />
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-socio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b)
@@ -266,7 +254,7 @@ Atención
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-inscriptos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Fuente: <a href="https://chequeado.com/el-explicador/carreras-universitarias-en-los-ultimos-7-anos-hay-cada-vez-mas-inscriptos-en-exactas-medicina-e-ingenieria-y-cada-vez-menos-en-sociales/">Chequeado</a>
+Figure 1: Fuente: <a href="https://chequeado.com/el-explicador/carreras-universitarias-en-los-ultimos-7-anos-hay-cada-vez-mas-inscriptos-en-exactas-medicina-e-ingenieria-y-cada-vez-menos-en-sociales/">Chequeado</a>
 </figcaption>
 </figure>
 </div>
@@ -275,31 +263,31 @@ Figure&nbsp;1: Fuente: <a href="https://chequeado.com/el-explicador/carreras-uni
 </div>
 </section>
 <section id="construyendo-un-gráfico-en-ggplot" class="level2">
-<h2 class="anchored" data-anchor-id="construyendo-un-gráfico-en-ggplot">4.3. Construyendo un gráfico en <code>ggplot()</code></h2>
+<h2>4.3. Construyendo un gráfico en <code>ggplot()</code></h2>
 <p>Hagamos una tabla con los votos al PJ en las distintas elecciones en la Provincia de Buenos Aires.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cols_pj <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"FRENTE PARA LA VICTORIA"</span>,<span class="st">"UNION POR LA PATRIA"</span>,<span class="st">"FRENTE DE TODOS"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>orden <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"P2011"</span>, <span class="st">"G2011"</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">"P2015"</span>, <span class="st">"G2015"</span>,<span class="st">"B2015"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">"P2019"</span>, <span class="st">"G2019"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">"P2023"</span>, <span class="st">"G2023"</span>,<span class="st">"B2023"</span>)</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cols_pj <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;FRENTE PARA LA VICTORIA&quot;</span>,<span class="st">&quot;UNION POR LA PATRIA&quot;</span>,<span class="st">&quot;FRENTE DE TODOS&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>orden <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;P2011&quot;</span>, <span class="st">&quot;G2011&quot;</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;P2015&quot;</span>, <span class="st">&quot;G2015&quot;</span>,<span class="st">&quot;B2015&quot;</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;P2019&quot;</span>, <span class="st">&quot;G2019&quot;</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;P2023&quot;</span>, <span class="st">&quot;G2023&quot;</span>,<span class="st">&quot;B2023&quot;</span>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Provincia<span class="sc">==</span><span class="st">"BUENOS AIRES"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(Elecciones, <span class="st">" "</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"tipo_eleccion"</span>, <span class="st">"anio_eleccion"</span>), <span class="at">cols_remove=</span><span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Provincia<span class="sc">==</span><span class="st">&quot;BUENOS AIRES&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(Elecciones, <span class="st">&quot; &quot;</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">&quot;tipo_eleccion&quot;</span>, <span class="st">&quot;anio_eleccion&quot;</span>), <span class="at">cols_remove=</span><span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Elecciones, tipo_eleccion, anio_eleccion, Partido) <span class="sc">%&gt;%</span> </span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">votos =</span> <span class="fu">sum</span>(Votos), </span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">electores =</span> <span class="fu">sum</span>(electores),</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">votantes =</span> <span class="fu">sum</span>(votantes)) <span class="sc">%&gt;%</span> </span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">votos_per =</span> votos <span class="sc">/</span> votantes,</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">participacion =</span> votantes <span class="sc">/</span> electores,</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">Elecciones =</span> <span class="fu">str_replace</span>(Elecciones, <span class="st">"PASO "</span>,<span class="st">"P"</span>),</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">Elecciones =</span> <span class="fu">str_replace</span>(Elecciones, <span class="st">"GENERALES "</span>,<span class="st">"G"</span>),</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">Elecciones =</span> <span class="fu">str_replace</span>(Elecciones, <span class="st">"BALLOTAGE "</span>,<span class="st">"B"</span>),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">Elecciones =</span> <span class="fu">str_replace</span>(Elecciones, <span class="st">&quot;PASO &quot;</span>,<span class="st">&quot;P&quot;</span>),</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">Elecciones =</span> <span class="fu">str_replace</span>(Elecciones, <span class="st">&quot;GENERALES &quot;</span>,<span class="st">&quot;G&quot;</span>),</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">Elecciones =</span> <span class="fu">str_replace</span>(Elecciones, <span class="st">&quot;BALLOTAGE &quot;</span>,<span class="st">&quot;B&quot;</span>),</span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">Elecciones =</span> <span class="fu">factor</span>(Elecciones, orden)</span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span> </span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Partido <span class="sc">%in%</span> cols_pj)</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>tab_pj</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>tab_pj</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 9
 # Groups:   Elecciones, tipo_eleccion, anio_eleccion [10]
@@ -319,217 +307,217 @@ Figure&nbsp;1: Fuente: <a href="https://chequeado.com/el-explicador/carreras-uni
 </div>
 </div>
 <p>La librería estrella de la visualización en <code>Tidyverse</code> funciona a través de <strong>capas</strong>. Cada una se corresponde con funciones diferentes dentro de la visualización.</p>
-<p><img src="img/ggplot_esquema.png" class="img-fluid"></p>
+<p><img src="img/ggplot_esquema.png" class="img-fluid" /></p>
 <p>Con <code>ggplot()</code> simplemente vamos a establecer un lienzo vacío. En este caso, ya recibe la tabla con la información.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="viz_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figure>
+<p><img src="viz_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672" /></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Luego definimos las <strong>asignaciones estéticas</strong>: la relación entre las variables y ciertos elementos de los gráficos (ejes/coordenadas o distintos atributos como color, tamaño, forma, etc.).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(Elecciones,orden), <span class="at">y=</span>participacion))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(Elecciones,orden), <span class="at">y=</span>participacion))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="viz_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<figure>
+<p><img src="viz_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672" /></p>
 </figure>
 </div>
 </div>
 </div>
 <p>La siguiente definición es de los <strong>elementos geométricos</strong> con los que vamos a representar los datos definidos con anterioridad.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(Elecciones,orden), <span class="at">y=</span>participacion))<span class="sc">+</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="viz_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<figure>
+<p><img src="viz_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672" /></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># intentamos con otro tipo de gráfico</span></span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># intentamos con otro tipo de gráfico</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(Elecciones,orden), <span class="at">y=</span>participacion))<span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="viz_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
+<figure>
+<p><img src="viz_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="672" /></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># intentamos con DOS gráficos</span></span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># intentamos con DOS gráficos</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(Elecciones,orden), <span class="at">y=</span>participacion))<span class="sc">+</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width=</span><span class="fl">0.1</span>, <span class="at">fill=</span><span class="st">"violet"</span>)<span class="sc">+</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">"violet"</span>, <span class="at">size=</span><span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width=</span><span class="fl">0.1</span>, <span class="at">fill=</span><span class="st">&quot;violet&quot;</span>)<span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;violet&quot;</span>, <span class="at">size=</span><span class="dv">7</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="viz_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid figure-img" width="672"></p>
+<figure>
+<p><img src="viz_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid" width="672" /></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># intentamos con TRES gráficos</span></span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># intentamos con TRES gráficos</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(Elecciones,orden), <span class="at">y=</span>participacion))<span class="sc">+</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width=</span><span class="fl">0.1</span>, <span class="at">fill=</span><span class="st">"violet"</span>)<span class="sc">+</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">"violet"</span>, <span class="at">size=</span><span class="dv">7</span>)<span class="sc">+</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span><span class="dv">1</span>),<span class="at">color=</span><span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width=</span><span class="fl">0.1</span>, <span class="at">fill=</span><span class="st">&quot;violet&quot;</span>)<span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;violet&quot;</span>, <span class="at">size=</span><span class="dv">7</span>)<span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span><span class="dv">1</span>),<span class="at">color=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="viz_files/figure-html/unnamed-chunk-5-4.png" class="img-fluid figure-img" width="672"></p>
+<figure>
+<p><img src="viz_files/figure-html/unnamed-chunk-5-4.png" class="img-fluid" width="672" /></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Se pueden agregar otros atributos. <code>Color</code> se utiliza para líneas y puntos; <code>fill</code> se utiliza para las áreas de los gráficos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(Elecciones,orden), <span class="at">y=</span>votos_per, <span class="at">color=</span>Partido, <span class="at">shape=</span>anio_eleccion))<span class="sc">+</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>, <span class="at">stroke=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>, <span class="at">stroke=</span><span class="dv">3</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="viz_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<figure>
+<p><img src="viz_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672" /></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># intentamos con otro tipo de gráfico</span></span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># intentamos con otro tipo de gráfico</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(Elecciones,orden), <span class="at">y=</span>votos_per, <span class="at">fill=</span>Partido))<span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="viz_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
+<figure>
+<p><img src="viz_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672" /></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># si se define por fuera del aes() funciona como atributo general</span></span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># si se define por fuera del aes() funciona como atributo general</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(Elecciones,orden), <span class="at">y=</span>votos_per))<span class="sc">+</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="viz_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid figure-img" width="672"></p>
+<figure>
+<p><img src="viz_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid" width="672" /></p>
 </figure>
 </div>
 </div>
 </div>
 <p>El siguiente elemento que podríamos incorporar tiene que ver con definir el tipo de paleta de colores a utilizar, los límites de los ejes u otras cuestiones que no afectan a lo esencial del gráfico pero ayudan a comunicar el punto.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(Elecciones,orden), <span class="at">y=</span>votos_per, <span class="at">fill=</span>Partido))<span class="sc">+</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()<span class="sc">+</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">1</span>)<span class="sc">+</span> <span class="co"># ponemos límites entre 0 y 100%</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>() <span class="co"># viridis es una paleta de colores en particular</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>() <span class="co"># viridis es una paleta de colores en particular</span></span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="viz_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<figure>
+<p><img src="viz_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672" /></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Cuando hablamos de <strong>facetado</strong> nos referimos a separar los gráficos en partes según alguna variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(Elecciones,orden), <span class="at">y=</span>votos_per, <span class="at">fill=</span>Partido))<span class="sc">+</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()<span class="sc">+</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="fl">0.7</span>)<span class="sc">+</span> <span class="co"># ponemos límites entre 0 y 100%</span></span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>()<span class="sc">+</span> <span class="co"># viridis es una paleta de colores en particular</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>tipo_eleccion, <span class="at">scales =</span> <span class="st">"free"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>tipo_eleccion, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="viz_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<figure>
+<p><img src="viz_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672" /></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Lo último que nos interesa ver aquí son los temas, que comprenden los elementos visuales que no son controlados por la información propiamente dicha.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(Elecciones,orden), <span class="at">y=</span>votos_per, <span class="at">fill=</span>Partido))<span class="sc">+</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()<span class="sc">+</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="fl">0.7</span>)<span class="sc">+</span> <span class="co"># ponemos límites entre 0 y 100%</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>()<span class="sc">+</span> <span class="co"># viridis es una paleta de colores en particular</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>anio_eleccion, <span class="at">scales =</span> <span class="st">"free"</span>, <span class="at">ncol=</span><span class="dv">4</span>)<span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>anio_eleccion, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="at">ncol=</span><span class="dv">4</span>)<span class="sc">+</span></span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span> <span class="co"># agregamos definiciones generales</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>,  </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>,  </span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">linewidth =</span> <span class="fl">0.75</span>),</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line.x.bottom =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"blue"</span>)) <span class="co"># acá podemos definir elementos particulares</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line.x.bottom =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>)) <span class="co"># acá podemos definir elementos particulares</span></span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="viz_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<figure>
+<p><img src="viz_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672" /></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># veamos una versión publicable</span></span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># veamos una versión publicable</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(Elecciones,orden), <span class="at">y=</span>votos_per, <span class="at">fill=</span>Partido))<span class="sc">+</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()<span class="sc">+</span></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.7</span>), <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>()<span class="sc">+</span> <span class="co"># viridis es una paleta de colores en particular</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>anio_eleccion, <span class="at">scales =</span> <span class="st">"free"</span>, <span class="at">ncol=</span><span class="dv">4</span>)<span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>anio_eleccion, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="at">ncol=</span><span class="dv">4</span>)<span class="sc">+</span></span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span> <span class="co"># agregamos definiciones generales</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>)<span class="sc">+</span> <span class="co"># acá podemos definir elementos particulares</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Resultados electorales del peronismo"</span>,</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Provincia de Buenos Aires 2011-2023"</span>,</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">""</span>, <span class="at">y=</span><span class="st">""</span>, <span class="at">caption =</span> <span class="st">"Elaboración propia según DINE (provisorios)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>)<span class="sc">+</span> <span class="co"># acá podemos definir elementos particulares</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Resultados electorales del peronismo&quot;</span>,</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">&quot;Provincia de Buenos Aires 2011-2023&quot;</span>,</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;&quot;</span>, <span class="at">y=</span><span class="st">&quot;&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Elaboración propia según DINE (provisorios)&quot;</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="viz_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid figure-img" width="672"></p>
+<figure>
+<p><img src="viz_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid" width="672" /></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cambiemos los límites por las etiquetas</span></span>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cambiemos los límites por las etiquetas</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>tab_pj <span class="sc">%&gt;%</span> </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tipo_eleccion =</span> <span class="fu">case_when</span>(tipo_eleccion <span class="sc">==</span> <span class="st">"GENERALES"</span> <span class="sc">~</span><span class="st">"GRAL"</span>,</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                                   tipo_eleccion <span class="sc">==</span> <span class="st">"BALLOTAGE"</span> <span class="sc">~</span><span class="st">"BALOTAJE"</span>, </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tipo_eleccion =</span> <span class="fu">case_when</span>(tipo_eleccion <span class="sc">==</span> <span class="st">&quot;GENERALES&quot;</span> <span class="sc">~</span><span class="st">&quot;GRAL&quot;</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                                   tipo_eleccion <span class="sc">==</span> <span class="st">&quot;BALLOTAGE&quot;</span> <span class="sc">~</span><span class="st">&quot;BALOTAJE&quot;</span>, </span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">.default =</span> <span class="fu">as.character</span>(tipo_eleccion))) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(tipo_eleccion,<span class="fu">c</span>(<span class="st">"PASO"</span>,<span class="st">"GRAL"</span>,<span class="st">"BALOTAJE"</span>)), <span class="at">y=</span>votos_per, <span class="at">fill=</span>Partido))<span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(tipo_eleccion,<span class="fu">c</span>(<span class="st">&quot;PASO&quot;</span>,<span class="st">&quot;GRAL&quot;</span>,<span class="st">&quot;BALOTAJE&quot;</span>)), <span class="at">y=</span>votos_per, <span class="at">fill=</span>Partido))<span class="sc">+</span></span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()<span class="sc">+</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span><span class="fu">paste0</span>(<span class="fu">round</span>(votos_per<span class="sc">*</span><span class="dv">100</span>),<span class="st">"%"</span>), <span class="at">y=</span>votos_per<span class="fl">+0.05</span>))<span class="sc">+</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span><span class="fu">paste0</span>(<span class="fu">round</span>(votos_per<span class="sc">*</span><span class="dv">100</span>),<span class="st">&quot;%&quot;</span>), <span class="at">y=</span>votos_per<span class="fl">+0.05</span>))<span class="sc">+</span></span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.7</span>), <span class="at">breaks=</span><span class="cn">NULL</span>)<span class="sc">+</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="st">"FRENTE PARA LA VICTORIA"</span>, <span class="st">"FRENTE DE TODOS"</span>, <span class="st">"UNION POR LA PATRIA"</span>))<span class="sc">+</span> <span class="co"># viridis es una paleta de colores en particular</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>anio_eleccion, <span class="at">scales =</span> <span class="st">"free"</span>, <span class="at">ncol=</span><span class="dv">4</span>)<span class="sc">+</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="st">&quot;FRENTE PARA LA VICTORIA&quot;</span>, <span class="st">&quot;FRENTE DE TODOS&quot;</span>, <span class="st">&quot;UNION POR LA PATRIA&quot;</span>))<span class="sc">+</span> <span class="co"># viridis es una paleta de colores en particular</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>anio_eleccion, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="at">ncol=</span><span class="dv">4</span>)<span class="sc">+</span></span>
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span> <span class="co"># agregamos definiciones generales</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>)<span class="sc">+</span> <span class="co"># acá podemos definir elementos particulares</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Resultados electorales del peronismo"</span>,</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Provincia de Buenos Aires 2011-2023"</span>,</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Elaboración propia según DINE (provisorios)"</span>, </span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">""</span>, <span class="at">y=</span><span class="st">""</span>, <span class="at">fill=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&quot;bottom&quot;</span>)<span class="sc">+</span> <span class="co"># acá podemos definir elementos particulares</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Resultados electorales del peronismo&quot;</span>,</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">&quot;Provincia de Buenos Aires 2011-2023&quot;</span>,</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Elaboración propia según DINE (provisorios)&quot;</span>, </span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;&quot;</span>, <span class="at">y=</span><span class="st">&quot;&quot;</span>, <span class="at">fill=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="viz_files/figure-html/unnamed-chunk-9-3.png" class="img-fluid figure-img" width="672"></p>
+<figure>
+<p><img src="viz_files/figure-html/unnamed-chunk-9-3.png" class="img-fluid" width="672" /></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="el-qué-antecede-al-cómo" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="el-qué-antecede-al-cómo">4.4. El qué antecede al cómo</h2>
+<section id="el-qué-antecede-al-cómo" class="level2">
+<h2>4.4. El qué antecede al cómo</h2>
 <p>Elegir un gráfico no es una <em>mera</em> cuestión artística: hay distintos tipos de gráficos según <em>qué</em> se quiere mostrar. Para investigar un poco más, dejo dos recursos: una <a href="https://raw.githubusercontent.com/Financial-Times/chart-doctor/main/visual-vocabulary/poster.png">infografía</a> sobre distintos tipos de gráficos y el <a href="https://datavizproject.com/">proyecto Dataviz</a> que funciona como una guía para elegir. Veamos algunos ejemplos.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset nav-pills page-columns page-full">
+<div class="panel-tabset nav-pills">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Distribuciones</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Parte-de-un-todo</a></li></ul>
-<div class="tab-content nav-pills page-columns page-full">
-<div id="tabset-2-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="tab-content nav-pills">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>Si queremos ver una sola distribución (o dos) podemos usar un histograma o un gráfico de densidad. Para comparar entre varias, la mejor opción es el gráfico de cajas.</p>
 <div>
 
@@ -537,15 +525,15 @@ Figure&nbsp;1: Fuente: <a href="https://chequeado.com/el-explicador/carreras-uni
 <div class="cell column-screen-inset-shaded quarto-layout-panel" data-layout-nrow="1">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="viz_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<p><img src="viz_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672" /></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="viz_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid" width="672"></p>
+<p><img src="viz_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid" width="672" /></p>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-2-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p>Si queremos resaltar que estamos mostrando partes de un todo los gráficos de tortas/anillos y las barras apiladas van a ser nuestras mejores opciones.</p>
 <div>
 
@@ -553,10 +541,10 @@ Figure&nbsp;1: Fuente: <a href="https://chequeado.com/el-explicador/carreras-uni
 <div class="cell column-screen-inset-shaded quarto-layout-panel" data-layout-nrow="1">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="viz_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<p><img src="viz_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672" /></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="viz_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid" width="672"></p>
+<p><img src="viz_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid" width="672" /></p>
 </div>
 </div>
 </div>
@@ -565,59 +553,59 @@ Figure&nbsp;1: Fuente: <a href="https://chequeado.com/el-explicador/carreras-uni
 </div>
 </section>
 <section id="yapa-mapas" class="level2">
-<h2 class="anchored" data-anchor-id="yapa-mapas">4.5. Yapa: Mapas</h2>
+<h2>4.5. Yapa: Mapas</h2>
 <p>Para trabajar información geográfica se utiliza una librería llamada <code>sf</code>. Los archivos de tipo geográfico tienen una particularidad: llevan una columna (en general llamada <em>geometry</em>) donde se indica la posición de cada fila en el espacio.</p>
 <p>Carguemos los circuitos electorales disponibles en el portal de datos abiertos de la Provincia de Buenos Aires: https://catalogo.datos.gba.gob.ar/tr/dataset/circuitos-electorales.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>geo_dpto <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">"data/encuentro_4/pba_departamentos.geojson"</span>) <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>geo_dpto <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;data/encuentro_4/pba_departamentos.geojson&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">dpto_clean =</span> <span class="fu">tolower</span>(dpto_clean))</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>geo_seccp <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">"data/encuentro_4/pba_seccprovincial.geojson"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>geo_seccp <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;data/encuentro_4/pba_seccprovincial.geojson&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">st_buffer</span>(<span class="fl">0.01</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">sp_clean =</span> <span class="fu">str_replace</span>(seccionprovincial_nombre, <span class="st">"Sección "</span>, <span class="st">""</span>),</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="at">sp_clean =</span> <span class="fu">case_when</span>(sp_clean <span class="sc">==</span> <span class="st">"Primera"</span><span class="sc">~</span><span class="st">"S1"</span>,</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>sp_clean <span class="sc">==</span> <span class="st">"Segunda"</span><span class="sc">~</span><span class="st">"S2"</span>,</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>sp_clean <span class="sc">==</span> <span class="st">"Tercera"</span><span class="sc">~</span><span class="st">"S3"</span>,</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>sp_clean <span class="sc">==</span> <span class="st">"Cuarta"</span><span class="sc">~</span><span class="st">"S4"</span>,</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>sp_clean <span class="sc">==</span> <span class="st">"Quinta"</span><span class="sc">~</span><span class="st">"S5"</span>,</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>sp_clean <span class="sc">==</span> <span class="st">"Sexta"</span><span class="sc">~</span><span class="st">"S6"</span>,</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>sp_clean <span class="sc">==</span> <span class="st">"Séptima"</span><span class="sc">~</span><span class="st">"S7"</span>,</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>sp_clean <span class="sc">==</span> <span class="st">"Capital"</span><span class="sc">~</span><span class="st">"S8"</span>))</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">sp_clean =</span> <span class="fu">str_replace</span>(seccionprovincial_nombre, <span class="st">&quot;Sección &quot;</span>, <span class="st">&quot;&quot;</span>),</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="at">sp_clean =</span> <span class="fu">case_when</span>(sp_clean <span class="sc">==</span> <span class="st">&quot;Primera&quot;</span><span class="sc">~</span><span class="st">&quot;S1&quot;</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>sp_clean <span class="sc">==</span> <span class="st">&quot;Segunda&quot;</span><span class="sc">~</span><span class="st">&quot;S2&quot;</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>sp_clean <span class="sc">==</span> <span class="st">&quot;Tercera&quot;</span><span class="sc">~</span><span class="st">&quot;S3&quot;</span>,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>sp_clean <span class="sc">==</span> <span class="st">&quot;Cuarta&quot;</span><span class="sc">~</span><span class="st">&quot;S4&quot;</span>,</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>sp_clean <span class="sc">==</span> <span class="st">&quot;Quinta&quot;</span><span class="sc">~</span><span class="st">&quot;S5&quot;</span>,</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>sp_clean <span class="sc">==</span> <span class="st">&quot;Sexta&quot;</span><span class="sc">~</span><span class="st">&quot;S6&quot;</span>,</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>sp_clean <span class="sc">==</span> <span class="st">&quot;Séptima&quot;</span><span class="sc">~</span><span class="st">&quot;S7&quot;</span>,</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>sp_clean <span class="sc">==</span> <span class="st">&quot;Capital&quot;</span><span class="sc">~</span><span class="st">&quot;S8&quot;</span>))</span>
 <span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span></span>
 <span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_sf</span>(<span class="at">data=</span>geo_dpto, <span class="fu">aes</span>(<span class="at">fill=</span>dpto_clean),<span class="at">show.legend=</span><span class="cn">FALSE</span>)<span class="sc">+</span></span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_sf</span>(<span class="at">data=</span>geo_seccp, <span class="at">color=</span><span class="st">"black"</span>, <span class="at">fill=</span><span class="cn">NA</span>, <span class="at">lwd=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_sf</span>(<span class="at">data=</span>geo_seccp, <span class="at">color=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill=</span><span class="cn">NA</span>, <span class="at">lwd=</span><span class="dv">1</span>)<span class="sc">+</span></span>
 <span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_label</span>(<span class="at">data=</span>geo_seccp, </span>
 <span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="fu">aes</span>(<span class="at">label=</span>sp_clean, </span>
 <span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="at">x=</span><span class="fu">as.data.frame</span>(<span class="fu">st_coordinates</span>(<span class="fu">st_centroid</span>(geo_seccp)))<span class="sc">$</span>X, <span class="at">y=</span><span class="fu">as.data.frame</span>(<span class="fu">st_coordinates</span>(<span class="fu">st_centroid</span>(geo_seccp)))<span class="sc">$</span>Y),</span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="at">size=</span><span class="dv">3</span>, <span class="at">position=</span><span class="fu">position_jitter</span>(<span class="at">width=</span>.<span class="dv">3</span>, <span class="at">height=</span>.<span class="dv">3</span>), <span class="at">label.padding=</span><span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"lines"</span>))<span class="sc">+</span></span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_void</span>()<span class="sc">+</span><span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Departamentos y secciones provinciales"</span>, <span class="at">subtitle=</span><span class="st">"Provincia de Buenos Aires"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="at">size=</span><span class="dv">3</span>, <span class="at">position=</span><span class="fu">position_jitter</span>(<span class="at">width=</span>.<span class="dv">3</span>, <span class="at">height=</span>.<span class="dv">3</span>), <span class="at">label.padding=</span><span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;lines&quot;</span>))<span class="sc">+</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_void</span>()<span class="sc">+</span><span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Departamentos y secciones provinciales&quot;</span>, <span class="at">subtitle=</span><span class="st">&quot;Provincia de Buenos Aires&quot;</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="viz_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<figure>
+<p><img src="viz_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672" /></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Hacemos una unión con los resultados electorales.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>geo_resultados <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(Provincia<span class="sc">==</span><span class="st">"BUENOS AIRES"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">dpto_clean =</span> <span class="fu">str_replace</span>(seccion, <span class="st">", Buenos Aires"</span>, <span class="st">""</span>),</span>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>geo_resultados <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(Provincia<span class="sc">==</span><span class="st">&quot;BUENOS AIRES&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">dpto_clean =</span> <span class="fu">str_replace</span>(seccion, <span class="st">&quot;, Buenos Aires&quot;</span>, <span class="st">&quot;&quot;</span>),</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="at">dpto_clean =</span> <span class="fu">tolower</span>(dpto_clean),</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="at">dpto_clean =</span> <span class="fu">str_replace</span>(dpto_clean, <span class="st">"adolfo gonzales chaves"</span>, <span class="st">"a. gonzales chaves"</span>),</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="at">dpto_clean =</span> <span class="fu">str_replace</span>(dpto_clean, <span class="st">"general madariaga"</span>, <span class="st">"general juan madariaga"</span>),</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="at">dpto_clean =</span> <span class="fu">str_replace</span>(dpto_clean, <span class="st">"coronel rosales"</span>, <span class="st">"cnel. de marina l.rosales"</span>),</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="at">dpto_clean =</span> <span class="fu">str_replace</span>(dpto_clean, <span class="st">"cañuelas"</span>, <span class="st">"ca?uelas"</span>),</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="at">dpto_clean =</span> <span class="fu">str_replace</span>(dpto_clean, <span class="st">"general la madrid"</span>, <span class="st">"general lamadrid"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="at">dpto_clean =</span> <span class="fu">str_replace</span>(dpto_clean, <span class="st">&quot;adolfo gonzales chaves&quot;</span>, <span class="st">&quot;a. gonzales chaves&quot;</span>),</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="at">dpto_clean =</span> <span class="fu">str_replace</span>(dpto_clean, <span class="st">&quot;general madariaga&quot;</span>, <span class="st">&quot;general juan madariaga&quot;</span>),</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="at">dpto_clean =</span> <span class="fu">str_replace</span>(dpto_clean, <span class="st">&quot;coronel rosales&quot;</span>, <span class="st">&quot;cnel. de marina l.rosales&quot;</span>),</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="at">dpto_clean =</span> <span class="fu">str_replace</span>(dpto_clean, <span class="st">&quot;cañuelas&quot;</span>, <span class="st">&quot;ca?uelas&quot;</span>),</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="at">dpto_clean =</span> <span class="fu">str_replace</span>(dpto_clean, <span class="st">&quot;general la madrid&quot;</span>, <span class="st">&quot;general lamadrid&quot;</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(geo_dpto) <span class="sc">%&gt;%</span></span>
 <span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="fu">st_as_sf</span>()</span>
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>geo_resultados <span class="ot">&lt;-</span> geo_resultados <span class="sc">%&gt;%</span> </span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(Elecciones<span class="sc">==</span><span class="st">"GENERALES 2023"</span> <span class="sc">&amp;</span> Partido <span class="sc">!=</span> <span class="st">"IMPUGNADO"</span><span class="sc">&amp;</span> Partido <span class="sc">!=</span> <span class="st">"NULO"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">Partido =</span> <span class="fu">case_when</span>(Partido<span class="sc">==</span><span class="st">"FRENTE DE IZQUIERDA Y DE TRABAJADORES - UNIDAD"</span><span class="sc">~</span><span class="st">"FIT-U"</span>,</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>Partido<span class="sc">==</span><span class="st">"HACEMOS POR NUESTRO PAIS"</span><span class="sc">~</span><span class="st">"HNP"</span>, <span class="at">.default =</span> <span class="fu">as.character</span>(Partido))) </span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(Elecciones<span class="sc">==</span><span class="st">&quot;GENERALES 2023&quot;</span> <span class="sc">&amp;</span> Partido <span class="sc">!=</span> <span class="st">&quot;IMPUGNADO&quot;</span><span class="sc">&amp;</span> Partido <span class="sc">!=</span> <span class="st">&quot;NULO&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">Partido =</span> <span class="fu">case_when</span>(Partido<span class="sc">==</span><span class="st">&quot;FRENTE DE IZQUIERDA Y DE TRABAJADORES - UNIDAD&quot;</span><span class="sc">~</span><span class="st">&quot;FIT-U&quot;</span>,</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>Partido<span class="sc">==</span><span class="st">&quot;HACEMOS POR NUESTRO PAIS&quot;</span><span class="sc">~</span><span class="st">&quot;HNP&quot;</span>, <span class="at">.default =</span> <span class="fu">as.character</span>(Partido))) </span>
 <span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>geo_resultados <span class="sc">%&gt;%</span> </span>
 <span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(Partido) <span class="sc">%&gt;%</span> </span>
@@ -628,25 +616,29 @@ Figure&nbsp;1: Fuente: <a href="https://chequeado.com/el-explicador/carreras-uni
 <span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="sc">~</span>Partido)<span class="sc">+</span></span>
 <span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_viridis_c</span>()<span class="sc">+</span></span>
 <span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_void</span>()<span class="sc">+</span></span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">fill=</span><span class="st">"Porcentaje (min-max)"</span>)<span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_colorbar</span>(<span class="at">ticks.colour =</span> <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">fill=</span><span class="st">&quot;Porcentaje (min-max)&quot;</span>)<span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_colorbar</span>(<span class="at">ticks.colour =</span> <span class="cn">NA</span>))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="viz_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<figure>
+<p><img src="viz_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672" /></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
 <section id="para-seguir-practicando" class="level2">
-<h2 class="anchored" data-anchor-id="para-seguir-practicando">4.6. Para seguir practicando</h2>
-
-
+<h2>4.6. Para seguir practicando</h2>
+<div id="quarto-navigation-envelope" class="hidden">
+<p><span class="hidden" data-render-id="quarto-int-sidebar-title">¿Datos para qué? Intro al mundo de datos con R</span> <span class="hidden" data-render-id="quarto-int-navbar-title">¿Datos para qué? Intro al mundo de datos con R</span> <span class="hidden" data-render-id="quarto-int-navbar:Presentación">Presentación</span> <span class="hidden" data-render-id="quarto-int-navbar:/index.html">/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:1. Piletazo">1. Piletazo</span> <span class="hidden" data-render-id="quarto-int-navbar:/intro.html">/intro.html</span> <span class="hidden" data-render-id="quarto-int-navbar:2. Procesamiento">2. Procesamiento</span> <span class="hidden" data-render-id="quarto-int-navbar:/procesamiento.html">/procesamiento.html</span> <span class="hidden" data-render-id="quarto-int-navbar:3. Análisis">3. Análisis</span> <span class="hidden" data-render-id="quarto-int-navbar:/analisis.html">/analisis.html</span> <span class="hidden" data-render-id="quarto-int-navbar:4. Visualización">4. Visualización</span> <span class="hidden" data-render-id="quarto-int-navbar:/viz.html">/viz.html</span></p>
+</div>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden" data-render-id="quarto-metatitle">¿Datos para qué? Intro al mundo de datos con R</span> <span class="hidden" data-render-id="quarto-twittercardtitle">¿Datos para qué? Intro al mundo de datos con R</span> <span class="hidden" data-render-id="quarto-ogcardtitle">¿Datos para qué? Intro al mundo de datos con R</span> <span class="hidden" data-render-id="quarto-metasitename">¿Datos para qué? Intro al mundo de datos con R</span> <span class="hidden" data-render-id="quarto-twittercarddesc"></span> <span class="hidden" data-render-id="quarto-ogcardddesc"></span></p>
+</div>
 </section>
 </section>
 
 </main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+<script id = "quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1057,7 +1049,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 </div> <!-- /content -->
 
+</body>
 
-
-
-</body></html>
+</html>
