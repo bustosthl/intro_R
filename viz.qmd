@@ -339,7 +339,10 @@ st_as_sf()
 
 geo_resultados <- geo_resultados %>% 
 filter(Elecciones=="GENERALES 2023" & Partido != "IMPUGNADO"& Partido != "NULO") %>% 
-mutate(Partido = case_when(Partido=="FRENTE DE IZQUIERDA Y DE TRABAJADORES - UNIDAD"~"FIT-U",
+mutate(Partido = case_when(Partido=="FRENTE DE IZQUIERDA Y DE TRABAJADORES - UNIDAD"~"FIT",
+Partido=="JUNTOS POR EL CAMBIO"~"JXC",
+Partido=="LA LIBERTAD AVANZA"~"LLA",
+Partido=="UNION POR LA PATRIA"~"UXP",
 Partido=="HACEMOS POR NUESTRO PAIS"~"HNP", .default = as.character(Partido))) 
 
 geo_resultados %>% 
@@ -347,12 +350,12 @@ group_by(Partido) %>%
 mutate(Porcentaje_norm=(Porcentaje - min(Porcentaje)) / (max(Porcentaje)-min(Porcentaje)) ) %>% 
 ungroup() %>% 
 ggplot()+
-geom_sf(aes(fill=Porcentaje_norm))+
+geom_sf(aes(fill=Porcentaje_norm), lwd=0)+
 facet_wrap(~Partido)+
 scale_fill_viridis_c()+
 theme_void()+
-labs(fill="Min-Max")+ guides(fill=guide_colorbar(ticks.colour = NA))
+theme(legend.text = element_blank())+
+labs(title="Resultados en elecciones generales 2023", 
+subtitle="Provincia de Buenos Aires", fill="Max")
 ```
 
-
-## 4.6. Para seguir practicando

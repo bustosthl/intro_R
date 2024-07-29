@@ -164,7 +164,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#construyendo-un-gráfico-en-ggplot" id="toc-construyendo-un-gráfico-en-ggplot" class="nav-link" data-scroll-target="#construyendo-un-gráfico-en-ggplot">4.3. Construyendo un gráfico en <code>ggplot()</code></a></li>
   <li><a href="#el-qué-antecede-al-cómo" id="toc-el-qué-antecede-al-cómo" class="nav-link" data-scroll-target="#el-qué-antecede-al-cómo">4.4. El qué antecede al cómo</a></li>
   <li><a href="#yapa-mapas" id="toc-yapa-mapas" class="nav-link" data-scroll-target="#yapa-mapas">4.5. Yapa: Mapas</a></li>
-  <li><a href="#para-seguir-practicando" id="toc-para-seguir-practicando" class="nav-link" data-scroll-target="#para-seguir-practicando">4.6. Para seguir practicando</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="viz.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -616,19 +615,24 @@ Figure&nbsp;1: Fuente: <a href="https://chequeado.com/el-explicador/carreras-uni
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>geo_resultados <span class="ot">&lt;-</span> geo_resultados <span class="sc">%&gt;%</span> </span>
 <span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(Elecciones<span class="sc">==</span><span class="st">"GENERALES 2023"</span> <span class="sc">&amp;</span> Partido <span class="sc">!=</span> <span class="st">"IMPUGNADO"</span><span class="sc">&amp;</span> Partido <span class="sc">!=</span> <span class="st">"NULO"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">Partido =</span> <span class="fu">case_when</span>(Partido<span class="sc">==</span><span class="st">"FRENTE DE IZQUIERDA Y DE TRABAJADORES - UNIDAD"</span><span class="sc">~</span><span class="st">"FIT-U"</span>,</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>Partido<span class="sc">==</span><span class="st">"HACEMOS POR NUESTRO PAIS"</span><span class="sc">~</span><span class="st">"HNP"</span>, <span class="at">.default =</span> <span class="fu">as.character</span>(Partido))) </span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>geo_resultados <span class="sc">%&gt;%</span> </span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(Partido) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">Porcentaje_norm=</span>(Porcentaje <span class="sc">-</span> <span class="fu">min</span>(Porcentaje)) <span class="sc">/</span> (<span class="fu">max</span>(Porcentaje)<span class="sc">-</span><span class="fu">min</span>(Porcentaje)) ) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>Porcentaje_norm))<span class="sc">+</span></span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="sc">~</span>Partido)<span class="sc">+</span></span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_viridis_c</span>()<span class="sc">+</span></span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_void</span>()<span class="sc">+</span></span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">fill=</span><span class="st">"Porcentaje (min-max)"</span>)<span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_colorbar</span>(<span class="at">ticks.colour =</span> <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">Partido =</span> <span class="fu">case_when</span>(Partido<span class="sc">==</span><span class="st">"FRENTE DE IZQUIERDA Y DE TRABAJADORES - UNIDAD"</span><span class="sc">~</span><span class="st">"FIT"</span>,</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>Partido<span class="sc">==</span><span class="st">"JUNTOS POR EL CAMBIO"</span><span class="sc">~</span><span class="st">"JXC"</span>,</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>Partido<span class="sc">==</span><span class="st">"LA LIBERTAD AVANZA"</span><span class="sc">~</span><span class="st">"LLA"</span>,</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>Partido<span class="sc">==</span><span class="st">"UNION POR LA PATRIA"</span><span class="sc">~</span><span class="st">"UXP"</span>,</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>Partido<span class="sc">==</span><span class="st">"HACEMOS POR NUESTRO PAIS"</span><span class="sc">~</span><span class="st">"HNP"</span>, <span class="at">.default =</span> <span class="fu">as.character</span>(Partido))) </span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>geo_resultados <span class="sc">%&gt;%</span> </span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(Partido) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">Porcentaje_norm=</span>(Porcentaje <span class="sc">-</span> <span class="fu">min</span>(Porcentaje)) <span class="sc">/</span> (<span class="fu">max</span>(Porcentaje)<span class="sc">-</span><span class="fu">min</span>(Porcentaje)) ) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>Porcentaje_norm), <span class="at">lwd=</span><span class="dv">0</span>)<span class="sc">+</span></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="sc">~</span>Partido)<span class="sc">+</span></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_viridis_c</span>()<span class="sc">+</span></span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_void</span>()<span class="sc">+</span></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">legend.text =</span> <span class="fu">element_blank</span>())<span class="sc">+</span></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Resultados en elecciones generales 2023"</span>, </span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a><span class="at">subtitle=</span><span class="st">"Provincia de Buenos Aires"</span>, <span class="at">fill=</span><span class="st">"Max"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -637,9 +641,6 @@ Figure&nbsp;1: Fuente: <a href="https://chequeado.com/el-explicador/carreras-uni
 </div>
 </div>
 </div>
-</section>
-<section id="para-seguir-practicando" class="level2">
-<h2 class="anchored" data-anchor-id="para-seguir-practicando">4.6. Para seguir practicando</h2>
 
 
 </section>
