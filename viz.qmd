@@ -218,8 +218,77 @@ tab_pj %>%
 
 ## 4.4. El qué antecede al cómo
 
-Elegir un gráfico no es una *mera* cuestión artística: hay distintos tipos de gráficos según *qué* se quiere mostrar. Para investigar un poco más, dejo dos recursos: una [infografía](https://raw.githubusercontent.com/Financial-Times/chart-doctor/main/visual-vocabulary/poster.png) sobre distintos tipos de gráficos y el [proyecto Dataviz](https://datavizproject.com/) que funciona como una guía para elegir.  
+Elegir un gráfico no es una *mera* cuestión artística: hay distintos tipos de gráficos según *qué* se quiere mostrar. Para investigar un poco más, dejo dos recursos: una [infografía](https://raw.githubusercontent.com/Financial-Times/chart-doctor/main/visual-vocabulary/poster.png) sobre distintos tipos de gráficos y el [proyecto Dataviz](https://datavizproject.com/) que funciona como una guía para elegir. Veamos algunos ejemplos.
+
+::: {.panel-tabset .nav-pills}
+## Distribuciones
+
+Si queremos ver una sola distribución (o dos) podemos usar un histograma o un gráfico de densidad. Para comparar entre varias, la mejor opción es el gráfico de cajas.
+
+```{r}
+#| column: screen-inset-shaded
+#| layout-nrow: 1
+#| echo: false
+
+data %>%
+filter(Partido=="BLANCO") %>% 
+ggplot(aes(x=Porcentaje))+
+geom_histogram()+
+#geom_density(color="blue")+
+theme_minimal()+
+labs(title="Distribución del voto en blanco", subtitle="Provincia de Buenos Aires")
+
+data %>%
+filter(Partido=="BLANCO") %>% 
+separate_wider_delim(Elecciones, " ", names = c("tipo_eleccion", "anio_eleccion"), cols_remove=FALSE) %>% 
+ggplot(aes(x=tipo_eleccion, y=Porcentaje, fill=tipo_eleccion))+
+geom_boxplot()+
+theme_minimal()+
+labs(title="Distribución del voto en blanco según tipo de elección", subtitle="Provincia de Buenos Aires")
+```
+
+## Parte-de-un-todo
+
+Si queremos resaltar que estamos mostrando partes de un todo los gráficos de tortas/anillos y las barras apiladas van a ser nuestras mejores opciones. 
+
+```{r}
+#| column: screen-inset-shaded
+#| layout-nrow: 1
+#| echo: false
+
+data %>% 
+mutate(partido_agrup = case_when(Partido %in% c("BLANCO","IMPUGNADO","NULO")~"NEGATIVO",.default = "POSITIVO")) %>% 
+filter(seccion=="General Pueyrredon, Buenos Aires" & Elecciones=="PASO 2023") %>% 
+group_by(partido_agrup, Elecciones) %>% 
+summarise(Votos = sum(Votos)) %>% 
+ungroup() %>% 
+group_by(Elecciones) %>% 
+mutate(Porcentaje = Votos / sum(Votos)) %>% 
+ungroup() %>% 
+ggplot(aes(x=Porcentaje, y="", fill=partido_agrup))+
+geom_col()+
+coord_polar()+
+theme_void()+
+labs(title="Votos positivos y negativos en las elecciones PASO 2023", subtitle="General Pueyrredón, Buenos Aires")
+
+
+data %>% 
+mutate(partido_agrup = case_when(Partido %in% c("BLANCO","IMPUGNADO","NULO")~"NEGATIVO",.default = "POSITIVO")) %>% 
+filter(seccion=="General Pueyrredon, Buenos Aires" & Elecciones %in% c("PASO 2023", "GENERALES 2023", "BALLOTAGE 2023")) %>%
+group_by(partido_agrup, Elecciones) %>% 
+summarise(Votos = sum(Votos)) %>% 
+ungroup() %>% 
+group_by(Elecciones) %>% 
+mutate(Porcentaje = Votos / sum(Votos)) %>% 
+ungroup() %>% 
+ggplot(aes(x=Elecciones, y=Porcentaje, fill=partido_agrup))+
+geom_col()+
+theme_minimal()+
+labs(title="Votos positivos y negativos en las elecciones del 2023", subtitle="General Pueyrredón, Buenos Aires")
+```
+:::
 
 ## 4.5. Yapa: Mapas
+
 
 ## 4.6. Para seguir practicando

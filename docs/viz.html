@@ -170,12 +170,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="viz.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 
 
 
-<section id="visualización" class="level1">
+<section id="visualización" class="level1 page-columns page-full">
 <h1>4. Visualización</h1>
 <p>En este apartado nos enfocaremos en entender por qué visualizar datos y cómo construirlos utilizando <code>ggplot()</code>.</p>
 <section id="pregunta-problema" class="level2">
@@ -234,6 +234,9 @@ Atención
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-inscriptos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p>Dos ejemplos de visualizaciones que tienen muy en claro qué es lo que quieren comunicar. Una disposición de la información que acompaña y refuerza el mensaje.</p>
+</div>
 <div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-inscriptos" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div id="fig-gral" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
@@ -246,6 +249,8 @@ Atención
 </figure>
 </div>
 </div>
+</div>
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-inscriptos" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div id="fig-socio" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
@@ -518,8 +523,48 @@ Figure&nbsp;1: Fuente: <a href="https://chequeado.com/el-explicador/carreras-uni
 </div>
 </div>
 </section>
-<section id="el-qué-antecede-al-cómo" class="level2">
+<section id="el-qué-antecede-al-cómo" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="el-qué-antecede-al-cómo">4.4. El qué antecede al cómo</h2>
+<p>Elegir un gráfico no es una <em>mera</em> cuestión artística: hay distintos tipos de gráficos según <em>qué</em> se quiere mostrar. Para investigar un poco más, dejo dos recursos: una <a href="https://raw.githubusercontent.com/Financial-Times/chart-doctor/main/visual-vocabulary/poster.png">infografía</a> sobre distintos tipos de gráficos y el <a href="https://datavizproject.com/">proyecto Dataviz</a> que funciona como una guía para elegir. Veamos algunos ejemplos.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset nav-pills page-columns page-full">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Distribuciones</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Distribuciones</a></li></ul>
+<div class="tab-content nav-pills page-columns page-full">
+<div id="tabset-2-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>Si queremos ver una sola distribución (o dos) podemos usar un histograma o un gráfico de densidad. Para comparar entre varias, la mejor opción es el gráfico de cajas.</p>
+<div>
+
+</div>
+<div class="cell column-screen-inset-right quarto-layout-panel" data-layout-nrow="1">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="viz_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="viz_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cars)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pressure)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell column-screen-inset-right quarto-layout-panel" data-layout-nrow="1">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="viz_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="viz_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="viz_files/figure-html/unnamed-chunk-11-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="yapa-mapas" class="level2">
 <h2 class="anchored" data-anchor-id="yapa-mapas">4.5. Yapa: Mapas</h2>
