@@ -159,7 +159,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#análisis" id="toc-análisis" class="nav-link active" data-scroll-target="#análisis">3. Análisis</a>
   <ul class="collapse">
-  <li><a href="#repasando-conceptos-básicos" id="toc-repasando-conceptos-básicos" class="nav-link" data-scroll-target="#repasando-conceptos-básicos">3.1. Repasando conceptos básicos</a></li>
+  <li><a href="#pregunta-problema" id="toc-pregunta-problema" class="nav-link" data-scroll-target="#pregunta-problema">3.1. Pregunta-problema</a></li>
+  <li><a href="#repasando-conceptos-básicos" id="toc-repasando-conceptos-básicos" class="nav-link" data-scroll-target="#repasando-conceptos-básicos">3.2. Repasando conceptos básicos</a></li>
+  <li><a href="#operando-sobre-grupos" id="toc-operando-sobre-grupos" class="nav-link" data-scroll-target="#operando-sobre-grupos">3.3. Operando sobre grupos</a></li>
+  <li><a href="#uniones" id="toc-uniones" class="nav-link" data-scroll-target="#uniones">3.4. Uniones</a></li>
+  <li><a href="#para-seguir-practicando" id="toc-para-seguir-practicando" class="nav-link" data-scroll-target="#para-seguir-practicando">3.5. Para seguir practicando</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="analisis.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -206,8 +210,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 6            2         1             2     11                      215000</code></pre>
 </div>
 </div>
+<section id="pregunta-problema" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-problema">3.1. Pregunta-problema</h2>
+<p>¿Cómo varía el ingreso en la Ciudad de Buenos Aires por comuna? ¿Cómo se relaciona eso con los resultados electorales de G2023?</p>
+</section>
 <section id="repasando-conceptos-básicos" class="level2">
-<h2 class="anchored" data-anchor-id="repasando-conceptos-básicos">3.1. Repasando conceptos básicos</h2>
+<h2 class="anchored" data-anchor-id="repasando-conceptos-básicos">3.2. Repasando conceptos básicos</h2>
 <p>¿Por qué hablamos de <strong>muestra</strong>? se llama muestra a un subconjunto de una población que es captado para analizar a una <strong>población</strong> específica. Con población nos referimos al conjunto de todos los elementos que forman parte de un universo de interés.</p>
 <p>Existen distintas <strong>medidas resumen</strong> para sintetizar y describir las características principales de un conjunto de datos. Permiten obtener una visión general y son fundamentales para el análisis exploratorio.</p>
 <p>En este apartado vamos a trabajar con la distribución del ingreso familiar per cápita en CABA. Una distribución es simplemente un conjunto de datos determinado; en este caso, una muestra proveniente de la encuesta antedicha.</p>
@@ -337,10 +345,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>eah <span class="sc">%&gt;%</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ingreso_per_capita_familiar <span class="sc">&lt;</span> <span class="dv">2000000</span>) <span class="sc">%&gt;%</span> <span class="co"># filtramos algunos casos para mejorar la visualización</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(ingreso_per_capita_familiar))<span class="sc">+</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Distribución del ingreso per cápita familiar"</span>, <span class="at">subtitle=</span><span class="fu">paste0</span>(<span class="st">"Ciudad de Buenos Aires"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">comuna =</span> <span class="fu">factor</span>(comuna)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>comuna, <span class="at">y=</span>ingreso_per_capita_familiar, <span class="at">fill=</span>comuna))<span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">show.legend=</span><span class="cn">FALSE</span>)<span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.y=</span>mean, <span class="at">geom=</span><span class="st">"point"</span>, <span class="at">shape=</span><span class="dv">4</span>, <span class="at">size=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">"white"</span>, <span class="at">fill=</span><span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Distribución del ingreso per cápita familiar"</span>, <span class="at">subtitle=</span><span class="fu">paste0</span>(<span class="st">"Ciudad de Buenos Aires"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -349,14 +359,212 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x, pos){</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(x,(cargo_nombre <span class="sc">==</span> <span class="st">"PRESIDENTE Y VICE"</span>))</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#data &lt;- read_csv_chunked(ruta, DataFrameCallback$new(f), chunk_size=10000)</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">#dim(data) # vemos cuántas filas y columnas tiene</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#head(data) # vemos las primeras 5 filas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="operando-sobre-grupos" class="level2">
+<h2 class="anchored" data-anchor-id="operando-sobre-grupos">3.3. Operando sobre grupos</h2>
+<p>La función <code>group_by()</code> nos permite hacer ciertos cálculos por grupos. Lógicamente, el esquema es el siguiente.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/groupby_esquema.jpg" class="img-fluid figure-img"></p>
+<figcaption>Esquema group_by</figcaption>
+</figure>
 </div>
+<p>En este caso, veremos de sacar algunas medidas resumen por comuna.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>eah_comuna <span class="ot">&lt;-</span> eah <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(comuna) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">promedio_ipcf =</span> <span class="fu">mean</span>(ingreso_per_capita_familiar),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mediana_ipcf =</span> <span class="fu">median</span>(ingreso_per_capita_familiar),</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_ipcf =</span> <span class="fu">sd</span>(ingreso_per_capita_familiar)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>eah_comuna <span class="sc">%&gt;%</span> </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">comuna =</span> <span class="fu">paste0</span>(<span class="st">"Comuna "</span>,comuna)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span><span class="fu">reorder</span>(comuna, promedio_ipcf), <span class="at">x=</span>promedio_ipcf)) <span class="sc">+</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend=</span><span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">"blue"</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span>mediana_ipcf), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">""</span>, <span class="at">y=</span><span class="st">""</span>, </span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">"Promedio de ingresos por comuna"</span>, </span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Ciudad de Buenos Aires"</span>,</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">"Elaboración propia según EAH"</span>)<span class="sc">+</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analisis_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Armemos los resultados electorales para poder comparar resultados electorales con ingresos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ruta <span class="ot">&lt;-</span> <span class="st">"data/encuentro_2/2023_Generales/ResultadosElectorales_2023.csv"</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x, pos){</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(x,(cargo_nombre <span class="sc">==</span> <span class="st">"PRESIDENTE Y VICE"</span>)<span class="sc">&amp;</span>(distrito_nombre <span class="sc">==</span><span class="st">"Ciudad Autónoma de Buenos Aires"</span>))</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>g2023 <span class="ot">&lt;-</span> <span class="fu">read_csv_chunked</span>(ruta, DataFrameCallback<span class="sc">$</span><span class="fu">new</span>(f), <span class="at">chunk_size=</span><span class="dv">10000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">votos_agrupado =</span> <span class="fu">case_when</span>(<span class="fu">is.na</span>(agrupacion_nombre) <span class="sc">~</span> <span class="st">"NEGATIVO"</span>, <span class="co"># transformamos variables</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">.default =</span> <span class="fu">as.character</span>(agrupacion_nombre)), </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">votos_agrupado_red =</span> <span class="fu">case_when</span>(votos_agrupado <span class="sc">==</span> <span class="st">"NEGATIVO"</span> <span class="sc">~</span> <span class="st">"NEG"</span>,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                                        votos_agrupado <span class="sc">==</span> <span class="st">"UNION POR LA PATRIA"</span> <span class="sc">~</span> <span class="st">"UXP"</span>,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>                                        votos_agrupado <span class="sc">==</span> <span class="st">"JUNTOS POR EL CAMBIO"</span> <span class="sc">~</span> <span class="st">"JXC"</span>,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>                                        votos_agrupado <span class="sc">==</span> <span class="st">"LA LIBERTAD AVANZA"</span> <span class="sc">~</span> <span class="st">"LLA"</span>,</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>                                        votos_agrupado <span class="sc">==</span> <span class="st">"FRENTE DE IZQUIERDA Y DE TRABAJADORES - UNIDAD"</span> <span class="sc">~</span> <span class="st">"FIT"</span>,</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>                                        votos_agrupado <span class="sc">==</span> <span class="st">"HACEMOS POR NUESTRO PAIS"</span> <span class="sc">~</span> <span class="st">"HNP"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(seccion_id, votos_agrupado_red) <span class="sc">%&gt;%</span> <span class="co"># agrupamos</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">votos =</span> <span class="fu">sum</span>(votos_cantidad)) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from=</span>votos_agrupado_red, <span class="at">values_from=</span>votos) <span class="sc">%&gt;%</span> <span class="co"># pasamos a wider</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">TOTAL =</span> <span class="fu">rowSums</span>(<span class="fu">across</span>()), <span class="co"># calculamos %</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">NEG_per =</span> NEG <span class="sc">/</span> TOTAL,</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">UXP_per =</span> UXP <span class="sc">/</span> TOTAL,</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">JXC_per =</span> JXC <span class="sc">/</span> TOTAL,</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">LLA_per =</span> LLA <span class="sc">/</span> TOTAL,</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>         <span class="at">FIT_per =</span> FIT <span class="sc">/</span> TOTAL,</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>         <span class="at">HNP_per =</span> HNP <span class="sc">/</span> TOTAL, </span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>         <span class="at">comuna =</span> seccion_id)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(g2023) <span class="co"># vemos cuántas filas y columnas tiene</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15 15</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(g2023) <span class="co"># vemos las primeras 5 filas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 15
+  seccion_id   FIT   HNP   JXC   LLA   NEG   UXP  TOTAL NEG_per UXP_per JXC_per
+       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1          1  3981  3230 45975 25657  3762 38645 121251  0.0310   0.319   0.379
+2          2  1912  2250 57022 17875  1951 19225 100237  0.0195   0.192   0.569
+3          3  4571  3362 39075 23562  2902 38993 112468  0.0258   0.347   0.347
+4          4  5586  4211 39963 29077  4283 51401 134525  0.0318   0.382   0.297
+5          5  4814  3675 43259 20595  2815 42504 117667  0.0239   0.361   0.368
+6          6  4208  3698 54873 20043  2649 39230 124707  0.0212   0.315   0.440
+# ℹ 4 more variables: LLA_per &lt;dbl&gt;, FIT_per &lt;dbl&gt;, HNP_per &lt;dbl&gt;, comuna &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="uniones" class="level2">
+<h2 class="anchored" data-anchor-id="uniones">3.4. Uniones</h2>
+<p>Para cruzar distintas bases de datos podemos usar las funciones <code>_join()</code> disponibles en <code>Tidyverse</code>. Una buena práctica es chequear que las claves funcionen correctamente antes de realizar la unión.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/join_esquema.jpg" class="img-fluid figure-img"></p>
+<figcaption>Uniones</figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>eah <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(comuna) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(comuna)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 15 × 1
+   comuna
+    &lt;dbl&gt;
+ 1      1
+ 2      2
+ 3      3
+ 4      4
+ 5      5
+ 6      6
+ 7      7
+ 8      8
+ 9      9
+10     10
+11     11
+12     12
+13     13
+14     14
+15     15</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>g2023 <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(comuna) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(comuna)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 15 × 1
+   comuna
+    &lt;dbl&gt;
+ 1      1
+ 2      2
+ 3      3
+ 4      4
+ 5      5
+ 6      6
+ 7      7
+ 8      8
+ 9      9
+10     10
+11     11
+12     12
+13     13
+14     14
+15     15</code></pre>
+</div>
+</div>
+<p>Unimos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>union <span class="ot">&lt;-</span> <span class="fu">left_join</span>(eah_comuna, g2023)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>union</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 15 × 18
+   comuna promedio_ipcf mediana_ipcf sd_ipcf seccion_id   FIT   HNP   JXC   LLA
+    &lt;dbl&gt;         &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1      1       202054.       133333 407191.          1  3981  3230 45975 25657
+ 2      2       352813.       288750 274452.          2  1912  2250 57022 17875
+ 3      3       239054.       175000 217593.          3  4571  3362 39075 23562
+ 4      4       187481.       142667 174572.          4  5586  4211 39963 29077
+ 5      5       272783.       203745 249796.          5  4814  3675 43259 20595
+ 6      6       318939.       265000 231980.          6  4208  3698 54873 20043
+ 7      7       195993.       147000 166927.          7  4863  4193 48420 28137
+ 8      8       117076.        90000  95754.          8  4285  3238 26068 27845
+ 9      9       178027.       143333 125424.          9  4578  4047 37413 25544
+10     10       225012.       180000 159391.         10  4719  4164 41986 23062
+11     11       264226.       215000 198084.         11  5061  4588 54758 25858
+12     12       314651.       240000 237795.         12  5307  5013 64831 27422
+13     13       347865.       275000 297813.         13  3887  4321 87321 27643
+14     14       415010.       300000 474295.         14  3613  3621 80939 25920
+15     15       238035.       191000 193145.         15  4760  3996 45464 21184
+# ℹ 9 more variables: NEG &lt;dbl&gt;, UXP &lt;dbl&gt;, TOTAL &lt;dbl&gt;, NEG_per &lt;dbl&gt;,
+#   UXP_per &lt;dbl&gt;, JXC_per &lt;dbl&gt;, LLA_per &lt;dbl&gt;, FIT_per &lt;dbl&gt;, HNP_per &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Veamoslo gráficamente.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>union <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(comuna, mediana_ipcf, NEG_per, FIT_per, HNP_per, JXC_per, LLA_per, UXP_per) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span><span class="fu">c</span>(<span class="st">"comuna"</span>, <span class="st">"mediana_ipcf"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">str_replace</span>(name, <span class="st">"_per"</span>,<span class="st">""</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>mediana_ipcf, <span class="at">y=</span>value, <span class="at">color=</span>name))<span class="sc">+</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name, <span class="at">scales=</span><span class="st">"free"</span>)<span class="sc">+</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Ingresos x voto (%)"</span>, </span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Ciudad de Buenos Aires"</span>,</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Voto (%)"</span>)<span class="sc">+</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"seagreen"</span>, <span class="st">"orange"</span>, <span class="st">"darkviolet"</span>, <span class="st">"black"</span>, <span class="st">"dodgerblue"</span>))<span class="sc">+</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y=</span><span class="fu">element_blank</span>(),</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analisis_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="para-seguir-practicando" class="level2">
+<h2 class="anchored" data-anchor-id="para-seguir-practicando">3.5. Para seguir practicando</h2>
+<p>Se puede probar:</p>
+<ul>
+<li><p>unir la base con alguna otra información por comuna presente en la página de <a href="https://data.buenosaires.gob.ar/">datos del GCBA</a>. Analizar la relación con alguna de las variables presentes en esta base.</p></li>
+<li><p>graficar el voto negativo vs votos contra otros partidos. ¿Hay alguna relación interesante?</p></li>
+</ul>
 
 
 </section>

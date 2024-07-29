@@ -1,30 +1,64 @@
 # 4. Visualización
 
-En este apartado nos enfocaremos en entender por qué visualizar datos y cómo construirlos utilizando `ggplot()`. 
+En este apartado nos enfocaremos en entender por qué visualizar datos y cómo construirlos utilizando `ggplot()`.
 
 ## 4.1. Pregunta-problema
 
-Caracterizar la territorialidad del voto en la Provincia de Buenos Aires. 
+Caracterizar la territorialidad del voto en la Provincia de Buenos Aires.
 
 ```{r}
 library(tidyverse)
 
 data <- read_csv("data/encuentro_1/ARG_elecciones.csv")
 
-head(data)
+head(data,2)
 ```
 
 ## 4.2. ¿Por qué visualizar?
 
+::: callout-note
+## Atención
+
+La visualización de datos es parte arte y parte ciencia y, como bien dice [Claus Wilke](https://clauswilke.com/dataviz/introduction.html), el desafío es realizar correctamente el arte sin desfigurar la ciencia (y viceversa).
+:::
+
+Hay tres razones centrales por las que visualizamos la información:
+
+-   **Explorar los datos**: hay relaciones que podemos malinterpretar si sólo miramos métricas resumen.
+
+-   **Expresar relaciones complejas**: no siempre las tablas nos van a permitir ver con claridad cuando hay mucha información involucrada.
+
+-   **Comunicar**: en general, construimos información para contársela a otras personas. Probablemente sea más fácil de contar una historia con un gráfico que con una tabla, por ejemplo.
+
+::: {.panel-tabset .nav-pills}
+## Explorar los datos
+
+Un gran ejemplo para mostrar lo importante de visualizar los datos es el llamado **Cuarteto de Anscombe**.
+
+![](img/cuarteto_anscombe.jpg)
+
+## Expresar relaciones complejas
+
+Hans Rosling fundó el proyecto [Gapminder](https://www.gapminder.org/tools/#$chart-type=bubbles&url=v2) y popularizó la siguiente visualización. [Aquí está disponible con la explicación del autor](https://www.youtube.com/watch?v=dfa7B8LPGOE).
+
+![](img/gapminder.png)
+
+## Comunicar
+
+::: {#fig-inscriptos layout-ncol="2"}
+Dos ejemplos de visualizaciones que tienen muy en claro qué es lo que quieren comunicar. Una disposición de la información que acompaña y refuerza el mensaje.
+
+![](img/inscriptos_uba_gral.png){#fig-gral}
+
+![](img/inscriptos_uba_socio.png){#fig-socio}
+
+Fuente: [Chequeado](https://chequeado.com/el-explicador/carreras-universitarias-en-los-ultimos-7-anos-hay-cada-vez-mas-inscriptos-en-exactas-medicina-e-ingenieria-y-cada-vez-menos-en-sociales/)
+:::
+:::
+
 ## 4.3. Construyendo un gráfico en `ggplot()`
 
-```{r}
-data %>% 
-
-```
-
-
-Hagamos una tabla con los votos al PJ en las distintas elecciones. 
+Hagamos una tabla con los votos al PJ en las distintas elecciones en la Provincia de Buenos Aires.
 
 ```{r}
 cols_pj <- c("FRENTE PARA LA VICTORIA","UNION POR LA PATRIA","FRENTE DE TODOS")
@@ -50,19 +84,26 @@ tab_pj <- data %>%
   filter(Partido %in% cols_pj)
 tab_pj
 ```
-Con ggplot simplemente vamos a establecer un lienzo vacío. En este caso, ya recibe la tabla con la información.
+
+La librería estrella de la visualización en `Tidyverse` funciona a través de **capas**. Cada una se corresponde con funciones diferentes dentro de la visualización.
+
+![](img/ggplot_esquema.png)
+
+Con `ggplot()` simplemente vamos a establecer un lienzo vacío. En este caso, ya recibe la tabla con la información.
+
 ```{r}
 tab_pj %>% 
   ggplot()
 ```
-Luego definimos las **asignaciones estéticas**: la relación entre las variables y ciertos elementos de los gráficos (ejes/coordenadas o distintos atributos como color, tamaño, forma, etc.). 
+
+Luego definimos las **asignaciones estéticas**: la relación entre las variables y ciertos elementos de los gráficos (ejes/coordenadas o distintos atributos como color, tamaño, forma, etc.).
 
 ```{r}
 tab_pj %>% 
   ggplot(aes(x=factor(Elecciones,orden), y=participacion))
 ```
 
-La siguiente definición es de los **elementos geométricos** con los que vamos a representar los datos definidos con anterioridad. 
+La siguiente definición es de los **elementos geométricos** con los que vamos a representar los datos definidos con anterioridad.
 
 ```{r}
 tab_pj %>% 
@@ -73,13 +114,28 @@ tab_pj %>%
 tab_pj %>% 
   ggplot(aes(x=factor(Elecciones,orden), y=participacion))+
   geom_col()
+
+# intentamos con DOS gráficos
+tab_pj %>% 
+  ggplot(aes(x=factor(Elecciones,orden), y=participacion))+
+  geom_col(width=0.1, fill="violet")+
+  geom_point(color="violet", size=7)
+
+# intentamos con TRES gráficos
+tab_pj %>% 
+  ggplot(aes(x=factor(Elecciones,orden), y=participacion))+
+  geom_col(width=0.1, fill="violet")+
+  geom_point(color="violet", size=7)+
+  geom_line(aes(group=1),color="black")
+  
 ```
-Se pueden agregar otros atributos. `Color` se utiliza para líneas y puntos; `fill` se utiliza para las áreas de los gráficos. 
+
+Se pueden agregar otros atributos. `Color` se utiliza para líneas y puntos; `fill` se utiliza para las áreas de los gráficos.
 
 ```{r}
 tab_pj %>% 
   ggplot(aes(x=factor(Elecciones,orden), y=votos_per, color=Partido, shape=anio_eleccion))+
-  geom_point(size=5)
+  geom_point(size=3, stroke=3)
 
 # intentamos con otro tipo de gráfico
 tab_pj %>% 
@@ -90,14 +146,80 @@ tab_pj %>%
 tab_pj %>% 
   ggplot(aes(x=factor(Elecciones,orden), y=votos_per))+
   geom_col(fill="red")
+
 ```
 
+El siguiente elemento que podríamos incorporar tiene que ver con definir el tipo de paleta de colores a utilizar, los límites de los ejes u otras cuestiones que no afectan a lo esencial del gráfico pero ayudan a comunicar el punto.
 
+```{r}
+tab_pj %>% 
+  ggplot(aes(x=factor(Elecciones,orden), y=votos_per, fill=Partido))+
+  geom_col()+
+  ylim(0,1)+ # ponemos límites entre 0 y 100%
+  scale_fill_viridis_d() # viridis es una paleta de colores en particular
+```
 
+Cuando hablamos de **facetado** nos referimos a separar los gráficos en partes según alguna variable.
+
+```{r}
+tab_pj %>% 
+  ggplot(aes(x=factor(Elecciones,orden), y=votos_per, fill=Partido))+
+  geom_col()+
+  ylim(0,0.7)+ # ponemos límites entre 0 y 100%
+  scale_fill_viridis_d()+ # viridis es una paleta de colores en particular
+  facet_wrap(~tipo_eleccion, scales = "free")
+```
+
+Lo último que nos interesa ver aquí son los temas, que comprenden los elementos visuales que no son controlados por la información propiamente dicha.
+
+```{r}
+tab_pj %>% 
+  ggplot(aes(x=factor(Elecciones,orden), y=votos_per, fill=Partido))+
+  geom_col()+
+  ylim(0,0.7)+ # ponemos límites entre 0 y 100%
+  scale_fill_viridis_d()+ # viridis es una paleta de colores en particular
+  facet_wrap(~anio_eleccion, scales = "free", ncol=4)+
+  theme_minimal()+ # agregamos definiciones generales
+  theme(legend.position="bottom",  
+        axis.line = element_line(linewidth = 0.75),
+        axis.line.x.bottom = element_line(colour = "blue")) # acá podemos definir elementos particulares
+
+# veamos una versión publicable
+tab_pj %>% 
+  ggplot(aes(x=factor(Elecciones,orden), y=votos_per, fill=Partido))+
+  geom_col()+
+  scale_y_continuous(limits=c(0,0.7), labels = scales::percent_format(accuracy = 1))+
+  scale_fill_viridis_d()+ # viridis es una paleta de colores en particular
+  facet_wrap(~anio_eleccion, scales = "free", ncol=4)+
+  theme_minimal()+ # agregamos definiciones generales
+  theme(legend.position="bottom")+ # acá podemos definir elementos particulares
+  labs(title="Resultados electorales del peronismo",
+       subtitle="Provincia de Buenos Aires 2011-2023",
+       x="", y="", caption = "Elaboración propia según DINE (provisorios)")
+
+# cambiemos los límites por las etiquetas
+tab_pj %>% 
+  mutate(tipo_eleccion = case_when(tipo_eleccion == "GENERALES" ~"GRAL",
+                                   tipo_eleccion == "BALLOTAGE" ~"BALOTAJE", 
+                                   .default = as.character(tipo_eleccion))) %>% 
+  ggplot(aes(x=factor(tipo_eleccion,c("PASO","GRAL","BALOTAJE")), y=votos_per, fill=Partido))+
+  geom_col()+
+  geom_text(aes(label=paste0(round(votos_per*100),"%"), y=votos_per+0.05))+
+  scale_y_continuous(limits=c(0,0.7), breaks=NULL)+
+  scale_fill_viridis_d(breaks=c("FRENTE PARA LA VICTORIA", "FRENTE DE TODOS", "UNION POR LA PATRIA"))+ # viridis es una paleta de colores en particular
+  facet_wrap(~anio_eleccion, scales = "free", ncol=4)+
+  theme_minimal()+ # agregamos definiciones generales
+  theme(legend.position="bottom")+ # acá podemos definir elementos particulares
+  labs(title="Resultados electorales del peronismo",
+       subtitle="Provincia de Buenos Aires 2011-2023",
+       caption = "Elaboración propia según DINE (provisorios)", 
+       x="", y="", fill="")
+```
 
 ## 4.4. El qué antecede al cómo
+
+Elegir un gráfico no es una *mera* cuestión artística: hay distintos tipos de gráficos según *qué* se quiere mostrar. Para investigar un poco más, dejo dos recursos: una [infografía](https://raw.githubusercontent.com/Financial-Times/chart-doctor/main/visual-vocabulary/poster.png) sobre distintos tipos de gráficos y el [proyecto Dataviz](https://datavizproject.com/) que funciona como una guía para elegir.  
 
 ## 4.5. Yapa: Mapas
 
 ## 4.6. Para seguir practicando
-
