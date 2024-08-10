@@ -30,7 +30,7 @@ bibliography: references.bib
 
 format:
   html:
-    theme: flatly
+    theme: simplex #flatly
     toc: true
     toc-title: "Apartados"
   pdf:

@@ -109,25 +109,30 @@ La siguiente definición es de los **elementos geométricos** con los que vamos 
 tab_pj %>% 
   ggplot(aes(x=factor(Elecciones,orden), y=participacion))+
   geom_point()
+```
 
+```{r}
 # intentamos con otro tipo de gráfico
 tab_pj %>% 
   ggplot(aes(x=factor(Elecciones,orden), y=participacion))+
   geom_col()
+```
 
+```{r}
 # intentamos con DOS gráficos
 tab_pj %>% 
   ggplot(aes(x=factor(Elecciones,orden), y=participacion))+
   geom_col(width=0.1, fill="violet")+
   geom_point(color="violet", size=7)
+```
 
+```{r}
 # intentamos con TRES gráficos
 tab_pj %>% 
   ggplot(aes(x=factor(Elecciones,orden), y=participacion))+
   geom_col(width=0.1, fill="violet")+
   geom_point(color="violet", size=7)+
   geom_line(aes(group=1),color="black")
-  
 ```
 
 Se pueden agregar otros atributos. `Color` se utiliza para líneas y puntos; `fill` se utiliza para las áreas de los gráficos.
@@ -136,17 +141,20 @@ Se pueden agregar otros atributos. `Color` se utiliza para líneas y puntos; `fi
 tab_pj %>% 
   ggplot(aes(x=factor(Elecciones,orden), y=votos_per, color=Partido, shape=anio_eleccion))+
   geom_point(size=3, stroke=3)
+```
 
+```{r}
 # intentamos con otro tipo de gráfico
 tab_pj %>% 
   ggplot(aes(x=factor(Elecciones,orden), y=votos_per, fill=Partido))+
   geom_col()
+```
 
+```{r}
 # si se define por fuera del aes() funciona como atributo general
 tab_pj %>% 
   ggplot(aes(x=factor(Elecciones,orden), y=votos_per))+
   geom_col(fill="red")
-
 ```
 
 El siguiente elemento que podríamos incorporar tiene que ver con definir el tipo de paleta de colores a utilizar, los límites de los ejes u otras cuestiones que no afectan a lo esencial del gráfico pero ayudan a comunicar el punto.
@@ -183,7 +191,9 @@ tab_pj %>%
   theme(legend.position="bottom",  
         axis.line = element_line(linewidth = 0.75),
         axis.line.x.bottom = element_line(colour = "blue")) # acá podemos definir elementos particulares
+```
 
+```{r}
 # veamos una versión publicable
 tab_pj %>% 
   ggplot(aes(x=factor(Elecciones,orden), y=votos_per, fill=Partido))+
@@ -196,7 +206,9 @@ tab_pj %>%
   labs(title="Resultados electorales del peronismo",
        subtitle="Provincia de Buenos Aires 2011-2023",
        x="", y="", caption = "Elaboración propia según DINE (provisorios)")
+```
 
+```{r}
 # cambiemos los límites por las etiquetas
 tab_pj %>% 
   mutate(tipo_eleccion = case_when(tipo_eleccion == "GENERALES" ~"GRAL",
@@ -231,25 +243,44 @@ Si queremos ver una sola distribución (o dos) podemos usar un histograma o un g
 #| echo: false
 
 data %>%
-filter(Partido=="BLANCO") %>% 
+filter(Partido %in% cols_pj & Provincia == "BUENOS AIRES") %>% 
 ggplot(aes(x=Porcentaje))+
 geom_histogram()+
 #geom_density(color="blue")+
 theme_minimal()+
-labs(title="Distribución del voto en blanco", subtitle="Provincia de Buenos Aires")
+labs(title="Distribución del voto al peronismo", subtitle="Provincia de Buenos Aires")
 
 data %>%
-filter(Partido=="BLANCO") %>% 
+filter(Partido %in% cols_pj & Provincia == "BUENOS AIRES") %>% 
 separate_wider_delim(Elecciones, " ", names = c("tipo_eleccion", "anio_eleccion"), cols_remove=FALSE) %>% 
-ggplot(aes(x=tipo_eleccion, y=Porcentaje, fill=tipo_eleccion))+
+mutate(Elecciones = str_replace(Elecciones, "PASO ","P"),
+         Elecciones = str_replace(Elecciones, "GENERALES ","G"),
+         Elecciones = str_replace(Elecciones, "BALLOTAGE ","B")) %>% 
+ggplot(aes(x=factor(Elecciones, orden), y=Porcentaje, fill=tipo_eleccion))+
 geom_boxplot()+
 theme_minimal()+
-labs(title="Distribución del voto en blanco según tipo de elección", subtitle="Provincia de Buenos Aires")
+labs(title="Distribución del voto al peronismo según tipo de elección", subtitle="Provincia de Buenos Aires", x="Elecciones")
+
+
+data %>%
+filter(Partido %in% cols_pj) %>% 
+separate_wider_delim(Elecciones, " ", names = c("tipo_eleccion", "anio_eleccion"), cols_remove=FALSE) %>% 
+mutate(Elecciones = str_replace(Elecciones, "PASO ","P"),
+         Elecciones = str_replace(Elecciones, "GENERALES ","G"),
+         Elecciones = str_replace(Elecciones, "BALLOTAGE ","B")) %>% 
+  group_by(Provincia) %>% 
+  mutate(promedio_provincial = median(Porcentaje)) %>% 
+  ungroup() %>% 
+ggplot(aes(x=reorder(Provincia, Porcentaje, FUN=median), y=Porcentaje, fill=promedio_provincial))+
+geom_boxplot(show.legend=F)+
+  coord_flip() + 
+theme_minimal()+
+labs(title="Distribución del voto al peronismo", subtitle="Según provincia", x="", y="% de voto")
 ```
 
 ## Parte-de-un-todo
 
-Si queremos resaltar que estamos mostrando partes de un todo los gráficos de tortas/anillos y las barras apiladas van a ser nuestras mejores opciones. 
+Si queremos resaltar que estamos mostrando partes de un todo los gráficos de tortas/anillos y las barras apiladas van a ser nuestras mejores opciones.
 
 ```{r}
 #| column: screen-inset-shaded
@@ -257,7 +288,8 @@ Si queremos resaltar que estamos mostrando partes de un todo los gráficos de to
 #| echo: false
 
 data %>% 
-mutate(partido_agrup = case_when(Partido %in% c("BLANCO","IMPUGNADO","NULO")~"NEGATIVO",.default = "POSITIVO")) %>% 
+mutate(partido_agrup = case_when(Partido %in% cols_pj~"PJ",
+                                 .default = "OTROS")) %>% 
 filter(seccion=="General Pueyrredon, Buenos Aires" & Elecciones=="PASO 2023") %>% 
 group_by(partido_agrup, Elecciones) %>% 
 summarise(Votos = sum(Votos)) %>% 
@@ -268,12 +300,14 @@ ungroup() %>%
 ggplot(aes(x=Porcentaje, y="", fill=partido_agrup))+
 geom_col()+
 coord_polar()+
+  scale_fill_manual(values=c("#999999", "#56B4E9"))+
 theme_void()+
 labs(title="Votos positivos y negativos en las elecciones PASO 2023", subtitle="General Pueyrredón, Buenos Aires")
 
 
 data %>% 
-mutate(partido_agrup = case_when(Partido %in% c("BLANCO","IMPUGNADO","NULO")~"NEGATIVO",.default = "POSITIVO")) %>% 
+mutate(partido_agrup = case_when(Partido %in% cols_pj~"PJ",
+                                 .default = "OTROS")) %>% 
 filter(seccion=="General Pueyrredon, Buenos Aires" & Elecciones %in% c("PASO 2023", "GENERALES 2023", "BALLOTAGE 2023")) %>%
 group_by(partido_agrup, Elecciones) %>% 
 summarise(Votos = sum(Votos)) %>% 
@@ -281,18 +315,19 @@ ungroup() %>%
 group_by(Elecciones) %>% 
 mutate(Porcentaje = Votos / sum(Votos)) %>% 
 ungroup() %>% 
-ggplot(aes(x=Elecciones, y=Porcentaje, fill=partido_agrup))+
+ggplot(aes(x=factor(Elecciones, c("PASO 2023","GENERALES 2023","BALLOTAGE 2023")), y=Porcentaje, fill=partido_agrup))+
 geom_col()+
+  scale_fill_manual(values=c("#999999", "#56B4E9"))+
 theme_minimal()+
-labs(title="Votos positivos y negativos en las elecciones del 2023", subtitle="General Pueyrredón, Buenos Aires")
+labs(title="Votos positivos y negativos en las elecciones del 2023", subtitle="General Pueyrredón, Buenos Aires", x="")
 ```
 :::
 
 ## 4.5. Yapa: Mapas
 
-Para trabajar información geográfica se utiliza una librería llamada `sf`. Los archivos de tipo geográfico tienen una particularidad: llevan una columna (en general llamada *geometry*) donde se indica la posición de cada fila en el espacio. 
+Para trabajar información geográfica se utiliza una librería llamada `sf`. Los archivos de tipo geográfico tienen una particularidad: llevan una columna (en general llamada *geometry*) donde se indica la posición de cada fila en el espacio.
 
-Carguemos los circuitos electorales disponibles en el portal de datos abiertos de la Provincia de Buenos Aires: https://catalogo.datos.gba.gob.ar/tr/dataset/circuitos-electorales. 
+Carguemos los circuitos electorales disponibles en el portal de datos abiertos de la Provincia de Buenos Aires: https://catalogo.datos.gba.gob.ar/tr/dataset/circuitos-electorales.
 
 ```{r}
 library(sf)
@@ -321,7 +356,7 @@ theme_void()+labs(title="Departamentos y secciones provinciales", subtitle="Prov
 
 ```
 
-Hacemos una unión con los resultados electorales. 
+Hacemos una unión con los resultados electorales.
 
 ```{r}
 
@@ -356,6 +391,32 @@ scale_fill_viridis_c()+
 theme_void()+
 theme(legend.text = element_blank())+
 labs(title="Resultados en elecciones generales 2023", 
-subtitle="Provincia de Buenos Aires", fill="Max")
+subtitle="Circuitos - Provincia de Buenos Aires", fill="Max")
 ```
 
+```{r}
+
+geo_resultados_seccp <- geo_resultados %>% 
+  st_join(geo_seccp, join=st_within) %>% 
+  group_by(sp_clean, Partido) %>% 
+  st_buffer(0.01) %>% 
+  summarise(votos = sum(Votos),
+            electores = sum(electores), 
+            votantes = sum(votantes), 
+            porcentaje = votos / electores) %>% 
+  ungroup()
+
+View(geo_resultados_seccp)
+geo_resultados_seccp %>% 
+  group_by(Partido) %>% 
+  mutate(Porcentaje_norm=(porcentaje - min(porcentaje)) / (max(porcentaje)-min(porcentaje)) ) %>% 
+  ungroup() %>% 
+  ggplot()+
+  geom_sf(aes(fill=Porcentaje_norm), lwd=0)+
+  facet_wrap(~Partido)+
+  scale_fill_viridis_c()+
+  theme_void()+
+  theme(legend.text = element_blank())+
+  labs(title="Resultados en elecciones generales 2023", 
+  subtitle="Secciones provinciales - Provincia de Buenos Aires", fill="Max")
+```

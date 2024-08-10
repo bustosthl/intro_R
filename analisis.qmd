@@ -226,8 +226,8 @@ union <- left_join(eah_comuna, g2023)
 union
 ```
 
+Veamoslo gráficamente.
 
-Veamoslo gráficamente. 
 ```{r}
 union %>% 
   select(comuna, mediana_ipcf, NEG_per, FIT_per, HNP_per, JXC_per, LLA_per, UXP_per) %>% 
@@ -251,6 +251,6 @@ union %>%
 
 Se puede probar:
 
--   unir la base con alguna otra información por comuna presente en la página de [datos del GCBA](https://data.buenosaires.gob.ar/). Analizar la relación con alguna de las variables presentes en esta base. 
+-   unir la base con alguna otra información por comuna presente en la página de [datos del GCBA](https://data.buenosaires.gob.ar/). Analizar la relación con alguna de las variables presentes en esta base.
 
 -   graficar el voto negativo vs votos contra otros partidos. ¿Hay alguna relación interesante?
