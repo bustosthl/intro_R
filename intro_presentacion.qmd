@@ -1,0 +1,112 @@
+---
+title: "Datos en Ciencias Sociales"
+format: 
+  revealjs: 
+    logo: img_pres/socio_uba.jpg
+    footer: "¿Datos para qué? Intro al mundo de datos con R"
+    incremental: false
+    scrollable: true
+    smaller: true
+    progress: true
+    controls: true
+---
+
+## El mundo de "datos"
+
+::: columns
+::: {.column width="60%"}
+
+::: {.incremental}
+La definición de "Big Data":
+
+-   grandes volúmenes de datos,
+
+-   en tipos y formatos diversos y variados,
+
+-   en un contexto de mayor velocidad de intercambio y capacidad de cómputo.
+:::
+:::
+
+::: {.column width="40%"}
+![](img_pres/bbb.jpg)
+:::
+:::
+
+------------------------------------------------------------------------
+
+# Pero...¿Cómo se construye conocimiento? {background-color="#ce1428"}
+
+------------------------------------------------------------------------
+
+## El mundo de "datos"
+
+::: columns
+::: {.column width="50%"}
+![](img_pres/habilidades.jpg)
+:::
+
+::: {.column width="50%"}
+![](img_pres/flujo.jpg)
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Datos y Ciencias Sociales
+
+-   ¿Crisis metodológica o incorporación crítica?
+
+::: columns
+::: {.column width="50%"}
+![](img_pres/metodologia.jpg)
+:::
+
+::: {.column width="50%"}
+![](img_pres/ia.jpg)
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Datos y Ciencias Sociales
+
+-   Datos situados: sesgos, privacidad, justicia, transparencia.
+
+::: columns
+::: {.column width="50%"}
+![](img_pres/sesgos_trad.jpg)
+:::
+
+::: {.column width="50%"}
+![](img_pres/sesgos_rec.jpg)
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Aplicaciones posibles
+
+-  Baylé (2016) Detección de villas y asentamientos informales en el Partido de La Matanza mediante teledetección y SIG. 
+
+![](img_pres/bayle.jpg)
+
+------------------------------------------------------------------------
+
+
+## Aplicaciones posibles
+
+-  Hanna (2017) MPEDS: Automating the Generation of Protest Event Data Automatización de construcción de bases de datos de protestas. 
+
+![](img_pres/hanna.jpg)
+
+------------------------------------------------------------------------
+
+## Aplicaciones posibles
+
+-  Palabras más usadas en textos de V. Lenin y R. Luxemburgo
+
+![](img_pres/lenin_luxemburgo.jpg)
+
+------------------------------------------------------------------------
+
+# ¡Manos a la obra! {background-color="#ce1428"}

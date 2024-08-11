@@ -32,5 +32,8 @@
   "viz.qmd": {
     "viz.html": "5e748e95",
     "viz.tex": "cd1b1ccb"
+  },
+  "intro_presentacion.qmd": {
+    "intro_presentacion.html": "1b9a1625"
   }
 }
