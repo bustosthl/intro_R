@@ -67,3 +67,5 @@ El curso se estructura en cuatro partes donde se irá construyendo de manera pro
     -   Aplicación práctica sobre bases típicas en el ámbito de las Ciencias Sociales.
 
 
+## Agradecimientos
+Gran parte de lo volcado acá se lo debo a Antonio Vázquez Brust (especialmente por su libro [Ciencia de datos para gente sociable](https://bitsandbricks.github.io/ciencia_de_datos_gente_sociable/)) y [Germán Rosati](https://gefero.github.io/about/) por lo realizado desde la Universidad Nacional de San Martín. Por supuesto ninguno de ellos conoce ni tiene responsabilidad sobre el contenido de este trabajo. 

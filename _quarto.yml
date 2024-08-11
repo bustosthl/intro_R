@@ -15,7 +15,7 @@ website:
   title: "¿Datos para qué? Intro al mundo de datos con R"
   page-navigation: true
   back-to-top-navigation: true
-  page-footer: "Tomás Bustos. Ciudad de Buenos Aires, agosto 2024"
+  page-footer: "Tomás Bustos | Ciudad de Buenos Aires | agosto 2024"
   navbar:
     background: primary
     foreground: secondary
@@ -35,6 +35,8 @@ website:
         menu: 
           - text: "Código fuente"
             href: https://github.com/bustosthl/intro_R
+      - icon: linkedin
+        href: https://www.linkedin.com/in/tomasbustos/
     contents: 
       - text: "Presentación"
         href: index.qmd
