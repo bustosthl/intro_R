@@ -385,7 +385,7 @@ group_by(Partido) %>%
 mutate(Porcentaje_norm=(Porcentaje - min(Porcentaje)) / (max(Porcentaje)-min(Porcentaje)) ) %>% 
 ungroup() %>% 
 ggplot()+
-geom_sf(aes(fill=Porcentaje_norm), lwd=0)+
+geom_sf(aes(fill=Porcentaje_norm),color=scales::alpha("white",0.))+
 facet_wrap(~Partido)+
 scale_fill_viridis_c()+
 theme_void()+
@@ -406,13 +406,12 @@ geo_resultados_seccp <- geo_resultados %>%
             porcentaje = votos / electores) %>% 
   ungroup()
 
-View(geo_resultados_seccp)
 geo_resultados_seccp %>% 
   group_by(Partido) %>% 
   mutate(Porcentaje_norm=(porcentaje - min(porcentaje)) / (max(porcentaje)-min(porcentaje)) ) %>% 
   ungroup() %>% 
   ggplot()+
-  geom_sf(aes(fill=Porcentaje_norm), lwd=0)+
+  geom_sf(aes(fill=Porcentaje_norm), color=scales::alpha("white",0.))+
   facet_wrap(~Partido)+
   scale_fill_viridis_c()+
   theme_void()+

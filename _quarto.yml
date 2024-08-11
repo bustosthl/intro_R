@@ -13,21 +13,41 @@ book:
 
 website:
   title: "¿Datos para qué? Intro al mundo de datos con R"
+  page-navigation: true
+  back-to-top-navigation: true
+  page-footer: "Tomás Bustos. Ciudad de Buenos Aires, agosto 2024"
   navbar:
+    background: primary
+    foreground: secondary
     search: true
     left: 
-      - index.qmd
       - intro.qmd
       - procesamiento.qmd
       - analisis.qmd
       - viz.qmd
-      #- summary.qmd
-    #right:
-     # - references.qmd
-    
-
-bibliography: references.bib
-
+      
+  sidebar:
+    title: "Capítulos"
+    subtitle: "Capítulos sub"
+    style: "docked"
+    tools:
+      - icon: github
+        menu: 
+          - text: "Código fuente"
+            href: https://github.com/bustosthl/intro_R
+    contents: 
+      - text: "Presentación"
+        href: index.qmd
+      - text: "1. Piletazo"
+        href: intro.qmd
+      - text: "2. Procesamiento"
+        href: procesamiento.qmd
+      - text: "3. Análisis"
+        href: analisis.qmd
+      - text: "4. Visualización"
+        href: viz.qmd
+          
+      
 format:
   html:
     theme: simplex #flatly

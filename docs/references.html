@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta charset="utf-8" />
+<meta name="generator" content="quarto-1.4.553" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 
 
-<title>references</title>
+<title>¿Datos para qué? Intro al mundo de datos con R – references</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,28 +43,13 @@ div.csl-indent {
   margin-left: 2em;
 }</style>
 
-
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<!-- htmldependencies:E3FAD763 -->
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -91,30 +78,158 @@ div.csl-indent {
 <body>
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="/index.html">
+    <span class="navbar-title">¿Datos para qué? Intro al mundo de datos con R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
+  onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="/index.html"> 
+<span class="menu-text">Presentación</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="/intro.html"> 
+<span class="menu-text">1. Piletazo</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="/procesamiento.html"> 
+<span class="menu-text">2. Procesamiento</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="/analisis.html"> 
+<span class="menu-text">3. Análisis</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="/viz.html"> 
+<span class="menu-text">4. Visualización</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn"
+      data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" 
+      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
+      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"></h1>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" 
+        aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
+        onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/analisis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Análisis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Piletazo</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/procesamiento.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Procesamiento</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/references.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Summary</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/viz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Visualización</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Docs</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/docs/visualizacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Visualización</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" ></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="references.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+        <div id="quarto-toc-target"></div>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Apartados</h2>
+   
+  <ul>
+  <li><a href="#references" id="toc-references">References</a></li>
+  </ul>
+</nav>
 <section id="references" class="level1 unnumbered">
 <h1 class="unnumbered">References</h1>
 <div id="refs" role="list">
 
 </div>
-
-
+<div id="quarto-navigation-envelope" class="hidden">
+<p><span class="hidden" data-render-id="quarto-int-sidebar-title">Capítulos</span> <span class="hidden" data-render-id="quarto-int-navbar-title">¿Datos para qué? Intro al mundo de datos con R</span> <span class="hidden" data-render-id="quarto-int-next">Summary</span> <span class="hidden" data-render-id="quarto-int-prev">2. Procesamiento</span> <span class="hidden" data-render-id="quarto-int-sidebar:/analisis.html3.-Análisis">3. Análisis</span> <span class="hidden" data-render-id="quarto-int-sidebar:/intro.html1.-Piletazo">1. Piletazo</span> <span class="hidden" data-render-id="quarto-int-sidebar:/procesamiento.html2.-Procesamiento">2. Procesamiento</span> <span class="hidden" data-render-id="quarto-int-sidebar:/references.htmlReferences">References</span> <span class="hidden" data-render-id="quarto-int-sidebar:/summary.htmlSummary">Summary</span> <span class="hidden" data-render-id="quarto-int-sidebar:/viz.html4.-Visualización">4. Visualización</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-1">Docs</span> <span class="hidden" data-render-id="quarto-int-sidebar:/docs/visualizacion.html4.-Visualización">4. Visualización</span> <span class="hidden" data-render-id="quarto-int-navbar:Presentación">Presentación</span> <span class="hidden" data-render-id="quarto-int-navbar:/index.html">/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:1. Piletazo">1. Piletazo</span> <span class="hidden" data-render-id="quarto-int-navbar:/intro.html">/intro.html</span> <span class="hidden" data-render-id="quarto-int-navbar:2. Procesamiento">2. Procesamiento</span> <span class="hidden" data-render-id="quarto-int-navbar:/procesamiento.html">/procesamiento.html</span> <span class="hidden" data-render-id="quarto-int-navbar:3. Análisis">3. Análisis</span> <span class="hidden" data-render-id="quarto-int-navbar:/analisis.html">/analisis.html</span> <span class="hidden" data-render-id="quarto-int-navbar:4. Visualización">4. Visualización</span> <span class="hidden" data-render-id="quarto-int-navbar:/viz.html">/viz.html</span> <span class="hidden" data-render-id="quarto-breadcrumbs-References">References</span></p>
+</div>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden" data-render-id="quarto-metatitle">¿Datos para qué? Intro al mundo de datos con R</span> <span class="hidden" data-render-id="quarto-twittercardtitle">¿Datos para qué? Intro al mundo de datos con R</span> <span class="hidden" data-render-id="quarto-ogcardtitle">¿Datos para qué? Intro al mundo de datos con R</span> <span class="hidden" data-render-id="quarto-metasitename">¿Datos para qué? Intro al mundo de datos con R</span> <span class="hidden" data-render-id="quarto-twittercarddesc"></span> <span class="hidden" data-render-id="quarto-ogcardddesc"></span></p>
+</div>
 </section>
 
 </main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+<script id = "quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -525,7 +640,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 </div> <!-- /content -->
 
+</body>
 
-
-
-</body></html>
+</html>

@@ -2,7 +2,11 @@
 
 El objetivo de los siguientes párrafos es dar una cálida y armoniosa bienvenida al mundo de datos para personas de la carrera de Sociología de la UBA, pero extensible a distintas carreras de Ciencias Sociales a lo largo y ancho de la República Argentina.
 
-img \##
+::: {layout-ncol="2"}
+![](img/pj_provincia_boxplot.jpg)
+
+![](img/uxp_PBA.jpg)
+:::
 
 ```{r}
 #| echo: false
@@ -61,3 +65,5 @@ El curso se estructura en cuatro partes donde se irá construyendo de manera pro
     -   Repaso por distintos tipos de información y sus formas adecuadas de visualización.
     -   Presentación de criterios básicos de construcción de un gráfico.
     -   Aplicación práctica sobre bases típicas en el ámbito de las Ciencias Sociales.
+
+
